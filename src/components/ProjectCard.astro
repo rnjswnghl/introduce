@@ -6,11 +6,10 @@ const mobile = p.slug === 'daltoori';
 <a class="card panel" href={`/projects/${p.slug}`} style={`--accent:${p.accent}`}>
   <div class:list={['cv', p.cover ? (mobile ? 'm' : '') : 't']}>
     {p.cover ? <img src={`/img/p/${p.cover}.webp`} alt="" loading="lazy" decoding="async" width="1000" height="625" /> : <span aria-hidden="true">{p.name[0]}</span>}
-    <span class="no" aria-hidden="true">{p.no}</span>
   </div>
   <div class="bd">
     <h4>{p.name}</h4>
-    <p class="sub">{p.kor}</p>
+    <p class="sub">{p.period}</p>
     <p class="key">{p.roleShort} <span style="font-weight:400;color:var(--ink-2)">/ {p.kind === 'solo' ? '개인' : `${p.teamSize}인 팀`}</span></p>
     <div class="tags">
       {p.demo && <span class="tag cel">▶ 데모</span>}
