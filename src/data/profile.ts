@@ -1,0 +1,59 @@
+// 프로필·이력 데이터 (출처: 본인 Notion 정리). 공개하지 않을 항목(생년월일·자격번호·사적 목표)은 넣지 않는다.
+// draft: true = 본인 확인 필요
+export const profile = {
+  name: '권주회', en: 'Kwon JooHoe',
+  slogan: '시작하면 쉽게 놓지 않는 개발자.',
+  one: '만든 기능이 실제 사용 흐름에서 끝까지 동작하는지 확인하고, 막히면 원인까지 파고들어 고칩니다.',
+  sentence: '쉽게 시작하기보다, 시작하면 쉽게 놓지 않는 사람입니다.',
+  values: [
+    { t: '책임감', d: '맡은 몫은 스스로 해결합니다.' },
+    { t: '주도성', d: '일을 마무리하기 위해 먼저 앞장서 움직입니다.' },
+    { t: '끈기', d: '목표가 있고 오래 맡아야 하는 일에서 중간에 그만두지 않고 정해진 기간까지 수행합니다.' },
+  ],
+  way: '모르는 것은 이해할 때까지 묻고, 도구를 바꿔가며 시도합니다. 방향이 보이면 직접 탐색하고 시도하며 답을 찾습니다. 선택지가 여러 개일 때는 조사와 후기까지 확인해 판단하고, 애매하면 다른 사람에게 자문을 구합니다.',
+  now: [
+    { t: '단기 목표', d: '교육과정을 완주하며 실무에서 통하는 프로젝트 기록을 쌓고, 개발자로 입사하는 것.' },
+    { t: '중장기 목표', d: '해외 IT 기업에서도 일할 수 있는 개발자로 성장하는 것 (영어와 직무 준비를 병행 중).', draft: true },
+    { t: '가장 깊이 구현 중인 것', d: '화면(Vue·React)에서 API(Django·FastAPI), AI 연동까지 이어지는 서비스 구현.', draft: true },
+  ],
+};
+
+export const timeline = [
+  { when: '2026.08 — 2026.11', state: '진행 중', t: 'SKT ALEPH K-뉴딜', org: '고용노동부 · SKT · 코리아IT', role: '교육생', d: 'AI 에이전트와 협업해 6개 프로젝트(개인 5, 팀 1)를 수행. 팀 프로젝트 LLM Gateway는 최종 발표까지 진행했습니다.', link: '/#projects' },
+  { when: '2025.01 — 2025.12', t: '삼성청년SW·AI아카데미 (SSAFY)', org: '삼성전자 · 고용노동부', role: '교육생', d: '팀 프로젝트 4개 수행: 한페이지(팀장), FocusMate, On-Wear, DALTOORI.', link: '/#projects' },
+  { when: '2024.07 — 2024.12', t: '부산디지털스마트아카데미 5기', org: '', role: '교육생', d: '재료 사진을 인식해 레시피를 추천하는 팀 프로젝트(요리의 정원)를 수행했습니다.' },
+  { when: '2022.08 — 2023.08', t: 'Au Pair (미국)', org: 'Intrax / AuPairCare', role: '베이비시터', d: '1년간 혼자 해외에서 맡은 일을 책임지고 완주했습니다. 낯선 환경에서 먼저 정보를 찾고 스스로 판단하는 경험이었습니다.', draft: true },
+  { when: '2019.03 — 2025.02', t: '부산외국어대학교 졸업', org: '러시아학 · 빅데이터학', role: '', d: '빅데이터학 과목: R프로그래밍, 빅데이터의 이해·활용실무, 문제해결을 위한 데이터 활용 및 분석, 실험계획법, 기초통계. 프로그래밍: C, 웹페이지제작, 소프트웨어 활용.' },
+];
+
+export const certs = [
+  { t: '컴퓨터활용능력 2급', org: '대한상공회의소', when: '2024.02' },
+  { t: 'MOS 365 Word · PowerPoint (Associate)', org: 'Microsoft', when: '2026.01' },
+  { t: 'Microsoft Azure Data Fundamentals', org: 'Microsoft', when: '2026.04' },
+  { t: 'Adobe ACP — Photoshop · Premiere Pro · Video Design', org: 'Adobe', when: '2026.06' },
+  { t: 'OPIc IM2', org: 'ACTFL', when: '2024.09' },
+];
+
+// 활용 깊이: 1 = 프로젝트에서 사용 / 2 = 핵심 기능을 직접 구현 / 3 = 구조·설계를 직접 결정. 프로젝트 기록에 근거한 값이며 draft 는 확인 필요.
+export const skills = [
+  { cat: '프론트엔드', items: [
+    { t: 'React · TypeScript', lv: 3, d: '검색(실시간 추천·필터·무한 스크롤), 핫아이템, 상세 모달, 찜 상태를 구현', p: 'on-wear' },
+    { t: 'Vue 3 · Pinia · TypeScript', lv: 3, d: '스터디 검색·상세, 방장/팀원 권한별 라우팅, 스토어·API 모듈 구성', p: 'focusmate' },
+  ] },
+  { cat: '백엔드 · API', items: [
+    { t: 'Django REST Framework', lv: 3, d: '5개 앱으로 도메인을 나누고 도서 추천·마이페이지 API를 설계', p: 'hanpage' },
+    { t: 'FastAPI', lv: 3, d: '인증·평가·즉시 피드백 API(DALTOORI), 관리자 콘솔용 감사·설정 API(LLM Gateway)', p: 'daltoori' },
+  ] },
+  { cat: 'AI · 데이터', items: [
+    { t: 'Whisper · MFA · MeloTTS', lv: 2, d: '음성 인식·정렬·합성을 평가 파이프라인으로 연결', p: 'daltoori' },
+    { t: 'LLM 협업 개발', lv: 2, d: 'AI 에이전트에게 요구사항을 주고 결과를 검수하며 6개 프로젝트를 완성', p: 'llm-gateway' },
+    { t: '데이터 수집·전처리', lv: 2, d: '알라딘 API로 도서 398권을 수집·정리해 시드 데이터로 구성', p: 'hanpage' },
+  ] },
+  { cat: '웹 인터랙션', items: [
+    { t: 'Canvas · Web Audio', lv: 1, d: '종이 연소(BurnIt), 사진·프레임 합성(Cut&Note) 기획과 검수', p: 'burnit', draft: true },
+  ] },
+  { cat: '협업', items: [
+    { t: 'Git · GitHub', lv: 2, d: '2~6인 팀에서 브랜치 기반으로 협업하고 병합 충돌을 해소', p: 'hanpage' },
+  ] },
+];
+export const levelLabel = ['', '프로젝트에서 사용', '핵심 기능을 직접 구현', '구조·설계를 직접 결정'];

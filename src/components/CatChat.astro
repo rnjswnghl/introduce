@@ -1,7 +1,7 @@
 ---
 // 안내 고양이 챗봇. 기본: 브라우저에서 포트폴리오 기록(chat-kb.json)을 검색해 근거 있는 답만 한다.
 // ANTHROPIC_API_KEY 가 설정된 배포에서는 /api/chat(LLM)을 먼저 시도하고, 실패하면 로컬 검색으로 자동 전환한다.
-const chips = ['어떤 프로젝트를 했나요?', '권주회 님은 어떤 사람인가요?', 'On-Wear에서 맡은 역할은?', '가장 어려웠던 문제는 뭐였나요?', 'AI는 어떻게 활용했나요?'];
+const chips = ['어떤 프로젝트를 했나요?', '권주회 님은 어떤 사람인가요?', 'On-Wear에서 맡은 역할은?', '어떤 기술을 얼마나 쓸 수 있나요?', '학력과 자격증이 궁금해요'];
 ---
 <div id="cat" class="cat">
   <button class="cat-btn" type="button" aria-expanded="false" aria-controls="cat-panel" aria-label="안내 고양이에게 권주회에 대해 물어보기">
@@ -95,9 +95,14 @@ const chips = ['어떤 프로젝트를 했나요?', '권주회 님은 어떤 사
   function localAnswer(q: string, kb: KB) {
     const n = norm(q), proj = findProject(q, kb), intent = INTENTS.find(([, re]) => re.test(q))?.[0];
     if (!proj) {
-      if (/연락|이메일|메일|깃허브|github|링크|전화/.test(n)) return fmt(pick(kb, ['profile-contact']));
+      if (/연락|이메일|메일|깃허브|github|링크드인|linkedin|링크|전화/.test(n)) return fmt(pick(kb, ['profile-contact']));
+      if (/자격|어학|토익|opic|오픽|영어|mos|컴활|azure|adobe/.test(n)) return fmt(pick(kb, ['profile-cert']));
+      if (/학력|학교|졸업|전공|대학|학점/.test(n)) return fmt(pick(kb, ['profile-edu']));
+      if (/교육|아카데미|ssafy|싸피|aleph|알레프|이력|경력|경험|해외|au\s*pair/.test(n) && !/프로젝트/.test(n)) return fmt(pick(kb, ['profile-history']));
+      if (/목표|포부|지향|앞으로|꿈|가치관|계획/.test(n)) return fmt(pick(kb, ['profile-goal']));
+      if (/기술|스킬|스택|잘하는|할\s*수\s*있|숙련|수준|언어|프레임워크/.test(n)) return fmt(pick(kb, ['profile-skills']));
       if (/\bai\b|바이브|llm|에이전트|챗gpt|chatgpt|codex|클로드|claude/.test(n)) return fmt(pick(kb, ['profile-ai']));
-      if (/누구|전공|학력|강점|장점|성격|일하는|어떤\s*사람|지원|직무|사람/.test(n)) return fmt(pick(kb, ['profile-intro', 'profile-strength']));
+      if (/누구|강점|장점|성격|일하는|어떤\s*사람|지원|직무|사람|소개/.test(n)) return fmt(pick(kb, ['profile-intro', 'profile-strength']));
       if (/프로젝트|경험|포트폴리오|뭐\s*했|무슨\s*일|뭘\s*했/.test(n) && (!intent || intent === 'overview' || intent === 'role')) { const list = kb.projects.map(p => `· ${p.name} — ${p.kor}`).join('\n'); return { text: `지금 소개된 프로젝트는 ${kb.projects.length}개예요.\n${list}\n\n궁금한 프로젝트 이름을 넣어 물어보세요. 예: “On-Wear에서 맡은 역할은?”`, links: [{ label: '프로젝트 목록', url: '/#projects' }] }; }
       if (intent === 'trouble') { const ts = kb.chunks.filter(c => c.type === 'trouble' && !c.unverified).slice(0, 3); if (ts.length) return { text: '확정된 해결 사례를 먼저 소개할게요.\n\n' + ts.map(c => `· ${c.title}\n${c.text}`).join('\n\n'), links: ts.map(c => ({ label: c.projectName || '', url: c.url })) }; }
     }
