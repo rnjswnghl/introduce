@@ -79,6 +79,6 @@ const handleLogout = () => {
   color: #000;
   padding: 0.3rem 0.8rem;
   border-radius: 0.5rem;
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: 'Noto Serif KR', serif;
 }
 </style>

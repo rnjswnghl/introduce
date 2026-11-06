@@ -160,7 +160,7 @@ onMounted(() => {
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 2px 14px rgb(0 0 0 / 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: inherit;
 }
 
 .name {

@@ -77,7 +77,7 @@ onMounted(() => {
 
 <style scoped>
 .section-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Noto Serif KR', serif;
   color: #3e3a2f;
   border-bottom: 2px solid #e3d5a8;
   display: inline-block;
