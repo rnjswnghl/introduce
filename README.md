@@ -17,3 +17,6 @@ npm run dev      # 개발
 npm run build    # dist/
 ```
 데모 다시 빌드: `cd demos/<이름> && npm ci && npx vite build --outDir ../../public/demos/<이름> --emptyOutDir`
+
+## 배포
+Vercel 프로젝트 `introjj` (GitHub 연동). Astro 자동 감지, 빌드 `npm run build`, 출력 `dist/`.
