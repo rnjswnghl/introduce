@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+interface Props { title?: string; desc?: string; nav?: string }
+const { title = '권주회 · 프론트엔드 포트폴리오', desc = '사용자의 흐름을 끝까지 다듬는 프론트엔드 개발자 권주회의 작업 기록', nav = '' } = Astro.props;
+const links = [['/#about', '소개'], ['/#projects', '프로젝트'], ['/#skills', '기술'], ['/performance', '성능 기록'], ['/#contact', '연락']];
+---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{title}</title><meta name="description" content={desc} />
+  <meta property="og:title" content={title} /><meta property="og:description" content={desc} /><meta name="theme-color" content="#f4efe5" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%238e3a2a'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23f8efe0' font-family='serif'%3E權%3C/text%3E%3C/svg%3E" />
+  <script is:inline>try{if(localStorage.getItem('motion')==='off')document.documentElement.classList.add('paused')}catch(e){}</script>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+  <div class="sky" aria-hidden="true">
+    <div class="land"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+    <svg class="sym s1" viewBox="0 0 180 90" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 74c-8-14 2-28 16-24 2-18 26-26 38-10 8-14 32-12 36 6 14-6 28 4 24 16-4 12-20 12-26 6-6 10-22 12-30 4-10 8-26 4-30-4-6 6-22 6-28 6z"/><path d="M128 66c12 2 22-6 18-16-3-7-14-6-14 1"/><path d="M52 60c4-6 12-6 14 0M86 58c4-6 12-6 14 0"/></svg>
+    <svg class="sym s2" viewBox="0 0 180 90" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 74c-8-14 2-28 16-24 2-18 26-26 38-10 8-14 32-12 36 6 14-6 28 4 24 16-4 12-20 12-26 6-6 10-22 12-30 4-10 8-26 4-30-4-6 6-22 6-28 6z"/><path d="M128 66c12 2 22-6 18-16-3-7-14-6-14 1"/><path d="M52 60c4-6 12-6 14 0M86 58c4-6 12-6 14 0"/></svg>
+  </div>
+  <header class="top"><div class="wrap">
+    <a class="brand" href="/" aria-label="홈"><span class="seal" aria-hidden="true">權</span><span class="t">권주회 · 작업 기록</span></a>
+    <nav class="nav" aria-label="주 메뉴">{links.map(([h, t]) => <a href={h} aria-current={nav === h ? 'page' : undefined}>{t}</a>)}</nav>
+    <button class="mbtn" id="motion" type="button" aria-pressed="false">움직임 멈추기</button>
+  </div></header>
+  <main id="main"><slot /></main>
+  <footer class="foot"><div class="wrap">
+    <p>© 2026 권주회 · 프론트엔드 개발자 포트폴리오. 수치는 각 저장소의 git 이력·소스에서 집계했습니다.</p>
+    <p>Astro · Preact · Pretendard · 나눔명조 · 모든 계절/수묵 이미지는 AI로 제작했습니다.</p>
+  </div></footer>
+  <script is:inline>
+    (function(){var b=document.getElementById('motion'),r=document.documentElement;
+    function s(){var p=r.classList.contains('paused');b.setAttribute('aria-pressed',p);b.textContent=p?'움직임 다시 켜기':'움직임 멈추기'}
+    b.addEventListener('click',function(){r.classList.toggle('paused');try{localStorage.setItem('motion',r.classList.contains('paused')?'off':'on')}catch(e){}s()});s();})();
+  </script>
+</body></html>
