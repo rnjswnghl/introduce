@@ -40,21 +40,21 @@ defineProps({
 </script>
 
 <style scoped>
-.rec-title { color: #f6f1e1; font-size: 1.05rem; font-weight: 600; }
-.rec-empty { color: #8f958f; }
+.rec-title { color: #2f3a33; font-size: 1.05rem; font-weight: 600; }
+.rec-empty { color: #5b6760; }
 .arrow {
   flex: none; width: 34px; height: 34px; border-radius: 50%; border: none; padding: 0;
   display: grid; place-items: center; line-height: 1; font-size: 1.4rem;
-  background: rgba(95, 122, 105, 0.25); color: #cfe0d4; cursor: pointer;
+  background: rgba(95, 122, 105, 0.18); color: #3f5a4a; cursor: pointer;
   transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 .arrow:hover { background: #5f7a69; color: #f6f1e1; transform: scale(1.06); }
 .rec-link { text-decoration: none; }
 .rec-card {
-  background: #2a2a2a; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; overflow: hidden;
+  background: #fff; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.rec-link:hover .rec-card { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4); }
-.rec-card .card-title { color: #f6f1e1; font-size: 0.9rem; }
+.rec-link:hover .rec-card { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18); }
+.rec-card .card-title { color: #333; font-size: 0.9rem; }
 .rec-card .card-body { background: transparent; }
 </style>

@@ -411,7 +411,7 @@ const handleBookmarkSaved = () => {
   font-size: 1.6rem;
   font-weight: 700;
   color: #222;
-  border-bottom: 3px solid #a6cee3;
+  border-bottom: 3px solid #5f7a69;
   padding-bottom: 0.4rem;
   margin: 0;
 }
