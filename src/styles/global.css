@@ -79,5 +79,11 @@ footer.foot { padding: 3rem 0 4rem; color: var(--ink-2); font-size: .88rem; }
 
 /* 영역 구분: 히어로가 첫 화면을 채우고, 이후 영역은 배경 위에 그대로 이어진다(선, 띠 없음) */
 main > hr.rule { display: none; }
-/* 글자 뒤는 종이색 후광으로만 받친다(영역 상자, 블러 없음) */
-main > section:not(.hero) :is(.h2, .eyebrow, .lead, .legend, .pgroup h3, .tl .when, .tl .org, .tl p, .about > p) { text-shadow: 0 0 16px var(--paper), 0 0 10px var(--paper), 0 0 5px var(--paper), 0 0 3px var(--paper), 0 0 3px var(--paper); }
+/* 글자 뒤 배경이 어두운 산일 때만(TextVeil이 --b를 계산) 그 자리를 흐리게 한다. 가장자리는 번져서 상자처럼 보이지 않는다 */
+[data-veil] { position: relative; isolation: isolate; width: fit-content; max-width: 100%; }
+[data-veil]::before { content: ''; position: absolute; inset: -.7rem -1.5rem; z-index: -1; pointer-events: none; border-radius: 22px;
+  background: rgba(247, 243, 235, calc(var(--b, 0) * .38)); -webkit-backdrop-filter: blur(calc(var(--b, 0) * 11px)); backdrop-filter: blur(calc(var(--b, 0) * 11px));
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 26px, #000 calc(100% - 26px), transparent), linear-gradient(to bottom, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent, #000 26px, #000 calc(100% - 26px), transparent), linear-gradient(to bottom, transparent, #000 16px, #000 calc(100% - 16px), transparent); mask-composite: intersect;
+  transition: background .35s ease, backdrop-filter .35s ease, -webkit-backdrop-filter .35s ease; }
+main > section:not(.hero) :is(.h2, .eyebrow, .lead, .legend, .pgroup h3, .tl .when, .tl .org, .tl p, .about > p) { text-shadow: 0 0 8px var(--paper), 0 0 3px var(--paper); }
