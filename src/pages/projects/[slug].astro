@@ -7,7 +7,7 @@ export function getStaticPaths() { return projects.map((p, i) => ({ params: { sl
 const { p, prev, next } = Astro.props;
 const mineDraft = p.group === 'aleph';
 ---
-<Base title={`${p.name} / 권주회 포트폴리오`} desc={p.summary} nav="/#projects">
+<Base title={`${p.name} / Introduce JJ`} desc={p.summary} nav="/#projects">
   <div class="sheet">
   <div class="wrap phead" style={`--accent:${p.accent}`}>
     <p class="crumb"><a href="/#projects">작업 기록</a> / {p.name}</p>
