@@ -73,7 +73,7 @@ const formattedDate = computed(() => {
   flex: 1;
   min-height: 250px;
   color: #ccc;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Serif KR', serif;
 }
 
 .book-title {

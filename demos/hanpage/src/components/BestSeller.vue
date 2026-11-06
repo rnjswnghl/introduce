@@ -74,7 +74,7 @@ onMounted(async () => {
   text-shadow:
     0 2px 4px rgba(0, 0, 0, 0.2),
     0 4px 8px rgba(0, 0, 0, 0.15);
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Noto Serif KR', serif;
   letter-spacing: 1.5px;
   padding: 0.5rem 1rem;
   background-color: rgba(255, 255, 255, 0.05);

@@ -11,8 +11,8 @@ import NavBar from './components/NavBar.vue'
 
 <style>
 :root {
-  --font-main: 'Noto Sans KR', sans-serif;
-  --font-content: 'Nanum Myeongjo', serif;
+  --font-main: 'Noto Serif KR', serif;
+  --font-content: 'Noto Serif KR', serif;
   --font-handwriting: 'Nanum Pen Script', cursive;
 }
 

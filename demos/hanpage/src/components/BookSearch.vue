@@ -1,12 +1,18 @@
 <template>
   <div class="book-search d-flex flex-column gap-3 mb-4">
     <div class="d-flex align-items-center gap-2">
-      <select v-model="localSearchField" class="form-select search-select">
-        <option value="all">전체</option>
-        <option value="title">책 제목</option>
-        <option value="author">저자</option>
-        <option value="publisher">출판사</option>
-      </select>
+      <div class="field-dd" ref="dd">
+        <button type="button" class="field-btn" :class="{ open }" @click="open = !open" aria-haspopup="listbox" :aria-expanded="open">
+          <span>{{ currentLabel }}</span>
+          <i class="fas fa-chevron-down caret"></i>
+        </button>
+        <ul v-if="open" class="field-menu" role="listbox">
+          <li v-for="o in options" :key="o.value" role="option" :aria-selected="o.value === localSearchField"
+              :class="{ active: o.value === localSearchField }" @click="pick(o.value)">
+            {{ o.label }}
+          </li>
+        </ul>
+      </div>
 
       <input
         type="text"
@@ -23,7 +29,7 @@
 </template>
 
 <script setup>
-import { ref, watch, computed } from 'vue'
+import { ref, watch, computed, onMounted, onBeforeUnmount } from 'vue'
 import debounce from 'lodash.debounce'
 import CategoriesList from '@/components/CategoriesList.vue'
 
@@ -39,6 +45,21 @@ const props = defineProps({
 const localSearchQuery = ref(props.searchQuery || '')
 const localSearchField = ref(props.searchField || 'all')
 const localSelectedCategory = ref(props.selectedCategory)
+
+// 검색 기준 드롭다운
+const options = [
+  { value: 'all', label: '전체' },
+  { value: 'title', label: '책 제목' },
+  { value: 'author', label: '저자' },
+  { value: 'publisher', label: '출판사' },
+]
+const open = ref(false)
+const dd = ref(null)
+const currentLabel = computed(() => options.find(o => o.value === localSearchField.value)?.label || '전체')
+const pick = (v) => { localSearchField.value = v; open.value = false }
+const onDocClick = (e) => { if (dd.value && !dd.value.contains(e.target)) open.value = false }
+onMounted(() => document.addEventListener('click', onDocClick))
+onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
 
 // 검색어 변경 시 debounce로 emit
 const emitSearchQuery = debounce(() => {
@@ -74,18 +95,25 @@ const placeholderText = computed(() => {
 </script>
 
 <style scoped>
-.search-select {
-  width: 80px;
-  border-radius: 10px;
-  background-color: #181818;
-  color: #eee;
-  border: 1.5px solid #444;
+.field-dd { position: relative; flex: none; }
+.field-btn {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+  min-width: 96px; padding: 0.375rem 0.75rem;
+  background: #fff; color: #333; border: 1px solid #dee2e6; border-radius: 8px;
+  font-size: 1rem; line-height: 1.5; cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
-
-.search-select:focus {
-  outline: none;
-  border-color: #3ea6ff;
-  box-shadow: 0 0 10px #3ea6ffaa;
+.field-btn:hover { border-color: #adb5bd; }
+.field-btn.open, .field-btn:focus-visible { outline: none; border-color: #3ea6ff; box-shadow: 0 0 0 3px rgba(62, 166, 255, 0.2); }
+.caret { font-size: 0.7rem; color: #868e96; transition: transform 0.15s; }
+.field-btn.open .caret { transform: rotate(180deg); }
+.field-menu {
+  position: absolute; z-index: 20; top: calc(100% + 4px); left: 0; min-width: 100%;
+  margin: 0; padding: 4px; list-style: none;
+  background: #fff; border: 1px solid #dee2e6; border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
-
+.field-menu li { padding: 0.4rem 0.75rem; border-radius: 6px; color: #333; cursor: pointer; white-space: nowrap; }
+.field-menu li:hover { background: #f1f3f5; }
+.field-menu li.active { background: #e7f1ff; color: #0b5ed7; font-weight: 600; }
 </style>

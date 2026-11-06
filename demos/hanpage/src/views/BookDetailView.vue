@@ -428,7 +428,7 @@ const handleBookmarkSaved = () => {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   user-select: none;
   pointer-events: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: inherit;
   letter-spacing: 0.05em;
   z-index: 10;
 }
@@ -454,7 +454,7 @@ const handleBookmarkSaved = () => {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   user-select: none;
   pointer-events: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: inherit;
   letter-spacing: 0.05em;
   z-index: 10;
 }

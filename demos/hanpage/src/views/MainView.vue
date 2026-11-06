@@ -48,7 +48,7 @@ function scrollToBestSeller() {
   justify-content: center;
   align-items: center;
   color: white;
-  font-family: 'Playfair Display', 'Noto Sans KR', serif;
+  font-family: 'Noto Serif KR', serif;
 }
 
 .overlay {
@@ -75,7 +75,7 @@ function scrollToBestSeller() {
 }
 
 .hero-text h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Noto Serif KR', serif;
   font-weight: 700;
   font-size: clamp(3rem, 6vw, 4.5rem);
   margin-bottom: 0.6rem;
@@ -84,7 +84,7 @@ function scrollToBestSeller() {
 }
 
 .hero-text h5 {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Serif KR', serif;
   font-weight: 400;
   font-size: 1.25rem;
   color: #f2e8d5;
@@ -99,7 +99,7 @@ button {
   border-radius: 30px;
   font-weight: 700;
   font-size: 1.05rem;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Serif KR', serif;
   color: #3d372c;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -113,7 +113,7 @@ button:hover {
 }
 
 .section-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Noto Serif KR', serif;
   color: #3e3a2f;
   border-bottom: 2px solid #e3d5a8;
   display: inline-block;

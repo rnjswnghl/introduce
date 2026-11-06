@@ -33,7 +33,7 @@ const formattedDate = computed(() => {
   max-width: 1000px;
   margin: 2rem auto;
   padding: 1rem;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Serif KR', serif;
   color: #eee;
 }
 .top-section {

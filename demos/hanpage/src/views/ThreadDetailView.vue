@@ -179,8 +179,7 @@ onMounted(async () => {
   max-width: 1080px;
   margin: 3rem auto;
   padding: 0 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: inherit;
 }
 
 .page-title {
