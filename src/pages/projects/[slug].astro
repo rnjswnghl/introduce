@@ -46,7 +46,7 @@ const mineDraft = p.group === 'aleph';
 
   {p.demo && <section style="padding:2.2rem 0 0"><div class="wrap">
     <h2 class="h2" style="font-size:1.45rem"><span class="n" style="font:700 .95rem var(--serif);color:var(--seal);border:1px solid var(--seal);border-radius:3px;padding:.05rem .5rem;margin-right:.6rem">구현 결과</span>직접 눌러보기</h2>
-    <p class="lead" style="margin-bottom:1.2rem">원본 프로젝트의 프론트엔드 화면을 그대로 빌드하고, 서버 대신 더미 데이터를 연결했습니다. 실행 버튼을 누를 때만 코드를 내려받습니다.</p>
+    <p class="lead" style="margin-bottom:1.2rem">구현한 화면을 직접 눌러보세요.</p>
     <DemoFrame kind={p.demo} name={p.name} poster={`/img/p/${p.cover}.webp`} />
   </div></section>}
 
@@ -69,7 +69,7 @@ const mineDraft = p.group === 'aleph';
     <section class="sec"><h2><span class="n">⑥</span>결과 및 회고{!p.learnedFromReadme && <span class="tag" title="README·커밋에 없는 회고는 제 추정 문구입니다. 본인의 말로 교체가 필요합니다.">회고는 초안</span>}</h2>
       <div class="three">
         <div class="panel"><h4>구현한 것</h4><ul class="list">{p.done.map(d => <li>{d}</li>)}</ul></div>
-        <div class="panel"><h4>미완성·한계·향후 개선</h4><ul class="list">{p.gaps.map(d => <li>{d}</li>)}</ul></div>
+        {p.gaps.length > 0 && <div class="panel"><h4>미완성·한계·향후 개선</h4><ul class="list">{p.gaps.map(d => <li>{d}</li>)}</ul></div>}
         <div class="panel"><h4>배운 점</h4><ul class="list">{p.learned.map(d => <li>{d}</li>)}</ul></div>
       </div>
     </section>

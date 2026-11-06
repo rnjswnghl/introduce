@@ -1,26 +1,28 @@
 ---
-// 풍등 심벌 (introme 의 연등을 다듬음): 곡선 몸통 · 안쪽 불빛 번짐 · 곡선 갈빗대 · 바람에 흐르는 술 · J H 이니셜
-interface Props { id?: string; class?: string; label?: string }
-const { id = 'l', class: cls = '', label } = Astro.props;
+// 풍등(등롱) 아이콘: 위의 구슬 · 두 단 뚜껑 · 가운데가 불룩한 몸통과 곡선 살대 · 아래 두 단 뚜껑 · 술. 선화, 색 채움 없음.
+interface Props { class?: string }
+const { class: cls = '' } = Astro.props;
 ---
-<svg class:list={['lantern', cls]} viewBox="0 0 72 76" role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'} focusable="false">
-  <defs>
-    <radialGradient id={`${id}-glow`} cx="50%" cy="52%" r="55%"><stop offset="0" stop-color="#f6c978" stop-opacity=".95" /><stop offset=".6" stop-color="#eaa968" stop-opacity=".36" /><stop offset="1" stop-color="#eaa968" stop-opacity="0" /></radialGradient>
-    <clipPath id={`${id}-clip`}><path d="M25 10H40C45 11 48 15 48.500 21C49 31 46.500 40 43.500 47H21.500C18.500 40 16 31 16.500 21C17 15 20 11 25 10Z" /></clipPath>
-  </defs>
-  <g class="body" transform="rotate(6 32.500 30)">
-    <path class="ln" d="M28.500 2.500h8M32.500 2.500V9" />
-    <path d="M25 10H40C45 11 48 15 48.500 21C49 31 46.500 40 43.500 47H21.500C18.500 40 16 31 16.500 21C17 15 20 11 25 10Z" fill={`url(#${id}-glow)`} />
-    <g clip-path={`url(#${id}-clip)`}><path class="rib" d="M27.500 9C25.500 21 25.500 35 26.500 48M37.500 9C39.500 21 39.500 35 38.500 48" /><path class="rib" d="M16.500 17.500Q32.500 20 48.500 17.500M18 43Q32.500 45.500 47 43" /></g>
-    <path class="ln" d="M25 10H40C45 11 48 15 48.500 21C49 31 46.500 40 43.500 47H21.500C18.500 40 16 31 16.500 21C17 15 20 11 25 10Z" />
-    <path class="ln" d="M20.500 47.500h24" />
-    <text x="32.500" y="29.500">J</text><text x="32.500" y="40">H</text>
-    <path class="tas" d="M29 48c-.5 4-4 7-9 9.500-4 2-8 5-10 10M33 48c0 5-3 9-8 12.500-3 2.500-5 5-6 9.500M37 48c1 4-1 7-5 10-3 2-5 4-6 7" />
-  </g>
+<svg class:list={['lantern', cls]} viewBox="0 0 64 98" aria-hidden="true" focusable="false">
+  <circle class="ln" cx="32" cy="5.500" r="4.300" />
+  <path class="ln" d="M29 9.800h6V13.500h-6Z" />
+  <rect class="ln" x="24.500" y="13.500" width="15" height="3.300" rx="1" />
+  <rect class="ln" x="19" y="16.800" width="26" height="4" rx="1.200" />
+  <path class="ln body" d="M19.500 20.800C5 27 4 56 19.500 62.500H44.500C60 56 59 27 44.500 20.800Z" />
+  <path class="rib" d="M23 20.800C10.500 28 10.500 55.500 23 62.500M41 20.800C53.500 28 53.500 55.500 41 62.500" />
+  <path class="rib" d="M27.500 20.800C18.500 29 18.500 54.500 27.500 62.500M36.500 20.800C45.500 29 45.500 54.500 36.500 62.500" />
+  <rect class="ln" x="19" y="62.500" width="26" height="4" rx="1.200" />
+  <rect class="ln" x="24.500" y="66.500" width="15" height="3.300" rx="1" />
+  <path class="ln" d="M29.500 69.800h5V72.500h-5Z" />
+  <circle class="ln" cx="32" cy="75.500" r="2.300" />
+  <rect class="ln" x="29.300" y="78" width="5.400" height="5.500" rx="1.600" />
+  <g class="tas"><path d="M29.800 83.500C29.300 87 28 90 27 94.500" /><path d="M30.700 83.500C30.500 88 29.500 91 29 96" /><path d="M31.600 83.500C31.600 88 31 92 31 97" /><path d="M32.400 83.500C32.400 88 33 92 33 97" /><path d="M33.300 83.500C33.500 88 34.500 91 35 96" /><path d="M34.200 83.500C34.700 87 36 90 37 94.500" /></g>
+  <text x="32" y="38.500">J</text><text x="32" y="49">H</text>
 </svg>
 <style>
   .lantern { display: block; overflow: visible; color: var(--seal); }
-  .lantern .ln, .lantern .rib, .lantern .tas { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
-  .lantern .ln { stroke-width: 1.5; } .lantern .rib { stroke-width: .8; opacity: .38; } .lantern .tas { stroke-width: .9; opacity: .9; }
-  .lantern text { fill: currentColor; font: 700 10.5px/1 var(--serif); text-anchor: middle; }
+  .lantern .ln, .lantern .rib, .lantern .tas path { stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+  .lantern .ln { stroke-width: 1.5; fill: #fdfaf3; } .lantern .rib { stroke-width: 1.2; } .lantern .tas path { stroke-width: .9; }
+  .lantern .body { fill: #fdfaf3; }
+  .lantern text { fill: currentColor; font: 700 9px/1 var(--serif); text-anchor: middle; }
 </style>

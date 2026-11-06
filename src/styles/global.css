@@ -23,22 +23,20 @@ p { margin: 0 0 .9em; }
 .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: .6rem 1rem; z-index: 100; }
 .skip:focus { left: 0; }
 
-/* ── 하늘: intro_j 수묵 산수 + 명암만으로 흐르는 안개 (선 없음, transform 만 사용) ── */
+/* ── 하늘: intro_j 수묵 산수. 밝은 영역(안개·구름결)만 셰이더로 흐른다(FlowingSky). 실패 시 정지 이미지 ── */
 .sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: var(--paper); contain: strict; }
 .sky .land { position: absolute; inset: 0; background: url(/img/ink/landscape.webp) center bottom / cover no-repeat; }
-.sky .mist { position: absolute; left: 0; width: calc(100% + 1600px); height: 620px; background-repeat: repeat-x; background-size: 1600px 620px; will-change: transform; animation: drift var(--t) linear infinite; }
-.sky .m1 { top: 6vh; background-image: url(/img/ink/mist-a.webp); --t: 240s; opacity: .95; }
-.sky .m2 { top: 46vh; background-image: url(/img/ink/mist-b.webp); --t: 180s; opacity: .85; animation-direction: reverse; }
-@keyframes drift { to { transform: translate3d(-1600px, 0, 0); } }
-.paused .sky .mist { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) { .sky .mist { animation: none; } html { scroll-behavior: auto; } }
-@media (max-width: 700px) { .sky .land { background-size: auto 100%; background-position: 30% bottom; } .sky .m2 { display: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (max-width: 700px) { .sky .land { background-size: auto 100%; background-position: 30% bottom; } }
 
 /* ── 헤더 ── */
 .top { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(8px); background: rgba(244, 239, 229, .82); border-bottom: 1px solid var(--line); }
 .top .wrap { display: flex; align-items: center; gap: 1.2rem; min-height: 60px; }
 .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; font-family: var(--serif); font-weight: 700; }
-.brand .mark { width: 40px; height: 42px; display: block; transform: rotate(-3deg); transform-origin: 50% 4%; transition: transform .4s; } .brand:hover .mark { transform: rotate(3deg); }
+.brand .mark { width: 29px; height: 44px; display: block; transform-origin: 50% 4%; animation: sway 8s ease-in-out infinite alternate; }
+@keyframes sway { from { transform: rotate(6deg); } to { transform: rotate(10deg); } }
+.paused .brand .mark { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .brand .mark { animation: none; transform: rotate(8deg); } }
 .nav { margin-left: auto; display: flex; gap: 1.2rem; font-size: .92rem; }
 .nav a { text-decoration: none; padding: .3rem 0; border-bottom: 1px solid transparent; }
 .nav a:hover, .nav a[aria-current] { border-color: var(--seal); }
@@ -67,10 +65,6 @@ footer.foot { padding: 3rem 0 4rem; color: var(--ink-2); font-size: .88rem; bord
 .hero h1 { font-size: clamp(2.2rem, 6.4vw, 4.2rem); margin: .4rem 0 1.4rem; }
 .hero h1 em { font-style: normal; color: var(--seal); }
 .vert { writing-mode: vertical-rl; font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 4rem); letter-spacing: .3em; color: var(--ink); border-left: 1px solid var(--line); padding-left: 1.5rem; display: flex; align-items: flex-start; gap: 1.5rem; }
-.vert .hero-lantern { writing-mode: horizontal-tb; width: 92px; height: 97px; transform-origin: 50% 4%; animation: sway 7s ease-in-out infinite alternate; }
-@keyframes sway { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
-.paused .hero-lantern { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) { .vert .hero-lantern { animation: none; } }
 @media (max-width: 760px) { .hero .grid { grid-template-columns: 1fr; } .vert { display: none; } }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 2.5rem; }
 .stats > div { background: var(--paper); padding: 1.1rem 1.2rem; }
