@@ -156,7 +156,7 @@ export const projects: Project[] = [
     team: [], mine: ['기능 범위와 데이터 의미(근사 계산, 예보는 실측이 아님) 정의', '공개 fixture 9종으로 실패, 복구 시험을 설계하고 결과 검수', '출처, 라이선스 표기'], mineNote: '코드는 AI와 협업해 작성했고, 데이터 정직성 기준과 검증을 제가 정했습니다.',
     troubles: [{ title: '외부 예보가 실패했을 때의 화면', problem: '예보 API가 실패하면 사용자는 값이 없는 이유를 알 수 없습니다.', fix: '실패 원인, 오래된 값, 다시 시도 버튼을 보여주고 공개 fixture 9종으로 실패, 복구를 시험했습니다.', verify: '합성 실패에서 기존 값(105)이 보존되고 복구 후 120과 2개 행이 보이는지 확인 (README 확인법)' }],
     done: ['지구본/지도 전환, 별, 별자리 레이어, 생일 12궁 강조, ±12시간 시뮬레이션, 구름량 예보 비교, 일별 기록'], gaps: ['굴절, 지형, 세차를 반영한 정밀 관측 도구가 아님(근사 계산)', '실제 서로 다른 날짜 기록이 쌓이기 전에는 비교가 “대기”로 표시됨'], learned: ['외부 데이터를 쓰는 화면은 “성공 화면”보다 “실패, 오래된 값” 화면의 설계가 신뢰를 좌우합니다.'],
-    shots: [], links: [{ label: 'GitHub', href: 'https://github.com/rnjswnghl/byeol' }], ai: 'K-뉴딜 Aleph 과제, AI와 협업',
+    shots: [], links: [{ label: '서비스', href: 'https://byeol.rnjswnghl.chatgpt.site' }, { label: 'GitHub', href: 'https://github.com/rnjswnghl/byeol' }], ai: 'K-뉴딜 Aleph 과제, AI와 협업',
   },
   {
     slug: 'sugang', no: '捌', name: 'SuGang (plan)', kor: '나만의 수강신청 — 시간표, 할 일, 회고', group: 'aleph', kind: 'solo', period: '2026.10', role: '기획, 요구사항 정의, 검수 (코드는 AI와 협업)', roleShort: 'Web, Productivity', tagline: '활동을 수강신청처럼, 하루를 시간표처럼', accent: '#55705f', cover: 'sugang-icon',
