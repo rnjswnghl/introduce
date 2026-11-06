@@ -72,9 +72,9 @@ watch(
 <style scoped>
 .thread-list-container {
   background: transparent;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
 }
 
 .thread-list-header {
@@ -83,17 +83,17 @@ watch(
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 2px solid #5f7a69;
 }
 
 .thread-list-title {
   margin: 0;
-  color: #333;
-  font-size: 1.5rem;
+  color: #2f3a33;
+  font-size: 1.6rem;
 }
 
 .thread-list-stats {
-  color: #6c757d;
+  color: #5b6760;
   font-size: 0.9rem;
 }
 
@@ -117,7 +117,7 @@ watch(
 .thread-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .thread-item {
