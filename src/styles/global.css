@@ -60,7 +60,8 @@ section { padding: clamp(3rem, 8vw, 6rem) 0; }
 footer.foot { padding: 3rem 0 4rem; color: var(--ink-2); font-size: .88rem; border-top: 1px solid var(--line); }
 
 /* ── 히어로 ── */
-.hero { padding-top: clamp(3rem, 9vw, 7rem); }
+.hero { min-height: calc(100vh - 61px); min-height: calc(100svh - 61px); display: flex; align-items: center; padding: clamp(2rem, 6vw, 4rem) 0; }
+.hero > .wrap { width: min(var(--w), 100% - 2.5rem); }
 .hero .grid { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
 .hero h1 { font-size: clamp(2.2rem, 6.4vw, 4.2rem); margin: .4rem 0 1.4rem; }
 .hero h1 em { font-style: normal; color: var(--seal); }
@@ -75,3 +76,9 @@ footer.foot { padding: 3rem 0 4rem; color: var(--ink-2); font-size: .88rem; bord
 .vert, .demo-note, .lead[style*='serif'], .crumb { font-weight: 700; }
 
 .hero h1, .hero .lead, .hero .eyebrow, .h2, .eyebrow, .lead, .crumb, .phead h1 { text-shadow: 0 0 18px var(--paper), 0 0 6px var(--paper), 0 0 2px var(--paper); }
+
+/* 영역 구분: 히어로는 첫 화면을 꽉 채우고, 이후 영역은 종이색 띠 + 위아래 선으로 분리한다 */
+main > hr.rule { display: none; }
+main > section:not(.hero) { position: relative; background: rgba(247, 243, 235, .9); border-top: 1px solid var(--line); box-shadow: 0 -10px 24px -18px rgba(60, 40, 20, .45); }
+main > section:not(.hero):last-of-type { border-bottom: 1px solid var(--line); }
+main > section:not(.hero) .h2, main > section:not(.hero) .eyebrow, main > section:not(.hero) .lead { text-shadow: none; }
