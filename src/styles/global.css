@@ -34,9 +34,9 @@ p { margin: 0 0 .9em; }
 .top .wrap { display: flex; align-items: center; gap: 1.2rem; min-height: 60px; }
 .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; font-family: var(--serif); font-weight: 700; }
 .brand .mark { width: 29px; height: 44px; display: block; transform-origin: 50% 4%; animation: sway 8s ease-in-out infinite alternate; }
-@keyframes sway { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+@keyframes sway { from { transform: rotate(6deg); } to { transform: rotate(10deg); } }
 .paused .brand .mark { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) { .brand .mark { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .brand .mark { animation: none; transform: rotate(8deg); } }
 .nav { margin-left: auto; display: flex; gap: 1.2rem; font-size: .92rem; }
 .nav a { text-decoration: none; padding: .3rem 0; border-bottom: 1px solid transparent; }
 .nav a:hover, .nav a[aria-current] { border-color: var(--seal); }
