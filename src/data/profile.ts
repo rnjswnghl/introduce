@@ -29,11 +29,18 @@ export const peers = [
 ];
 
 export const timeline = [
-  { when: '2026.08 — 2026.11', state: '진행 중', t: 'SKT ALEPH K-뉴딜', org: '고용노동부, SKT, 코리아IT', role: '교육생', d: 'AI 에이전트와 협업해 6개 프로젝트(개인 5, 팀 1)를 수행. 팀 프로젝트 LLM Gateway는 최종 발표까지 진행했습니다.', link: '/#projects' },
-  { when: '2025.01 — 2025.12', t: '삼성청년SW, AI아카데미 (SSAFY)', org: '삼성전자, 고용노동부', role: '교육생', d: '팀 프로젝트 4개 수행: 한페이지(팀장), FocusMate, On-Wear, DALTOORI.', link: '/#projects' },
-  { when: '2024.07 — 2024.12', t: '부산디지털스마트아카데미 5기', org: '', role: '교육생', d: '재료 사진을 인식해 레시피를 추천하는 팀 프로젝트(요리의 정원)를 수행했습니다.' },
-  { when: '2022.08 — 2023.08', t: 'Au Pair (미국)', org: 'Intrax / AuPairCare', role: '베이비시터', d: '1년간 혼자 해외에서 맡은 일을 책임지고 완주했습니다. 낯선 환경에서 먼저 정보를 찾고 스스로 판단하는 경험이었습니다.', draft: true },
-  { when: '2019.03 — 2025.02', t: '부산외국어대학교 졸업', org: '러시아학, 빅데이터학', role: '', d: '빅데이터학 과목: R프로그래밍, 빅데이터의 이해, 활용실무, 문제해결을 위한 데이터 활용 및 분석, 실험계획법, 기초통계. 프로그래밍: C, 웹페이지제작, 소프트웨어 활용.' },
+  { when: '2026.08 — 2026.11', state: '진행 중', t: 'SKT ALEPH K-뉴딜, AI 협업 개발 과정', org: '고용노동부, SKT, 코리아IT', role: '교육생', d: 'AI 에이전트에게 요구사항을 전달하고 결과를 검수하는 방식으로 6개 프로젝트(개인 5, 팀 1)를 완성했습니다. 팀 프로젝트 LLM Gateway는 설계와 최종 발표까지 맡았습니다.', link: '/#projects' },
+  { when: '2025.01 — 2025.12', t: '삼성청년SW, AI아카데미 (SSAFY)', org: '삼성전자, 고용노동부', role: '교육생', d: '1년간 팀 프로젝트 4개를 수행했습니다. 한페이지에서는 팀장을 맡았고, FocusMate, On-Wear, DALTOORI에서는 화면부터 API까지 맡은 기능을 끝까지 구현했습니다.', link: '/#projects' },
+  { when: '2022.08 — 2023.08', t: 'Au Pair (미국)', org: 'Intrax / AuPairCare', role: '베이비시터', d: '1년간 혼자 해외에서 생활하며 맡은 일을 책임지고 완주했습니다. 낯선 환경에서 먼저 정보를 찾고 스스로 판단하는 힘을 길렀습니다.', draft: true },
+  { when: '2019.03 — 2025.02', t: '부산외국어대학교 졸업', org: '러시아학, 빅데이터학', role: '', d: '러시아학과 빅데이터학을 함께 공부했습니다. 통계, R, 데이터 분석을 배우며 데이터를 근거로 판단하는 관점을 익혔습니다. 프로그래밍은 C와 웹페이지 제작 과목으로 시작했습니다.' },
+];
+
+// 자격: 페이지에는 표시하지 않고 챗봇이 질문을 받을 때만 답한다. 만료된 자격(OPIc 등)은 넣지 않는다
+export const certs = [
+  { t: '컴퓨터활용능력 2급', org: '대한상공회의소', when: '2024.02' },
+  { t: 'MOS 365 Word, PowerPoint (Associate)', org: 'Microsoft', when: '2026.01' },
+  { t: 'Microsoft Azure Data Fundamentals', org: 'Microsoft', when: '2026.04' },
+  { t: 'Adobe ACP: Photoshop, Premiere Pro, Video Design', org: 'Adobe', when: '2026.06' },
 ];
 
 // 활용 깊이: 1 = 프로젝트에서 사용 / 2 = 핵심 기능을 직접 구현 / 3 = 구조, 설계를 직접 결정. 프로젝트 기록에 근거한 값이며 draft 는 확인 필요.
