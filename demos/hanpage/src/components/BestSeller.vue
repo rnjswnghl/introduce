@@ -2,24 +2,25 @@
   <div class="container-fluid my-4">
     <h3 class="text-center mb-4 section-title">🔥 베스트셀러 🔥</h3>
 
-    <div class="d-flex flex-wrap justify-content-center cards-container">
-      <div v-for="book in visibleBooks" :key="book.id" class="book-card-wrapper">
-        <router-link :to="{ name: 'BookDetailView', params: { bookId: book.id } }" class="book-link">
-          <img :src="book.cover" :alt="book.title" class="card-img-top" />
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title text-truncate" :title="book.title">
-              {{ book.title }}
-            </h5>
-          </div>
-        </router-link>
-      </div>
-    </div>
-
-    <div class="mt-3 d-flex justify-content-center gap-3">
-      <button class="btn btn-primary" @click="prev" :disabled="startIndex === 0">
+    <div class="slider">
+      <button class="btn btn-primary nav-btn" @click="prev" :disabled="startIndex === 0" aria-label="이전">
         &lt;
       </button>
-      <button class="btn btn-primary" @click="next" :disabled="startIndex + visibleCount >= sortedBooks.length">
+
+      <div class="d-flex flex-wrap justify-content-center cards-container">
+        <div v-for="book in visibleBooks" :key="book.id" class="book-card-wrapper">
+          <router-link :to="{ name: 'BookDetailView', params: { bookId: book.id } }" class="book-link">
+            <img :src="book.cover" :alt="book.title" class="card-img-top" />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-truncate" :title="book.title">
+                {{ book.title }}
+              </h5>
+            </div>
+          </router-link>
+        </div>
+      </div>
+
+      <button class="btn btn-primary nav-btn" @click="next" :disabled="startIndex + visibleCount >= sortedBooks.length" aria-label="다음">
         &gt;
       </button>
     </div>
@@ -185,6 +186,34 @@ button.btn:disabled {
   background-color: #999;
   cursor: not-allowed;
   color: #ccc;
+}
+
+/* 이전/다음 버튼은 책 줄의 좌우에 둔다 */
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0 1rem;
+}
+.slider .cards-container {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0;
+  gap: 1.25rem;
+}
+.nav-btn {
+  flex: none;
+}
+@media (max-width: 991px) {
+  /* 좁은 화면은 책이 세로로 쌓이므로 버튼을 아래에 둔다 */
+  .slider { flex-wrap: wrap; row-gap: 1.5rem; }
+  .slider .cards-container { order: -1; flex: 0 0 100%; }
+}
+@media (min-width: 992px) {
+  .slider .book-link img { height: auto; aspect-ratio: 7 / 10; }
+  .slider .cards-container { flex-wrap: nowrap; }
+  .slider .book-card-wrapper { flex: 1 1 0; width: auto; min-width: 0; max-width: 264px; }
 }
 
 @media (max-width: 1200px) {
