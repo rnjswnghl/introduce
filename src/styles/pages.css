@@ -91,3 +91,9 @@ table.cmp { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top
 .card { position: relative; } .card h4 a.stretch { color: inherit; text-decoration: none; } .card h4 a.stretch::after { content: ''; position: absolute; inset: 0; z-index: 1; }
 .card .site { position: relative; z-index: 2; font-size: .8rem; line-height: 1; padding: .38rem .7rem; border: 1px solid var(--seal); border-radius: 999px; color: var(--seal); text-decoration: none; background: transparent; } .card .site:hover { background: var(--seal); color: #fdfaf3; }
 .card .per { margin: 0; font-size: .85rem; color: var(--ink-2); }
+
+/* 프로젝트 상세: 글 전체를 종이 한 장 위에 올린다(배경 수묵화는 좌우 여백에서 보인다) */
+.sheet { width: min(calc(var(--w) + 5rem), 100% - 1.5rem); margin: 1.2rem auto 2.5rem; padding: clamp(1rem, 3vw, 2.2rem) clamp(.5rem, 2.5vw, 2rem) clamp(1.4rem, 3vw, 2.4rem); background: rgba(250, 247, 240, .93); border: 1px solid var(--line); box-shadow: 0 18px 44px -26px rgba(60, 40, 20, .5); }
+.sheet .wrap { width: 100%; }
+.sheet .phead { padding-top: clamp(1rem, 3vw, 2rem); }
+.sheet :is(.h2, .eyebrow, .lead, .crumb, .phead h1) { text-shadow: none; }

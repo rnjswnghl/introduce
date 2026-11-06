@@ -1,0 +1,40 @@
+---
+// 배경 수묵화에서 어두운 산이 글자 뒤에 놓이는 순간에만, 그 글자 뒤 배경을 흐리게 한다.
+// 배경 그림의 밝기를 작은 격자로 한 번 읽어 두고, 스크롤할 때마다 각 글자 블록이 놓인 자리의 어두운 정도를 계산한다.
+---
+<script>
+  const SEL = 'main > section:not(.hero) :is(.h2, .eyebrow, .lead, .legend, .pgroup > h3, .tl .when, .tl li > div, .about > p, .about .subh, .about .vals2)';
+  const img = new Image();
+  img.decoding = 'async';
+  img.src = '/img/ink/landscape.webp';
+  img.onload = () => {
+    const W = 120, H = Math.round(W * img.naturalHeight / img.naturalWidth);
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d', { willReadFrequently: true }); if (!g) return;
+    g.drawImage(img, 0, 0, W, H);
+    const px = g.getImageData(0, 0, W, H).data, lum = new Float32Array(W * H);
+    for (let i = 0; i < W * H; i++) lum[i] = (.299 * px[i * 4] + .587 * px[i * 4 + 1] + .114 * px[i * 4 + 2]) / 255;
+    const els = Array.from(document.querySelectorAll<HTMLElement>(SEL)); if (!els.length) return;
+    els.forEach(e => e.setAttribute('data-veil', ''));
+    const run = () => {
+      const vw = innerWidth, vh = innerHeight, sc = Math.max(vw / img.naturalWidth, vh / img.naturalHeight);
+      const sw = img.naturalWidth * sc, sh = img.naturalHeight * sc, ax = vw < 700 ? .3 : .5, ox = (vw - sw) * ax, oy = vh - sh;
+      for (const e of els) {
+        const r = e.getBoundingClientRect();
+        if (r.bottom < -40 || r.top > vh + 40) continue;
+        let dark = 0, n = 0;
+        const x0 = Math.max(0, Math.floor((r.left - 24 - ox) / sw * W)), x1 = Math.min(W - 1, Math.ceil((r.right + 24 - ox) / sw * W));
+        const y0 = Math.max(0, Math.floor((r.top - 16 - oy) / sh * H)), y1 = Math.min(H - 1, Math.ceil((r.bottom + 16 - oy) / sh * H));
+        for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) { n++; if (lum[y * W + x] < .8) dark++; }
+        const f = n ? dark / n : 0;
+        const b = Math.min(1, Math.max(0, (f - .03) / .12));
+        e.style.setProperty('--b', b.toFixed(2));
+      }
+    };
+    let t = 0;
+    const tick = () => { t = 0; run(); };
+    addEventListener('scroll', () => { if (!t) t = requestAnimationFrame(tick); }, { passive: true });
+    addEventListener('resize', () => { if (!t) t = requestAnimationFrame(tick); });
+    run();
+  };
+</script>
