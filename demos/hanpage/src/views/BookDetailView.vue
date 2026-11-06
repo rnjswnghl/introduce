@@ -329,20 +329,30 @@ const handleBookmarkSaved = () => {
 
 .create-thread-btn,
 .create-bookmark-btn {
-  background-color: #a6cee3;
-  color: #1e1e1e;
+  background-color: #5f7a69;
+  color: #f6f1e1;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  border: none;
-  transition: background-color 0.2s ease;
+  border: 1.5px solid #5f7a69;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   margin-left: 1rem;
 }
 
-.create-thread-btn:hover,
+.create-thread-btn:hover {
+  background-color: #4d6556;
+  border-color: #4d6556;
+}
+
+/* 찜하기: 윤곽선 버튼, 찜한 상태는 어두운 바탕 */
+.create-bookmark-btn {
+  background-color: transparent;
+  color: #3f5a4a;
+}
 .create-bookmark-btn:hover {
-  background-color: #7fb9d9;
+  background-color: #5f7a69;
+  color: #f6f1e1;
 }
 
 .book-detail-wrapper {
@@ -565,11 +575,13 @@ const handleBookmarkSaved = () => {
 }
 
 .create-bookmark-btn.bookmarked {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #1f1f1f;
+  border-color: #1f1f1f;
+  color: #f6f1e1;
 }
 
 .create-bookmark-btn.bookmarked:hover {
-  background-color: #45a049;
+  background-color: #333;
+  border-color: #333;
 }
 </style>

@@ -552,7 +552,7 @@ watch(
 }
 
 .mypage-nav button.active {
-  background: #4da3ff;
+  background: #5f7a69;
   color: white;
 }
 
@@ -698,12 +698,12 @@ watch(
 }
 
 .confirm-btn {
-  background: #0d6efd;
+  background: #5f7a69;
   color: white;
 }
 
 .confirm-btn:hover {
-  background: #0b5ed7;
+  background: #4d6556;
 }
 
 .cancel-btn {
@@ -873,14 +873,14 @@ watch(
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
-  background-color: #0d6efd;
+  background-color: #5f7a69;
   color: white;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .follow-btn:hover {
-  background-color: #0b5ed7;
+  background-color: #4d6556;
 }
 
 .follow-btn.following {

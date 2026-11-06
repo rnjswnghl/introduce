@@ -3,11 +3,11 @@
     <h5 class="mb-3">카테고리</h5>
     <ul class="list-group">
       <li @click="updateCategory('')" class="list-group-item list-group-item-action"
-        :class="{ active: category === '' }" style="cursor: pointer;">
+        :class="{ active: String(category ?? '') === '' }" style="cursor: pointer;">
         전체
       </li>
       <li v-for="cat in categories" :key="cat.id" @click="updateCategory(cat.id)"
-        class="list-group-item list-group-item-action" :class="{ active: category === cat.id }"
+        class="list-group-item list-group-item-action" :class="{ active: String(category) === String(cat.id) }"
         style="cursor: pointer;">
         {{ cat.name }}
       </li>

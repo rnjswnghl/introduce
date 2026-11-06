@@ -16,6 +16,11 @@ import NavBar from './components/NavBar.vue'
   --font-handwriting: 'Nanum Pen Script', cursive;
 }
 
+a {
+  text-decoration-color: #7f9c8b;
+  text-underline-offset: 3px;
+}
+
 body {
   font-family: var(--font-main);
   line-height: 1.6;

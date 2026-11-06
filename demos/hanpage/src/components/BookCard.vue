@@ -102,4 +102,14 @@ const formattedDate = computed(() => {
   text-overflow: ellipsis;
 }
 
+.book-link,
+.book-link .book-title,
+.book-link .book-author,
+.book-link .book-category,
+.book-link .book-publisher,
+.book-link .book-published-date {
+  text-decoration-color: #7f9c8b;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
 </style>
