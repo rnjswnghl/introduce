@@ -60,8 +60,11 @@ export default {
   cursor: pointer;
 }
 
-.categories-list li.active {
-  background-color: #007bff;
-  color: white;
+.categories-list li.active,
+.categories-list .list-group-item.active {
+  background-color: #2f2b26;
+  border-color: #2f2b26;
+  color: #f1e4bd;
+  font-weight: 600;
 }
 </style>
