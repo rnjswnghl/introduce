@@ -36,14 +36,6 @@ export const timeline = [
   { when: '2019.03 — 2025.02', t: '부산외국어대학교 졸업', org: '러시아학, 빅데이터학', role: '', d: '빅데이터학 과목: R프로그래밍, 빅데이터의 이해, 활용실무, 문제해결을 위한 데이터 활용 및 분석, 실험계획법, 기초통계. 프로그래밍: C, 웹페이지제작, 소프트웨어 활용.' },
 ];
 
-export const certs = [
-  { t: '컴퓨터활용능력 2급', org: '대한상공회의소', when: '2024.02' },
-  { t: 'MOS 365 Word, PowerPoint (Associate)', org: 'Microsoft', when: '2026.01' },
-  { t: 'Microsoft Azure Data Fundamentals', org: 'Microsoft', when: '2026.04' },
-  { t: 'Adobe ACP — Photoshop, Premiere Pro, Video Design', org: 'Adobe', when: '2026.06' },
-  { t: 'OPIc IM2', org: 'ACTFL', when: '2024.09' },
-];
-
 // 활용 깊이: 1 = 프로젝트에서 사용 / 2 = 핵심 기능을 직접 구현 / 3 = 구조, 설계를 직접 결정. 프로젝트 기록에 근거한 값이며 draft 는 확인 필요.
 export const skills = [
   { cat: '프론트엔드', items: [

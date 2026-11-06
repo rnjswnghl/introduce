@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
-import { profile, peers, timeline, certs, skills, levelLabel } from '../data/profile';
+import { profile, peers, timeline, skills, levelLabel } from '../data/profile';
 import '../styles/pages.css';
 const ssafy = projects.filter(p => p.group === 'ssafy'), aleph = projects.filter(p => p.group === 'aleph');
 const link = (s: string) => `/projects/${s}`;
@@ -51,8 +51,6 @@ const link = (s: string) => `/projects/${s}`;
   <section id="history"><div class="wrap">
     <p class="eyebrow">Experience</p><h2 class="h2">이력</h2>
     <ol class="tl">{timeline.map(t => <li><span class="when">{t.when}{t.state && <b class="tag cel">{t.state}</b>}</span><div><h4>{t.t}{t.draft && <span class="tag" title="본인 확인이 필요한 문구입니다.">검수 전</span>}</h4><p class="org">{[t.org, t.role].filter(Boolean).join(', ')}</p><p>{t.d}{t.link && <> <a href={t.link}>프로젝트 →</a></>}</p></div></li>)}</ol>
-    <h3 class="subh">자격, 어학</h3>
-    <ul class="certs">{certs.map(c => <li><b>{c.t}</b><span>{c.org}, {c.when}</span></li>)}</ul>
   </div></section>
 
   <hr class="rule" />
