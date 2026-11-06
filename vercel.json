@@ -1,17 +1,58 @@
 {
-  "cleanUrls": true,
   "rewrites": [
-    { "source": "/demos/hanpage/:path*", "destination": "/demos/hanpage/index.html" },
-    { "source": "/demos/onwear/:path*", "destination": "/demos/onwear/index.html" },
-    { "source": "/demos/daltoori/:path*", "destination": "/demos/daltoori/index.html" }
+    {
+      "source": "/demos/hanpage/:path*",
+      "destination": "/demos/hanpage/"
+    },
+    {
+      "source": "/demos/onwear/:path*",
+      "destination": "/demos/onwear/"
+    },
+    {
+      "source": "/demos/daltoori/:path*",
+      "destination": "/demos/daltoori/"
+    }
   ],
   "headers": [
-    { "source": "/_astro/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/img/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/demos/(.*)/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/(.*)", "headers": [
-      { "key": "X-Content-Type-Options", "value": "nosniff" },
-      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-    ] }
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/img/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/demos/(.*)/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
   ]
 }

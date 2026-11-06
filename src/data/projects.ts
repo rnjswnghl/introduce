@@ -116,7 +116,7 @@ export const projects: Project[] = [
     troubles: [], decisions: [{ t: 'Canvas · React 역할 분리', d: '연소·입자는 Canvas 렌더링 루프에서, 도구·템플릿·게임 모드 UI 상태는 React에서 관리합니다.' }],
     shots: [P('burnit-studio', '소각 스튜디오'), P('burnit-nickname', '닉네임 룰렛'), P('burnit-diary', '비밀 일기'), P('burnit-vow', '망각의 서약서'), P('burnit-drawing', '자유 도화지'), P('burnit-upload', '이미지 업로드'), P('burnit-burning', '이미지 소각'), P('burnit-game-ready', 'BURN RUSH'), P('burnit-game-play', '플레이')],
     links: [{ label: '서비스', href: 'https://burnit.rnjswnghl.chatgpt.site/' }, { label: 'GitHub', href: 'https://github.com/rnjswnghl/burn_it' }],
-    ai: 'K-디지털 트레이닝 Aleph 과제 · 아이디어와 요구사항은 직접, 코드는 AI 에이전트(Codex)가 작성',
+    ai: 'K-뉴딜 Aleph 과제 · 아이디어와 요구사항은 직접, 코드는 AI 에이전트(Codex)가 작성',
   },
   {
     slug: 'cut-and-note', no: '陸', name: 'Cut&Note', kor: '짤·카드 스튜디오', group: 'aleph', kind: 'solo',
