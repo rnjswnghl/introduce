@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
-import { profile, timeline, certs, skills, levelLabel } from '../data/profile';
+import { profile, peers, timeline, certs, skills, levelLabel } from '../data/profile';
 import '../styles/pages.css';
 const ssafy = projects.filter(p => p.group === 'ssafy'), aleph = projects.filter(p => p.group === 'aleph');
 const link = (s: string) => `/projects/${s}`;
@@ -27,6 +27,8 @@ const link = (s: string) => `/projects/${s}`;
     <p>러시아학과 빅데이터학을 공부한 뒤 웹 개발 프로젝트를 수행했습니다. 검색과 필터, 권한별 화면, 상태 관리와 API 연동처럼 사용자가 직접 마주하는 흐름을 주로 다뤘고, 구현한 뒤 실제 사용 과정에서 생기는 오류를 다시 확인해 개선합니다.</p>
     <p>{profile.way}</p>
     <div class="now">{profile.now.map(n => <div class="panel"><h4>{n.t}{n.draft && <span class="tag" title="본인 확인이 필요한 문구입니다.">검수 전</span>}</h4><p>{n.d}</p></div>)}</div>
+    <h3 class="subh">동료들이 말해주는 저</h3>
+    <div class="peers">{peers.map(x => <div><b>{x.t}</b><span>{x.d}</span></div>)}</div>
     <h3 class="subh">핵심 가치</h3>
     <div class="vals2">{profile.values.map(v => <div><b>{v.t}</b><span>{v.d}</span></div>)}</div>
   </div></section>
