@@ -62,9 +62,9 @@ export default {
 
 .categories-list li.active,
 .categories-list .list-group-item.active {
-  background-color: #2f2b26;
-  border-color: #2f2b26;
-  color: #f1e4bd;
+  background-color: #5f7a69;
+  border-color: #5f7a69;
+  color: #f6f1e1;
   font-weight: 600;
 }
 </style>
