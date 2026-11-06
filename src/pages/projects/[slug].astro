@@ -8,6 +8,7 @@ const { p, prev, next } = Astro.props;
 const mineDraft = p.group === 'aleph';
 ---
 <Base title={`${p.name} / 권주회 포트폴리오`} desc={p.summary} nav="/#projects">
+  <div class="sheet">
   <div class="wrap phead" style={`--accent:${p.accent}`}>
     <p class="crumb"><a href="/#projects">작업 기록</a> / {p.name}</p>
     <p class="eyebrow">{p.roleShort}</p>
@@ -76,6 +77,7 @@ const mineDraft = p.group === 'aleph';
 
     {p.links.length > 0 && <p style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2rem">{p.links.map(l => <a class="btn ghost" href={l.href} rel="noopener">{l.label} ↗</a>)}</p>}
     <div class="pager">{prev ? <a href={`/projects/${prev.slug}`}>← {prev.name}</a> : <span />}{next ? <a href={`/projects/${next.slug}`}>{next.name} →</a> : <span />}</div>
+  </div>
   </div>
   <script is:inline>
   (function(){var g=document.getElementById('shots');if(!g)return;var d=document.getElementById('lb'),im=document.getElementById('lbimg'),cp=document.getElementById('lbcap'),b=[].slice.call(g.children),i=0;
