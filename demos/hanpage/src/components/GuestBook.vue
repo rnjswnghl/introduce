@@ -159,34 +159,33 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+/* 마이페이지 흰 패널을 가득 채운다(안쪽 카드, 폭 제한 없음) */
 .guestbook-container {
-    padding: 1.5rem;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
-    max-width: 480px;
-    margin: 0 auto;
+    width: 100%;
+    padding: 0.25rem;
 }
 
 h4 {
-    margin-bottom: 1rem;
-    font-weight: 600;
-    color: #333;
-    text-align: center;
+    margin: 0 0 1.2rem;
+    padding-bottom: 0.7rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #2f3a33;
+    border-bottom: 2px solid #5f7a69;
 }
 
 .emoji-selector {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #dfe5e0;
+    border-radius: 10px;
+    margin-bottom: 1.4rem;
     overflow: hidden;
 }
 
 .emoji-tabs {
     display: flex;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #eee;
+    background-color: #f4f7f4;
+    border-bottom: 1px solid #dfe5e0;
 }
 
 .tab-btn {
@@ -196,112 +195,95 @@ h4 {
     background: none;
     cursor: pointer;
     font-weight: 500;
-    color: #666;
-    transition: all 0.3s ease;
+    color: #5b6760;
+    transition: all 0.2s ease;
     position: relative;
 }
 
-.tab-btn:hover {
-    color: #333;
-    background-color: #f0f0f0;
-}
+.tab-btn:hover { color: #2f3a33; background-color: #ebf0ec; }
+.tab-btn:focus { outline: none; }
 
 .tab-btn.active {
-    color: #4da3ff;
+    color: #3f5a4a;
+    font-weight: 700;
     background-color: white;
 }
 
 .tab-btn.active::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     right: 0;
     height: 2px;
-    background-color: #4da3ff;
+    background-color: #5f7a69;
 }
 
 .emoji-content {
-    padding: 15px;
-    min-height: 120px;
+    padding: 16px;
+    min-height: 90px;
 }
 
 .emoji-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
 }
 
 .emoji-item {
-    font-size: 2rem;
+    font-size: 1.8rem;
     cursor: pointer;
     transition: all 0.2s ease;
     user-select: none;
     text-align: center;
     padding: 8px;
     border-radius: 8px;
-    background-color: #f8f9fa;
+    background-color: #f4f7f4;
 }
 
 .emoji-item:hover {
-    transform: scale(1.2);
-    background-color: #e9ecef;
+    transform: scale(1.12);
+    background-color: #e3ebe5;
+}
+
+@media (max-width: 700px) {
+    .emoji-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* 애니메이션 */
 .fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.3s ease;
-}
-
+.fade-leave-active { transition: opacity 0.3s ease; }
 .fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}
+.fade-leave-to { opacity: 0; }
 
 .guestbook-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    max-height: 400px;
+    gap: 10px;
+    max-height: 420px;
     overflow-y: auto;
-    padding-right: 10px;
 }
 
-/* 스크롤바 스타일링 */
-.guestbook-list::-webkit-scrollbar {
-    width: 8px;
-}
-
-.guestbook-list::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-}
-
-.guestbook-list::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-
-.guestbook-list::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
+.guestbook-list::-webkit-scrollbar { width: 8px; }
+.guestbook-list::-webkit-scrollbar-track { background: #eef2ee; border-radius: 4px; }
+.guestbook-list::-webkit-scrollbar-thumb { background: #b4c3b8; border-radius: 4px; }
+.guestbook-list::-webkit-scrollbar-thumb:hover { background: #5f7a69; }
 
 .guestbook-entry {
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 14px 16px;
+    border: 1px solid #dfe5e0;
+    border-radius: 10px;
 }
 
 .entry-content {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 15px;
 }
 
 .emoji {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     line-height: 1;
 }
 
@@ -309,30 +291,21 @@ h4 {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
 }
 
-.username {
-    font-weight: bold;
-    color: #333;
-}
-
-.timestamp {
-    font-size: 0.9rem;
-    color: #666;
-}
+.username { font-weight: 700; color: #2f3a33; }
+.timestamp { font-size: 0.85rem; color: #7b867e; }
 
 .delete-btn {
-    padding: 5px 10px;
-    background-color: #ff4444;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    padding: 5px 12px;
+    background: transparent;
+    color: #b3413f;
+    border: 1.5px solid #d9a9a8;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
 }
 
-.delete-btn:hover {
-    background-color: #cc0000;
-}
+.delete-btn:hover { background: #b3413f; color: #fff; border-color: #b3413f; }
 </style>
