@@ -90,3 +90,4 @@ table.cmp { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top
 
 .card { position: relative; } .card h4 a.stretch { color: inherit; text-decoration: none; } .card h4 a.stretch::after { content: ''; position: absolute; inset: 0; z-index: 1; }
 .card .site { position: relative; z-index: 2; font-size: .8rem; line-height: 1; padding: .38rem .7rem; border: 1px solid var(--seal); border-radius: 999px; color: var(--seal); text-decoration: none; background: transparent; } .card .site:hover { background: var(--seal); color: #fdfaf3; }
+.card .per { margin: 0; font-size: .85rem; color: var(--ink-2); }

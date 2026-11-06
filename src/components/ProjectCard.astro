@@ -10,7 +10,8 @@ const site = p.links.find(l => l.label === '서비스' || l.label === '실험 �
   </div>}
   <div class="bd">
     <h4><a class="stretch" href={`/projects/${p.slug}`}>{p.name}</a></h4>
-    <p class="sub">{p.period}</p>
+    <p class="sub">{p.kor}</p>
+    <p class="per">{p.period}</p>
     <p class="key">{p.roleShort} <span style="font-weight:400;color:var(--ink-2)">/ {p.kind === 'solo' ? '개인' : `${p.teamSize}인 팀`}</span></p>
     <div class="tags">
       {p.demo && <span class="tag cel">▶ 데모</span>}
