@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import CatChat from '../components/CatChat.astro';
-import TextVeil from '../components/TextVeil.astro';
 import Lantern from '../components/Lantern.astro';
 import FlowingSky from '../components/FlowingSky.astro';
 interface Props { title?: string; desc?: string; nav?: string }
@@ -31,7 +30,6 @@ const links = [['/#about', '프로필'], ['/#skills', '기술'], ['/#projects', 
     <p>© 2026 권주회 / 포트폴리오</p>
     
   </div></footer>
-  <TextVeil />
   <CatChat />
   <script is:inline>
     (function(){var b=document.getElementById('motion'),r=document.documentElement;
