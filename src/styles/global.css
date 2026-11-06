@@ -79,6 +79,5 @@ footer.foot { padding: 3rem 0 4rem; color: var(--ink-2); font-size: .88rem; }
 
 /* 영역 구분: 히어로가 첫 화면을 채우고, 이후 영역은 배경 위에 그대로 이어진다(선, 띠 없음) */
 main > hr.rule { display: none; }
-/* 글자 뒤 배경: 영역을 따로 가리지 않고, 히어로를 지나면 배경 전체가 고르게 흐려진다(스크롤 비율에 따라 부드럽게, 블러 정도는 이전 버전과 같다) */
-.sky::after { content: ''; position: absolute; inset: 0; background: rgba(247, 243, 235, calc(var(--veil, 0) * .3)); -webkit-backdrop-filter: blur(calc(var(--veil, 0) * 5px)); backdrop-filter: blur(calc(var(--veil, 0) * 5px)); pointer-events: none; }
-main > section:not(.hero) :is(.h2, .eyebrow, .lead, .legend, .about > p, .about .subh, .about .vals2, .tl .when, .tl li > div, .pgroup > h3) { text-shadow: none; }
+/* 글자 뒤는 종이색 후광으로만 받친다(영역 상자, 블러 없음) */
+main > section:not(.hero) :is(.h2, .eyebrow, .lead, .legend, .pgroup h3, .tl .when, .tl .org, .tl p, .about > p) { text-shadow: 0 0 16px var(--paper), 0 0 10px var(--paper), 0 0 5px var(--paper), 0 0 3px var(--paper), 0 0 3px var(--paper); }
