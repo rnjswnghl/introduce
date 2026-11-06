@@ -29,7 +29,7 @@ const src = `/demos/${kind}/`;
   .dposter { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: .55; filter: saturate(.8); }
   .phone .dposter { object-fit: contain; }
   .dplay { position: relative; font-size: 1.05rem; padding: .9rem 1.8rem; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
-  .dframe iframe { display: block; width: 100%; height: 100%; border: 0; background: #fff; position: absolute; inset: 0; }
+  .dframe :global(iframe) { display: block; width: 100%; height: 100%; border: 0; background: #fff; position: absolute; inset: 0; }
   .dnote { text-align: center; font-size: .85rem; color: var(--ink-2); margin-top: .8rem; }
   @media (max-width: 700px) { .dstage { aspect-ratio: auto; height: 70vh; } }
 </style>
