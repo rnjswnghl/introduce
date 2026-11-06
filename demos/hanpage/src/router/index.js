@@ -42,6 +42,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+  // 페이지를 옮기면 항상 맨 위에서 시작한다(뒤로 가기는 이전 위치 복원)
+  scrollBehavior(to, from, saved) {
+    return saved || { top: 0 }
+  },
 });
 
 // 네비게이션 가드: 로그인 필요 페이지는 로그인 안 되어 있으면 /login으로 이동
