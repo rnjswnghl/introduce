@@ -1,9 +1,9 @@
 <template>
   <nav class="d-flex justify-content-between align-items-center p-3 bg-dark">
     <!-- 왼쪽 앱 이름 -->
-    <div class="app-name text-white fw-bold px-3 py-1 rounded">
+    <router-link to="/" class="app-name text-white fw-bold px-3 py-1 rounded text-decoration-none">
       한페이지
-    </div>
+    </router-link>
 
     <!-- 오른쪽 메뉴 -->
     <div class="d-flex gap-3 align-items-center">
