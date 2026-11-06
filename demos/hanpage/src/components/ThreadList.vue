@@ -79,6 +79,8 @@ watch(
 
 .thread-list-header {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
@@ -99,19 +101,22 @@ watch(
 
 .empty-state {
   text-align: center;
-  padding: 3rem 0;
-  color: #6c757d;
+  padding: 2.5rem 1rem;
+  color: #5b6760;
+  background: rgba(95, 122, 105, 0.08);
+  border: 1.5px dashed rgba(95, 122, 105, 0.5);
+  border-radius: 10px;
 }
 
 .empty-state i {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #dee2e6;
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+  color: #5f7a69;
 }
 
 .empty-state p {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .thread-list {
