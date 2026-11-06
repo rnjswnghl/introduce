@@ -40,9 +40,9 @@ const link = (s: string) => `/projects/${s}`;
 
   <hr class="rule" />
   <section id="projects"><div class="wrap">
-    <p class="eyebrow">Projects (10)</p>
+    <p class="eyebrow">Projects</p>
     <h2 class="h2">작업 기록</h2>
-    <p class="lead">각 프로젝트는 개요 → 문제 정의 → 시스템 설계 → 내가 한 일 → 문제 해결, 검증 → 결과, 회고 순서로 정리했습니다. ▶ 표시가 있는 프로젝트는 구현한 화면을 직접 눌러볼 수 있습니다.</p>
+    <p class="lead">프로젝트마다 개요, 문제 정의, 설계, 맡은 역할, 문제 해결, 회고를 정리했습니다. ▶ 표시가 있는 프로젝트는 화면을 직접 눌러볼 수 있습니다.</p>
     <div class="pgroup"><h3>SSAFY 팀 프로젝트</h3><div class="cards">{ssafy.map(p => <ProjectCard p={p} />)}</div></div>
     <div class="pgroup"><h3>K-뉴딜 Aleph, AI 협업 개발</h3><div class="cards">{aleph.map(p => <ProjectCard p={p} />)}</div></div>
   </div></section>
