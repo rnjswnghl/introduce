@@ -11,7 +11,7 @@ const link = (s: string) => `/projects/${s}`;
   <section class="hero"><div class="wrap">
     <div class="grid">
       <div>
-        <p class="eyebrow">Developer Portfolio · {profile.en}</p>
+        <p class="eyebrow">Developer Portfolio / {profile.en}</p>
         <h1>시작하면<br /><em>쉽게 놓지 않는</em> 개발자.</h1>
         <p class="lead">{profile.one}</p>
         <p style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem"><a class="btn" href="#projects">프로젝트 보기 →</a><a class="btn ghost" href="#skills">기술 보기</a></p>
@@ -24,7 +24,7 @@ const link = (s: string) => `/projects/${s}`;
   <section id="about"><div class="wrap about">
     <p class="eyebrow">Profile</p>
     <h2 class="h2">저는 이런 개발자입니다.</h2>
-    <p>러시아학과 빅데이터학을 공부한 뒤 웹 개발 프로젝트를 수행했습니다. 검색과 필터, 권한별 화면, 상태 관리처럼 사용자가 직접 마주하는 흐름을 주로 다뤘고, 화면(Vue·React)에서 API(Django·FastAPI), AI 연동까지 서비스를 이어서 구현합니다.</p>
+    <p>러시아학과 빅데이터학을 공부한 뒤 웹 개발 프로젝트를 수행했습니다. 검색과 필터, 권한별 화면, 상태 관리처럼 사용자가 직접 마주하는 흐름을 주로 다뤘고, 화면(Vue, React)에서 API(Django, FastAPI), AI 연동까지 서비스를 이어서 구현합니다.</p>
     <p>모르는 것은 이해할 때까지 묻고, 도구를 바꿔가며 시도합니다. 함께한 동료들은 저를 “{peers[0].t.replace('하는 사람','하고')}, {peers[1].t.replace('하는 사람','하는 사람')}”이라고 말합니다.</p>
     <h3 class="subh">핵심 가치</h3>
     <div class="vals2">{profile.values.map(v => <div><b>{v.t}</b><span>{v.d}</span></div>)}</div>
@@ -40,25 +40,25 @@ const link = (s: string) => `/projects/${s}`;
 
   <hr class="rule" />
   <section id="projects"><div class="wrap">
-    <p class="eyebrow">Projects · 10</p>
+    <p class="eyebrow">Projects (10)</p>
     <h2 class="h2">작업 기록</h2>
-    <p class="lead">각 프로젝트는 개요 → 문제 정의 → 시스템 설계 → 내가 한 일 → 문제 해결·검증 → 결과·회고 순서로 정리했습니다. ▶ 표시가 있는 프로젝트는 구현한 화면을 직접 눌러볼 수 있습니다.</p>
+    <p class="lead">각 프로젝트는 개요 → 문제 정의 → 시스템 설계 → 내가 한 일 → 문제 해결, 검증 → 결과, 회고 순서로 정리했습니다. ▶ 표시가 있는 프로젝트는 구현한 화면을 직접 눌러볼 수 있습니다.</p>
     <div class="pgroup"><h3>SSAFY 팀 프로젝트</h3><div class="cards">{ssafy.map(p => <ProjectCard p={p} />)}</div></div>
-    <div class="pgroup"><h3>K-뉴딜 Aleph · AI 협업 개발</h3><div class="cards">{aleph.map(p => <ProjectCard p={p} />)}</div></div>
+    <div class="pgroup"><h3>K-뉴딜 Aleph, AI 협업 개발</h3><div class="cards">{aleph.map(p => <ProjectCard p={p} />)}</div></div>
   </div></section>
 
   <hr class="rule" />
   <section id="history"><div class="wrap">
     <p class="eyebrow">Experience</p><h2 class="h2">이력</h2>
-    <ol class="tl">{timeline.map(t => <li><span class="when">{t.when}{t.state && <b class="tag cel">{t.state}</b>}</span><div><h4>{t.t}{t.draft && <span class="tag" title="본인 확인이 필요한 문구입니다.">검수 전</span>}</h4><p class="org">{[t.org, t.role].filter(Boolean).join(' · ')}</p><p>{t.d}{t.link && <> <a href={t.link}>프로젝트 →</a></>}</p></div></li>)}</ol>
-    <h3 class="subh">자격 · 어학</h3>
-    <ul class="certs">{certs.map(c => <li><b>{c.t}</b><span>{c.org} · {c.when}</span></li>)}</ul>
+    <ol class="tl">{timeline.map(t => <li><span class="when">{t.when}{t.state && <b class="tag cel">{t.state}</b>}</span><div><h4>{t.t}{t.draft && <span class="tag" title="본인 확인이 필요한 문구입니다.">검수 전</span>}</h4><p class="org">{[t.org, t.role].filter(Boolean).join(', ')}</p><p>{t.d}{t.link && <> <a href={t.link}>프로젝트 →</a></>}</p></div></li>)}</ol>
+    <h3 class="subh">자격, 어학</h3>
+    <ul class="certs">{certs.map(c => <li><b>{c.t}</b><span>{c.org}, {c.when}</span></li>)}</ul>
   </div></section>
 
   <hr class="rule" />
   <section id="contact"><div class="wrap">
     <p class="eyebrow">Contact</p><h2 class="h2">함께 이야기해요</h2>
     <p class="lead">코드와 작업 이력은 GitHub에서, 경력은 LinkedIn에서 확인할 수 있습니다.</p>
-    <p style="display:flex;gap:.7rem;flex-wrap:wrap"><a class="btn" href="https://github.com/rnjswnghl" rel="noopener">GitHub · rnjswnghl ↗</a><a class="btn ghost" href="https://www.linkedin.com/in/joohoe-kwon" rel="noopener">LinkedIn ↗</a></p>
+    <p style="display:flex;gap:.7rem;flex-wrap:wrap"><a class="btn" href="https://github.com/rnjswnghl" rel="noopener">GitHub, rnjswnghl ↗</a><a class="btn ghost" href="https://www.linkedin.com/in/joohoe-kwon" rel="noopener">LinkedIn ↗</a></p>
   </div></section>
 </Base>

@@ -7,7 +7,7 @@ export function getStaticPaths() { return projects.map((p, i) => ({ params: { sl
 const { p, prev, next } = Astro.props;
 const mineDraft = p.group === 'aleph';
 ---
-<Base title={`${p.name} · 권주회 포트폴리오`} desc={p.summary} nav="/#projects">
+<Base title={`${p.name} / 권주회 포트폴리오`} desc={p.summary} nav="/#projects">
   <div class="wrap phead" style={`--accent:${p.accent}`}>
     <p class="crumb"><a href="/#projects">작업 기록</a> / {p.no} {p.name}</p>
     <p class="eyebrow">{p.roleShort}</p>
@@ -38,7 +38,7 @@ const mineDraft = p.group === 'aleph';
     <section class="sec"><h2><span class="n">④</span>담당 역할 및 구현 내용</h2>
       <div class="who">
         {p.team.length > 0 && <div class="panel"><h4>팀 / 공동으로 만든 것</h4><ul class="list">{p.team.map(t => <li>{t}</li>)}</ul></div>}
-        <div class="panel me" style={p.team.length ? '' : 'grid-column:1/-1'}><h4>내가 직접 구현한 것{mineDraft && <span class="tag" title="요구사항·검수 중심의 역할 문구입니다. 실제와 다르면 수정이 필요합니다.">검수 전</span>}</h4><ul class="list">{p.mine.map(t => <li>{t}</li>)}</ul></div>
+        <div class="panel me" style={p.team.length ? '' : 'grid-column:1/-1'}><h4>내가 직접 구현한 것{mineDraft && <span class="tag" title="요구사항, 검수 중심의 역할 문구입니다. 실제와 다르면 수정이 필요합니다.">검수 전</span>}</h4><ul class="list">{p.mine.map(t => <li>{t}</li>)}</ul></div>
       </div>
       {p.mineNote && <p class="note">{p.mineNote}</p>}
     </section>
@@ -60,16 +60,16 @@ const mineDraft = p.group === 'aleph';
     <section class="sec"><h2><span class="n">⑤</span>문제 해결 및 검증</h2>
       {p.troubles.length === 0 && <p class="lead">이 프로젝트는 별도로 기록한 트러블슈팅이 없습니다. 검증 방식은 아래 “결과 및 회고”에 적었습니다.</p>}
       {p.troubles.map(t => <article class="tro panel">
-        <h4>{t.title}{t.draft && <span class="tag" title="커밋·코드로 추정한 초안입니다. 확인 후 확정합니다.">검수 전</span>}</h4>
+        <h4>{t.title}{t.draft && <span class="tag" title="커밋, 코드로 추정한 초안입니다. 확인 후 확정합니다.">검수 전</span>}</h4>
         <dl><dt>문제</dt><dd>{t.problem}</dd>{t.cause && <><dt>원인</dt><dd>{t.cause}</dd></>}<dt>해결</dt><dd>{t.fix}</dd>{t.verify && <><dt>검증</dt><dd class="vf">{t.verify}</dd></>}{t.result && <><dt>결과</dt><dd>{t.result}</dd></>}</dl>
       </article>)}
       {p.evidence && <article class="tro panel"><h4>검증 근거</h4><ul class="list">{p.evidence.map(e => <li>{e}</li>)}</ul></article>}
     </section>
 
-    <section class="sec"><h2><span class="n">⑥</span>결과 및 회고{!p.learnedFromReadme && <span class="tag" title="README·커밋에 없는 회고는 제 추정 문구입니다. 본인의 말로 교체가 필요합니다.">회고는 초안</span>}</h2>
+    <section class="sec"><h2><span class="n">⑥</span>결과 및 회고{!p.learnedFromReadme && <span class="tag" title="README, 커밋에 없는 회고는 제 추정 문구입니다. 본인의 말로 교체가 필요합니다.">회고는 초안</span>}</h2>
       <div class="three">
         <div class="panel"><h4>구현한 것</h4><ul class="list">{p.done.map(d => <li>{d}</li>)}</ul></div>
-        {p.gaps.length > 0 && <div class="panel"><h4>미완성·한계·향후 개선</h4><ul class="list">{p.gaps.map(d => <li>{d}</li>)}</ul></div>}
+        {p.gaps.length > 0 && <div class="panel"><h4>미완성, 한계, 향후 개선</h4><ul class="list">{p.gaps.map(d => <li>{d}</li>)}</ul></div>}
         <div class="panel"><h4>배운 점</h4><ul class="list">{p.learned.map(d => <li>{d}</li>)}</ul></div>
       </div>
     </section>

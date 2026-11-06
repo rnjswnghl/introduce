@@ -23,7 +23,7 @@ p { margin: 0 0 .9em; }
 .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: .6rem 1rem; z-index: 100; }
 .skip:focus { left: 0; }
 
-/* ── 하늘: intro_j 수묵 산수. 밝은 영역(안개·구름결)만 셰이더로 흐른다(FlowingSky). 실패 시 정지 이미지 ── */
+/* ── 하늘: intro_j 수묵 산수. 밝은 영역(안개, 구름결)만 셰이더로 흐른다(FlowingSky). 실패 시 정지 이미지 ── */
 .sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: var(--paper); contain: strict; }
 .sky .land { position: absolute; inset: 0; background: url(/img/ink/landscape.webp) center bottom / cover no-repeat; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

@@ -4,7 +4,7 @@ import CatChat from '../components/CatChat.astro';
 import Lantern from '../components/Lantern.astro';
 import FlowingSky from '../components/FlowingSky.astro';
 interface Props { title?: string; desc?: string; nav?: string }
-const { title = '권주회 · 포트폴리오', desc = '시작하면 쉽게 놓지 않는 개발자 권주회의 작업 기록', nav = '' } = Astro.props;
+const { title = '권주회 / 포트폴리오', desc = '시작하면 쉽게 놓지 않는 개발자 권주회의 작업 기록', nav = '' } = Astro.props;
 const links = [['/#about', '프로필'], ['/#skills', '기술'], ['/#projects', '프로젝트'], ['/#history', '이력'], ['/#contact', '연락']];
 ---
 <!doctype html>
@@ -21,13 +21,13 @@ const links = [['/#about', '프로필'], ['/#skills', '기술'], ['/#projects', 
   <div class="sky" aria-hidden="true"><div class="land"></div><FlowingSky /></div>
   </div>
   <header class="top"><div class="wrap">
-    <a class="brand" href="/" aria-label="홈"><span class="mark"><Lantern /></span><span class="t">권주회 · 작업 기록</span></a>
+    <a class="brand" href="/" aria-label="홈"><span class="mark"><Lantern /></span><span class="t">권주회 / 작업 기록</span></a>
     <nav class="nav" aria-label="주 메뉴">{links.map(([h, t]) => <a href={h} aria-current={nav === h ? 'page' : undefined}>{t}</a>)}</nav>
     <button class="mbtn" id="motion" type="button" aria-pressed="false">움직임 멈추기</button>
   </div></header>
   <main id="main"><slot /></main>
   <footer class="foot"><div class="wrap">
-    <p>© 2026 권주회 · 포트폴리오</p>
+    <p>© 2026 권주회 / 포트폴리오</p>
     
   </div></footer>
   <CatChat />
