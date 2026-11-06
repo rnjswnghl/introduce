@@ -1,5 +1,5 @@
 <template>
-  <div class="recommendations-container container mt-4 p-3 bg-light rounded">
+  <div class="recommendations-container container mt-4 p-3 rounded">
     <div class="row align-items-center position-relative" style="flex-wrap: nowrap;">
       <!-- 1열: 저자 기반 추천 -->
       <RecommendationColumn
@@ -122,13 +122,20 @@ const nextRandomPage = () => {
 </script>
 
 <style scoped>
+.recommendations-container {
+  background: #1f1f1f;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  border-radius: 12px;
+  padding: 1.5rem 1rem !important;
+}
+
 .vertical-divider {
-  width: 2px;
-  background: lightcoral;
-  margin: 2px;
-  padding: 2px;
-  height: 180px;
+  width: 1px;
+  flex: none;
+  padding: 0 !important; /* .row > * 의 기본 좌우 여백이 선을 두껍게 만든다 */
+  background: rgba(246, 241, 225, 0.18);
+  margin: 0 4px;
+  height: 200px;
   border-radius: 1px;
-  opacity: 0.6;
 }
 </style>

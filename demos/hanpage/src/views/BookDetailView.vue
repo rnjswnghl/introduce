@@ -429,11 +429,11 @@ const handleBookmarkSaved = () => {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 0.4rem 1rem;
+  background-color: #5f7a69;
+  padding: 0.4rem 1.1rem;
   border-radius: 16px;
   font-weight: 700;
-  color: #1e1e1e;
+  color: #f6f1e1;
   font-size: 1.2rem;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   user-select: none;
