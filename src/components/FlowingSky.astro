@@ -29,11 +29,11 @@
         l = min(l, min(lum(uv+r1), min(lum(uv-r1), min(lum(uv+vec2(r1.x,-r1.y)), lum(uv+vec2(-r1.x,r1.y))))));
         l = min(l, min(lum(uv+r2), min(lum(uv-r2), min(lum(uv+vec2(r2.x,-r2.y)), lum(uv+vec2(-r2.x,r2.y))))));
         float m = smoothstep(.76, .89, l);                       // 밝은 안개, 구름결만 흐른다
-        vec2 q = uv*vec2(2.6,4.2) + vec2(t*.03, -t*.011);
+        vec2 q = uv*vec2(2.6,4.2) + vec2(t*.045, -t*.016);
         vec2 w = vec2(fbm(q), fbm(q + vec2(5.2,1.7))) - .5;
-        vec2 d = w * .04;
-        d.x += sin(uv.y*9. + t*.3) * .008;                       // 가로로 천천히 흐르는 결
-        d.y += sin(uv.x*7. - t*.24) * .004;
+        vec2 d = w * .12;
+        d.x += sin(uv.y*9. + t*.42) * .022;                       // 가로로 천천히 흐르는 결
+        d.y += sin(uv.x*7. - t*.33) * .011;
         d *= m;
         d *= smoothstep(.02, .17, uv.x) * smoothstep(.02, .17, 1.-uv.x) * smoothstep(.02, .17, uv.y) * smoothstep(.02, .17, 1.-uv.y);   // 이미지 가장자리는 고정
         d *= min(smoothstep(.74, .88, lum(uv + d*.5)), smoothstep(.74, .88, lum(uv + d)));   // 이동 경로가 바위에 닿으면 줄인다
