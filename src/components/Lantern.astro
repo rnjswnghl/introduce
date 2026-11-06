@@ -1,26 +1,25 @@
 ---
-// 풍등 심벌 (introme 의 연등을 다듬음): 곡선 몸통 · 안쪽 불빛 번짐 · 곡선 갈빗대 · 바람에 흐르는 술 · J H 이니셜
-interface Props { id?: string; class?: string; label?: string }
-const { id = 'l', class: cls = '', label } = Astro.props;
+// 풍등 아이콘: 직육면체(앞면·옆면·윗면) 종이 등롱. 먹선 + 주홍 선, 색 채움 없음(노란 불빛 없음).
+interface Props { class?: string }
+const { class: cls = '' } = Astro.props;
 ---
-<svg class:list={['lantern', cls]} viewBox="0 0 72 76" role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'} focusable="false">
-  <defs>
-    <radialGradient id={`${id}-glow`} cx="50%" cy="52%" r="55%"><stop offset="0" stop-color="#f6c978" stop-opacity=".95" /><stop offset=".6" stop-color="#eaa968" stop-opacity=".36" /><stop offset="1" stop-color="#eaa968" stop-opacity="0" /></radialGradient>
-    <clipPath id={`${id}-clip`}><path d="M25 10H40C45 11 48 15 48.500 21C49 31 46.500 40 43.500 47H21.500C18.500 40 16 31 16.500 21C17 15 20 11 25 10Z" /></clipPath>
-  </defs>
-  <g class="body" transform="rotate(6 32.500 30)">
-    <path class="ln" d="M28.500 2.500h8M32.500 2.500V9" />
-    <path d="M25 10H40C45 11 48 15 48.500 21C49 31 46.500 40 43.500 47H21.500C18.500 40 16 31 16.500 21C17 15 20 11 25 10Z" fill={`url(#${id}-glow)`} />
-    <g clip-path={`url(#${id}-clip)`}><path class="rib" d="M27.500 9C25.500 21 25.500 35 26.500 48M37.500 9C39.500 21 39.500 35 38.500 48" /><path class="rib" d="M16.500 17.500Q32.500 20 48.500 17.500M18 43Q32.500 45.500 47 43" /></g>
-    <path class="ln" d="M25 10H40C45 11 48 15 48.500 21C49 31 46.500 40 43.500 47H21.500C18.500 40 16 31 16.500 21C17 15 20 11 25 10Z" />
-    <path class="ln" d="M20.500 47.500h24" />
-    <text x="32.500" y="29.500">J</text><text x="32.500" y="40">H</text>
-    <path class="tas" d="M29 48c-.5 4-4 7-9 9.500-4 2-8 5-10 10M33 48c0 5-3 9-8 12.500-3 2.500-5 5-6 9.500M37 48c1 4-1 7-5 10-3 2-5 4-6 7" />
+<svg class:list={['lantern', cls]} viewBox="0 0 64 74" aria-hidden="true" focusable="false">
+  <g transform="rotate(5 30 30)">
+    <path class="ln" d="M29 1.500h8M33 1.500V8" />
+    <path class="face side" d="M42 15L50 10.500V42L42 46.500Z" />
+    <path class="face top" d="M17.500 15L26 10.500H50L42 15Z" />
+    <path class="face front" d="M17.500 15H42V46.500H17.500Z" />
+    <path class="rib" d="M25.500 15V46.500M34 15V46.500M42 15L50 10.500" />
+    <path class="rib" d="M17.500 20H42M17.500 41.500H42M42 20L50 15.500M42 41.500L50 37" />
+    <path class="ln" d="M16 15h27.500M16 46.500h27.500" />
+    <text x="29.800" y="29.500">J</text><text x="29.800" y="38.500">H</text>
+    <path class="tas" d="M25 47.500c-.5 4-3.500 7-7 9.500-3 2-5 5-6 9M30 47.500c0 5-2 9-6 13-2 2-3 5-3.500 9M35 47.500c1 4-.5 7-3.500 10-2 2-3 4-3.500 7" />
   </g>
 </svg>
 <style>
   .lantern { display: block; overflow: visible; color: var(--seal); }
-  .lantern .ln, .lantern .rib, .lantern .tas { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
-  .lantern .ln { stroke-width: 1.5; } .lantern .rib { stroke-width: .8; opacity: .38; } .lantern .tas { stroke-width: .9; opacity: .9; }
-  .lantern text { fill: currentColor; font: 700 10.5px/1 var(--serif); text-anchor: middle; }
+  .lantern .ln, .lantern .rib, .lantern .tas, .lantern .face { stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+  .lantern .ln { fill: none; stroke-width: 1.6; } .lantern .rib { fill: none; stroke-width: .8; opacity: .55; } .lantern .tas { fill: none; stroke-width: .95; }
+  .lantern .face { stroke-width: 1.5; } .lantern .front { fill: #faf6ee; } .lantern .side { fill: #e7ddcd; } .lantern .top { fill: #f1e9db; }
+  .lantern text { fill: currentColor; font: 700 8.5px/1 var(--serif); text-anchor: middle; }
 </style>
