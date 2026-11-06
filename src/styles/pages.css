@@ -2,12 +2,13 @@
 .pgroup { margin-top: 2.4rem; }
 .pgroup h3 { font-size: 1.1rem; color: var(--ink-2); display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem; }
 .pgroup h3::after { content: ''; flex: 1; height: 1px; background: var(--line); }
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.2rem; }
+.cards { align-items: start; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.2rem; }
 .card { display: flex; flex-direction: column; text-decoration: none; overflow: hidden; transition: transform .25s, box-shadow .25s; color: inherit; }
 .card:hover { transform: translateY(-3px); color: inherit; box-shadow: 0 14px 30px -18px rgba(60, 40, 20, .5); }
 .card .cv { aspect-ratio: 16/10; background: var(--paper-2); position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
 .card .cv img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .card .cv.m { display: grid; place-items: center; } .card .cv.m img { width: auto; height: 100%; }
+.card .cv.i { display: grid; place-items: center; background: linear-gradient(135deg, var(--paper-2), var(--paper-3)); } .card .cv.i img { width: auto; height: 158px; object-fit: contain; }
 .card .cv.t { display: grid; place-items: center; background: linear-gradient(135deg, var(--paper-2), var(--paper-3)); }
 .card .cv.t span { font: 700 5rem/1 var(--serif); color: var(--accent); opacity: .5; }
 .card .no { position: absolute; left: 10px; top: 10px; background: var(--seal); color: #f8efe0; font: 700 1rem var(--serif); width: 30px; height: 30px; display: grid; place-items: center; border-radius: 3px; }
