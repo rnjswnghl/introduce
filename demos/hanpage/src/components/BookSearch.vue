@@ -104,7 +104,7 @@ const placeholderText = computed(() => {
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 .field-btn:hover { border-color: #adb5bd; }
-.field-btn.open, .field-btn:focus-visible { outline: none; border-color: #2f2b26; box-shadow: 0 0 0 3px rgba(47, 43, 38, 0.15); }
+.field-btn.open, .field-btn:focus-visible { outline: none; border-color: #5f7a69; box-shadow: 0 0 0 3px rgba(95, 122, 105, 0.25); }
 .caret { font-size: 0.7rem; color: #868e96; transition: transform 0.15s; }
 .field-btn.open .caret { transform: rotate(180deg); }
 .field-menu {
@@ -115,5 +115,5 @@ const placeholderText = computed(() => {
 }
 .field-menu li { padding: 0.4rem 0.75rem; border-radius: 6px; color: #333; cursor: pointer; white-space: nowrap; }
 .field-menu li:hover { background: #f1f3f5; }
-.field-menu li.active { background: #2f2b26; color: #f1e4bd; font-weight: 600; }
+.field-menu li.active { background: #5f7a69; color: #f6f1e1; font-weight: 600; }
 </style>
