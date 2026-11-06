@@ -148,7 +148,7 @@ export const projects: Project[] = [
     links: [{ label: '서비스', href: 'https://cutandnote.rnjswnghl.chatgpt.site/' }, { label: 'GitHub', href: 'https://github.com/rnjswnghl/studio' }], ai: 'K-뉴딜 Aleph 과제, AI 에이전트와 협업',
   },
   {
-    slug: 'byeol', no: '柒', name: 'byeol (별)', kor: '지구본과 별자리 천문대', group: 'aleph', kind: 'solo', period: '2026.10', role: '기획, 데이터 출처 검증, 검수 (코드는 AI와 협업)', roleShort: 'Web, Data', tagline: '세계지도와 실제 천문 좌표를 잇는 작은 천문대', accent: '#2f3e4e', cover: '',
+    slug: 'byeol', no: '柒', name: 'byeol (별)', kor: '지구본과 별자리 천문대', group: 'aleph', kind: 'solo', period: '2026.10', role: '기획, 데이터 출처 검증, 검수 (코드는 AI와 협업)', roleShort: 'Web, Data', tagline: '세계지도와 실제 천문 좌표를 잇는 작은 천문대', accent: '#2f3e4e', cover: 'byeol-icon',
     summary: '지구본/지도에서 위치를 고르면 그 지평선 위 하늘과 별자리, 실제 구름량 예보를 보여주는 웹 앱입니다. 데이터의 출처와 한계를 화면과 문서에 명시했습니다.',
     goal: { problem: '별자리 앱은 “지금 내 위치에서 실제로 보이는가”를 구름, 시간과 함께 보여주지 않는 경우가 많습니다.', goal: '선택한 위치, 시각의 별 위치와 구름량 예보를 한 화면에서 비교하고, 외부 데이터가 실패해도 원인과 복구가 보이게 하는 것.' },
     stack: [{ t: 'D3 Celestial 데이터 + Astronomy Engine', why: '별 좌표와 태양 고도를 계산해 지평선 위 하늘을 표현' }, { t: 'MET Norway Locationforecast', why: '실제 구름량 예보 조회(현장 실측이 아님을 표기)' }, { t: 'Cloudflare D1 + Drizzle', why: '일별 조회 기록 저장' }, { t: 'Next.js', why: '앱과 API 라우트를 한 프로젝트로 구성' }],
@@ -159,17 +159,17 @@ export const projects: Project[] = [
     shots: [], links: [{ label: 'GitHub', href: 'https://github.com/rnjswnghl/byeol' }], ai: 'K-뉴딜 Aleph 과제, AI와 협업',
   },
   {
-    slug: 'sugang', no: '捌', name: 'SuGang (plan)', kor: '나만의 수강신청 — 시간표, 할 일, 회고', group: 'aleph', kind: 'solo', period: '2026.10', role: '기획, 요구사항 정의, 검수 (코드는 AI와 협업)', roleShort: 'Web, Productivity', tagline: '활동을 수강신청처럼, 하루를 시간표처럼', accent: '#55705f', cover: '',
+    slug: 'sugang', no: '捌', name: 'SuGang (plan)', kor: '나만의 수강신청 — 시간표, 할 일, 회고', group: 'aleph', kind: 'solo', period: '2026.10', role: '기획, 요구사항 정의, 검수 (코드는 AI와 협업)', roleShort: 'Web, Productivity', tagline: '활동을 수강신청처럼, 하루를 시간표처럼', accent: '#55705f', cover: 'sugang-icon',
     summary: '취준생, 직장인이 활동과 목표를 등록하면 주간 시간표가 만들어지고, 할 일, 일지, 회고까지 이어지는 계획 앱입니다. 시간 중복 검사와 드래그 일정 편집이 핵심입니다.',
     goal: { problem: '할 일 앱은 “해야 할 것”만 쌓고, 일정이 겹치는지, 실제로 했는지, 왜 못 했는지는 돌아보지 못합니다.', goal: '활동 등록 → 시간 중복 없는 시간표 → 실행 기록 → 회고 → 다음 계획으로 이어지는 순환.' },
     stack: [{ t: 'Next.js', why: '화면과 API 라우트를 함께 구성' }, { t: 'Neon (Postgres)', why: '새로고침 후에도 유지되는 저장. DB가 없으면 메모리 미리보기로 동작' }, { t: 'Vitest, pnpm', why: '시간 중복 검사 등 핵심 로직의 테스트' }],
     arch: [{ t: '활동, 목표 등록', r: '수강신청 목록' }, { t: '시간 중복 검사', r: '신청 완료 시 시간표 생성' }, { t: '월, 주, 일 보기', r: '범위 드래그, 블록 이동 후 확인 저장' }, { t: '할 일, 일지, 회고', r: '변경 이력, 회고 집계, JSON 내보내기' }],
     team: [], mine: ['서비스 컨셉(“수강신청” 은유)과 기능 범위 정의', '저장 충돌, 중복 요청 등 예외 상황 요구와 검수'], mineNote: '코드는 AI와 협업해 작성했습니다.',
     troubles: [], done: ['수강신청 목록, 시간 중복 검사, 월, 주, 일 시간표, 할 일, 일지, 회고 집계, 계획 변경 이력, JSON 내보내기'], gaps: ['로그인 없이 단일 사용자 가정'], learned: ['은유(수강신청)를 정하면 기능 범위와 화면 언어가 일관됩니다.'],
-    shots: [], links: [{ label: 'GitHub', href: 'https://github.com/rnjswnghl/plan' }], ai: 'K-뉴딜 Aleph 과제',
+    shots: [], links: [{ label: '서비스', href: 'https://sugang.rnjswnghl.chatgpt.site' }, { label: 'GitHub', href: 'https://github.com/rnjswnghl/plan' }], ai: 'K-뉴딜 Aleph 과제',
   },
   {
-    slug: 'reflex-hub', no: '玖', name: 'Reflex Hub', kor: '“미리 주는 화면 신호는 반응을 빠르게 하는가” 실험, 논문', group: 'aleph', kind: 'solo', period: '2026.10', role: '연구 설계, 실험 페이지, 분석 계획 (AI와 함께 쓴 첫 논문)', roleShort: 'Research, Web', tagline: '가설 → 사전 등록 → 실험 → 논문', accent: '#2f3e4e', cover: '',
+    slug: 'reflex-hub', no: '玖', name: 'Reflex Hub', kor: '“미리 주는 화면 신호는 반응을 빠르게 하는가” 실험, 논문', group: 'aleph', kind: 'solo', period: '2026.10', role: '연구 설계, 실험 페이지, 분석 계획 (AI와 함께 쓴 첫 논문)', roleShort: 'Research, Web', tagline: '가설 → 사전 등록 → 실험 → 논문', accent: '#2f3e4e', cover: 'reflex-hub-icon',
     summary: '반응속도 미니게임 허브를 실험 도구로 삼아, 목표 자극 500ms 전의 화면 테두리 신호가 반응을 빠르게 하는지 검증하는 연구 프로젝트입니다.',
     goal: { problem: '“미리 신호를 주면 반응이 빨라진다”는 직관이 실제로 맞는지, 웹 환경에서 통제된 실험으로 확인한 적이 없습니다.', goal: '가설을 사전 등록하고, 무작위 비교군으로 데이터를 모아, 결과 수치가 분석 코드에서만 논문에 들어가도록 재현 가능한 파이프라인을 만드는 것.' },
     stack: [{ t: 'React + Vite', why: '미니게임, 전후 비교 실험실 화면' }, { t: 'Vercel Blob + API', why: '판 저장, 순위표, 수집 현황(숫자만)' }, { t: 'Python', why: '원자료 정리와 사전 등록 분석, 그림 생성' }, { t: 'XeLaTeX', why: '수치를 분석 스크립트가 만든 매크로로만 논문에 삽입' }],
@@ -180,7 +180,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'llm-gateway', no: '拾', name: 'LLM Gateway', kor: '사내 LLM 사용 시 민감정보 마스킹 프록시', group: 'aleph', kind: 'team', teamSize: 6,
-    period: '2026.10.27 — 11.05', role: '관리자 콘솔(프론트), Chrome 확장 QA/개선, 감사/설정 API — 최종 발표', roleShort: 'Console, Extension', tagline: 'redact → forward → restore', accent: '#8e3a2a', cover: '',
+    period: '2026.10.27 — 11.05', role: '관리자 콘솔(프론트), Chrome 확장 QA/개선, 감사/설정 API — 최종 발표', roleShort: 'Console, Extension', tagline: 'redact → forward → restore', accent: '#8e3a2a', cover: 'llm-gateway-icon',
     summary: '사내 앱이 ChatGPT, Claude 같은 외부 LLM을 호출할 때 민감정보를 가린 채 내보내고, 응답이 오면 원래 값으로 되돌려주는 프록시입니다. 산업별 탐지 템플릿과 관리자 콘솔, Chrome 확장을 갖추고 최종 발표까지 했습니다.',
     goal: { problem: '직원이 업무 중 외부 LLM에 고객 정보, 내부 수치, API 키를 붙여넣으면 회사 밖으로 유출됩니다. 막기만 하면 업무에 쓸 수 없고, 아무것도 안 하면 위험합니다.', goal: '유출될 값만 자리표시자로 바꿔 내보내고 응답에서 원래 값으로 복원해 “쓸 수 있으면서 안전한” 경로를 만들고, 관리자가 무엇이 나갔는지 감사할 수 있게 하는 것.' },
     stack: [
