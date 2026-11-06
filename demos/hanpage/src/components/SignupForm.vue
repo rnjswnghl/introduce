@@ -144,7 +144,7 @@
   select {
     height: 38px;
     padding: 0 0.8rem;
-    border: 1.5px solid #ccc;
+    border: 1.5px solid #cbd3cd;
     border-radius: 6px;
     font-size: 15px;
     color: #222;
@@ -157,7 +157,7 @@
   input[type='number']:focus,
   input[type='file']:focus,
   select:focus {
-    border-color: #d4a373;
+    border-color: #5f7a69;
     outline: none;
   }
   
@@ -172,17 +172,17 @@
     height: 46px;
     font-size: 18px;
     font-weight: 700;
-    background-color: #d4a373;
+    background-color: #5f7a69;
     border: none;
     border-radius: 8px;
     color: #fff;
     cursor: pointer;
-    box-shadow: 0 3px 8px rgb(212 163 115 / 0.6);
+    box-shadow: 0 3px 8px rgb(95 122 105 / 0.35);
     transition: background-color 0.25s ease;
   }
   
   button[type='submit']:hover {
-    background-color: #b17a4a;
+    background-color: #4d6556;
   }
   
   @media (max-width: 400px) {

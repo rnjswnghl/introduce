@@ -69,7 +69,7 @@
     min-width: 120px;
     height: 38px;
     border-radius: 6px;
-    border: 1.5px solid #ccc;
+    border: 1.5px solid #cbd3cd;
     font-size: 15px;
   }
   
@@ -77,7 +77,7 @@
     width: 150px;
     height: 38px;
     border-radius: 6px;
-    border: 1.5px solid #ccc;
+    border: 1.5px solid #cbd3cd;
     font-size: 15px;
     padding: 0 0.8rem;
   }

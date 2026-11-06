@@ -48,7 +48,7 @@ export const projects: Project[] = [
     gaps: ['협업 필터링 같은 사용자 행동 기반 추천으로 확장', '구상한 기능: 댓글 감정 이모지 자동 생성, 독서 퀴즈, 실시간 쓰레드 랭킹, 도서 투표'],
     learned: ['기능을 하나 붙일 때마다 다른 곳에서 버그가 생기는 경험을 통해, 브랜치 단위와 DB 파일 관리 같은 협업 규칙이 먼저라는 점을 배웠습니다.', '서로 파트를 바꿔가며 협업하며 상대 코드를 읽고 고치는 연습이 됐습니다.'],
     learnedFromReadme: true,
-    shots: [P('hanpage-home', '메인'), P('hanpage-bestsellers', '베스트셀러, 카테고리'), P('hanpage-books', '도서 탐색, 검색과 카테고리 필터'), P('hanpage-book-detail', '도서 상세'), P('hanpage-book-author', '저자 정보, 연관 쓰레드'), P('hanpage-threads', '전체 쓰레드 목록'), P('hanpage-thread-detail', '쓰레드 상세'), P('hanpage-mypage', '마이페이지, 도서 찜 폴더'), P('hanpage-guestbook', '방문록, 이모지 남기기'), P('hanpage-profile', '프로필 수정')],
+    shots: [P('hanpage-home', '메인, 히어로'), P('hanpage-bestsellers', '베스트셀러, 카테고리'), P('hanpage-recent-threads', '최근 쓰레드'), P('hanpage-books', '도서 탐색'), P('hanpage-books-filter', '카테고리 필터'), P('hanpage-books-search', '제목 검색'), P('hanpage-book-detail', '도서 상세'), P('hanpage-book-author', '저자 정보, 연관 쓰레드'), P('hanpage-thread-write', '쓰레드 작성'), P('hanpage-threads', '전체 쓰레드 목록'), P('hanpage-thread-detail', '쓰레드 상세'), P('hanpage-thread-comments', '댓글'), P('hanpage-mypage', '마이페이지, 내가 쓴 쓰레드'), P('hanpage-mypage-liked', '좋아요한 쓰레드'), P('hanpage-mypage-bookmarks', '도서 찜 폴더'), P('hanpage-guestbook', '방문록, 이모지 남기기'), P('hanpage-profile', '프로필 수정'), P('hanpage-login', '로그인'), P('hanpage-signup', '회원가입')],
     demo: 'hanpage', links: [],
   },
   {

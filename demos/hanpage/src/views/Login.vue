@@ -51,35 +51,55 @@ const handleLogin = async () => {
   <style scoped>
   .login-container {
     max-width: 400px;
-    margin: 3rem auto;
-    padding: 2rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    margin: 4rem auto;
+    padding: 2.2rem 2rem 2rem;
+    border-radius: 12px;
     background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
-  
+
+  h2 {
+    margin: 0 0 1.4rem;
+    padding-bottom: 0.7rem;
+    font-size: 1.5rem;
+    color: #2f3a33;
+    border-bottom: 2px solid #5f7a69;
+  }
+
   input {
     display: block;
     width: 100%;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
+    height: 44px;
+    margin-bottom: 0.9rem;
+    padding: 0 0.85rem;
+    border: 1.5px solid #cbd3cd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  
+  input:focus { outline: none; border-color: #5f7a69; box-shadow: 0 0 0 3px rgba(95, 122, 105, 0.2); }
+
   button {
     width: 100%;
-    padding: 0.5rem;
-    background-color: #d4a373;
+    height: 46px;
+    margin-top: 0.3rem;
+    background-color: #5f7a69;
     border: none;
-    border-radius: 4px;
-    color: white;
+    border-radius: 8px;
+    color: #f6f1e1;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s ease;
   }
-  
+  button:hover { background-color: #4d6556; }
+
+  p { margin: 1.1rem 0 0; text-align: center; color: #555; }
+
   .signup-link {
-    color: #d4a373;
-    font-weight: 500;
+    color: #3f5a4a;
+    font-weight: 700;
     text-decoration: underline;
+    text-decoration-color: #7f9c8b;
+    text-underline-offset: 3px;
   }
   </style>
-  
