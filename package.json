@@ -7,7 +7,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "images": "node scripts/build-images.mjs"
+    "images": "node scripts/build-images.mjs",
+    "predev": "node scripts/build-kb.mjs",
+    "prebuild": "node scripts/build-kb.mjs"
   },
   "engines": {
     "node": ">=20"

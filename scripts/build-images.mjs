@@ -46,4 +46,7 @@ for (const f of readdirSync(cl).sort()) { await conv(join(cl, f), out('demo','on
 await conv(join(old, 'project3/public/images/meeting.png'), out('demo','focusmate','meeting.webp'), { w: 720 });
 await conv(join(old, 'project3/public/images/FMlogo.png'), out('demo','focusmate','logo.webp'), { w: 160 });
 
+// 3) 안내 고양이 (introme 의 수묵 고양이)
+await conv(join(SRC, 'introme/dist/assets/ink-cat.png'), out('ink', 'cat.webp'), { w: 360, q: 82 });
+
 console.log('done, total', (total / 1024).toFixed(0), 'KB');

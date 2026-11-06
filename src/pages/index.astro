@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import Lantern from '../components/Lantern.astro';
 import { projects } from '../data/projects';
 import '../styles/pages.css';
 const ssafy = projects.filter(p => p.group === 'ssafy'), aleph = projects.filter(p => p.group === 'aleph');
@@ -29,7 +30,7 @@ const uses = [
         <p class="lead">검색·권한·상태처럼 사용자가 직접 마주하는 흐름이 끝까지 동작하는지 확인합니다. Vue·React로 화면을 만들고, 필요하면 Django·FastAPI까지 범위를 넓혀 왔습니다.</p>
         <p style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem"><a class="btn" href="#projects">프로젝트 보기 →</a><a class="btn ghost" href="#can">무엇을 할 수 있나</a></p>
       </div>
-      <div class="vert" aria-hidden="true"><span>권주회</span><span class="seal">權</span></div>
+      <div class="vert" aria-hidden="true"><span>권주회</span><span class="hero-lantern"><Lantern id="hr" /></span></div>
     </div>
   </div></section>
 

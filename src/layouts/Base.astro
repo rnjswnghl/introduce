@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Lantern from '../components/Lantern.astro';
+import CatChat from '../components/CatChat.astro';
 interface Props { title?: string; desc?: string; nav?: string }
 const { title = '권주회 · 프론트엔드 포트폴리오', desc = '사용자의 흐름을 끝까지 다듬는 프론트엔드 개발자 권주회의 작업 기록', nav = '' } = Astro.props;
 const links = [['/#about', '소개'], ['/#projects', '프로젝트'], ['/#skills', '기술 활용'], ['/#contact', '연락']];
@@ -10,7 +12,7 @@ const links = [['/#about', '소개'], ['/#projects', '프로젝트'], ['/#skills
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{title}</title><meta name="description" content={desc} />
   <meta property="og:title" content={title} /><meta property="og:description" content={desc} /><meta name="theme-color" content="#f4efe5" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%238e3a2a'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23f8efe0' font-family='serif'%3E權%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 76'%3E%3Cg transform='rotate(6 32.5 30)' fill='none' stroke='%238e3a2a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M28.5 2.5h8M32.5 2.5V9'/%3E%3Cpath d='M25 10H40C45 11 48 15 48.5 21C49 31 46.5 40 43.5 47H21.5C18.5 40 16 31 16.5 21C17 15 20 11 25 10Z' fill='%23f1c27a' fill-opacity='.7'/%3E%3Cpath d='M29 48c-.5 4-4 7-9 9.5M33 48c0 5-3 9-8 12.5M37 48c1 4-1 7-5 10'/%3E%3C/g%3E%3C/svg%3E" />
   <script is:inline>try{if(localStorage.getItem('motion')==='off')document.documentElement.classList.add('paused')}catch(e){}</script>
 </head>
 <body>
@@ -18,7 +20,7 @@ const links = [['/#about', '소개'], ['/#projects', '프로젝트'], ['/#skills
   <div class="sky" aria-hidden="true"><div class="land"></div><div class="mist m1"></div><div class="mist m2"></div></div>
   </div>
   <header class="top"><div class="wrap">
-    <a class="brand" href="/" aria-label="홈"><span class="seal" aria-hidden="true">權</span><span class="t">권주회 · 작업 기록</span></a>
+    <a class="brand" href="/" aria-label="홈"><span class="mark"><Lantern id="hd" /></span><span class="t">권주회 · 작업 기록</span></a>
     <nav class="nav" aria-label="주 메뉴">{links.map(([h, t]) => <a href={h} aria-current={nav === h ? 'page' : undefined}>{t}</a>)}</nav>
     <button class="mbtn" id="motion" type="button" aria-pressed="false">움직임 멈추기</button>
   </div></header>
@@ -27,6 +29,7 @@ const links = [['/#about', '소개'], ['/#projects', '프로젝트'], ['/#skills
     <p>© 2026 권주회 · 프론트엔드 개발자 포트폴리오</p>
     
   </div></footer>
+  <CatChat />
   <script is:inline>
     (function(){var b=document.getElementById('motion'),r=document.documentElement;
     function s(){var p=r.classList.contains('paused');b.setAttribute('aria-pressed',p);b.textContent=p?'움직임 다시 켜기':'움직임 멈추기'}
