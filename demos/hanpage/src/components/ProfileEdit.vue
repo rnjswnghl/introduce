@@ -151,109 +151,85 @@ onMounted(() => {
 
 
 <style scoped>
+/* 마이페이지 흰 패널 안에서 카드를 또 만들지 않고, 폼을 그대로 펼친다 */
 .signup-form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  width: 360px;
-  padding: 2.2rem 2.4rem;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 2px 14px rgb(0 0 0 / 0.1);
+  gap: 0.4rem;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0.5rem 0 1rem;
   font-family: inherit;
 }
 
 .name {
   font-weight: 600;
-  font-size: 15px;
-  margin-bottom: 0.4rem;
-  color: #444;
+  font-size: 0.95rem;
+  margin: 0.9rem 0 0.2rem;
+  color: #2f3a33;
 }
+.name:first-child { margin-top: 0; }
 
-input[type='text'],
-input[type='email'],
-input[type='tel'],
-input[type='file'] {
-  height: 38px;
+/* type 속성이 없는 입력창까지 같은 모양으로 맞춘다 */
+input:not([type='checkbox']):not([type='radio']):not([type='file']) {
+  height: 42px;
   padding: 0 0.8rem;
-  border: 1.5px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
+  border: 1.5px solid #cbd3cd;
+  border-radius: 8px;
+  font-size: 0.95rem;
   color: #222;
-  transition: border-color 0.3s ease;
-  outline-offset: 2px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input[type='file'] {
+  padding: 8px 0.6rem;
+  border: 1.5px solid #cbd3cd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: #fff;
 }
 
 input:focus {
-  border-color: #d4a373;
+  border-color: #5f7a69;
+  box-shadow: 0 0 0 3px rgba(95, 122, 105, 0.2);
   outline: none;
-}
-
-input[type='file'] {
-  padding: 6px 0;
-  font-size: 14px;
-  cursor: pointer;
 }
 
 .category-selector {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-bottom: 1rem;
+  gap: 10px 12px;
+  margin: 0.3rem 0 0.5rem;
 }
 
-.category-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.category-item input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-}
-
-.category-item label {
-  font-size: 14px;
-  color: #444;
-  cursor: pointer;
-}
+.category-item { display: flex; align-items: center; gap: 8px; }
+.category-item input[type='checkbox'] { width: 18px; height: 18px; cursor: pointer; accent-color: #5f7a69; }
+.category-item label { font-size: 0.9rem; color: #444; cursor: pointer; }
 
 button[type='submit'],
 button.btn-danger {
   height: 46px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
+  margin-top: 0.6rem;
 }
 
 button[type='submit'] {
-  background-color: #d4a373;
-  color: #fff;
+  background-color: #5f7a69;
+  color: #f6f1e1;
   border: none;
-  box-shadow: 0 3px 8px rgb(212 163 115 / 0.6);
+  margin-top: 1.2rem;
 }
-
-button[type='submit']:hover {
-  background-color: #b17a4a;
-}
+button[type='submit']:hover { background-color: #4d6556; }
 
 button.btn-danger {
-  background-color: #dc3545;
-  color: white;
-  border: none;
+  background: transparent;
+  color: #b3413f;
+  border: 1.5px solid #d9a9a8;
 }
-
-button.btn-danger:hover {
-  background-color: #b02a37;
-}
-
-@media (max-width: 400px) {
-  .signup-form {
-    width: 90vw;
-    padding: 1.6rem 1.8rem;
-  }
-}
+button.btn-danger:hover { background: #b3413f; color: #fff; border-color: #b3413f; }
 </style>
