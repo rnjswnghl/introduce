@@ -8,13 +8,13 @@ const src = `/demos/${kind}/`;
 ---
 <div class:list={['dframe', phone && 'phone']} data-src={src} data-title={`${name} 데모`}>
   <div class="dwin">
-    <div class="dbar" aria-hidden="true"><i></i><i></i><i></i><span>{phone ? 'mobile · 390 × 780' : `${name} · demo`}</span></div>
+    <div class="dbar" aria-hidden="true"><i></i><i></i><i></i><span>{phone ? 'mobile, 390 × 780' : `${name} / demo`}</span></div>
     <div class="dstage">
       <img class="dposter" src={poster} alt="" loading="lazy" decoding="async" />
       <button class="btn dplay" type="button">▶ 데모 실행</button>
     </div>
   </div>
-  <p class="dnote">직접 눌러보세요 · <a href={src} target="_blank" rel="noopener">새 탭에서 열기 ↗</a></p>
+  <p class="dnote">직접 눌러보세요, <a href={src} target="_blank" rel="noopener">새 탭에서 열기 ↗</a></p>
 </div>
 <style>
   .dframe { margin: 0 auto; max-width: 1080px; }

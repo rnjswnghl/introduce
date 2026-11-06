@@ -68,7 +68,7 @@ table.cmp { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top
 .tro .vf { color: var(--celadon); }
 .three { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; } .three > div { padding: 1.1rem 1.25rem; } .three h4 { font-size: 1rem; margin-bottom: .5rem; }
 
-/* 프로필 · 기술 · 이력 */
+/* 프로필, 기술, 이력 */
 .now { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin: 1.6rem 0 1rem; max-width: none; }
 .now .panel { padding: 1rem 1.15rem; } .now h4 { font-size: 1rem; margin-bottom: .35rem; display: flex; gap: .5rem; align-items: baseline; flex-wrap: wrap; } .now p { margin: 0; font-size: .92rem; color: var(--ink-2); }
 .about { max-width: 1000px; } .about > p { max-width: 70ch; }
