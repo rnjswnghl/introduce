@@ -1,7 +1,7 @@
 ---
 // 안내 고양이 챗봇. 기본: 브라우저에서 포트폴리오 기록(chat-kb.json)을 검색해 근거 있는 답만 한다.
 // ANTHROPIC_API_KEY 가 설정된 배포에서는 /api/chat(LLM)을 먼저 시도하고, 실패하면 로컬 검색으로 자동 전환한다.
-const chips = ['어떤 프로젝트를 했나요?', '권주회 님은 어떤 사람인가요?', 'On-Wear에서 맡은 역할은?', '어떤 기술을 얼마나 쓸 수 있나요?', '학력과 자격증이 궁금해요'];
+const chips = ['어떤 프로젝트를 했나요?', '권주회 님은 어떤 사람인가요?', 'On-Wear에서 맡은 역할은?', '어떤 기술을 얼마나 쓸 수 있나요?', '학력과 교육 이력이 궁금해요'];
 ---
 <div id="cat" class="cat">
   <button class="cat-btn" type="button" aria-expanded="false" aria-controls="cat-panel" aria-label="안내 고양이에게 권주회에 대해 물어보기">
@@ -96,7 +96,6 @@ const chips = ['어떤 프로젝트를 했나요?', '권주회 님은 어떤 사
     const n = norm(q), proj = findProject(q, kb), intent = INTENTS.find(([, re]) => re.test(q))?.[0];
     if (!proj) {
       if (/연락|이메일|메일|깃허브|github|링크드인|linkedin|링크|전화/.test(n)) return fmt(pick(kb, ['profile-contact']));
-      if (/자격|어학|토익|opic|오픽|영어|mos|컴활|azure|adobe/.test(n)) return fmt(pick(kb, ['profile-cert']));
       if (/학력|학교|졸업|전공|대학|학점/.test(n)) return fmt(pick(kb, ['profile-edu']));
       if (/교육|아카데미|ssafy|싸피|aleph|알레프|이력|경력|경험|해외|au\s*pair/.test(n) && !/프로젝트/.test(n)) return fmt(pick(kb, ['profile-history']));
       if (/목표|포부|지향|앞으로|꿈|가치관|계획/.test(n)) return fmt(pick(kb, ['profile-goal']));

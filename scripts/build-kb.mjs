@@ -7,7 +7,7 @@ import { build } from 'esbuild';
 // Node 버전과 무관하게 동작하도록 TS 데이터를 esbuild 로 변환해서 읽는다
 const loadTs = async (rel) => { const r = await build({ entryPoints: [new URL(rel, import.meta.url).pathname], bundle: true, format: 'esm', platform: 'node', write: false }); return import('data:text/javascript;base64,' + Buffer.from(r.outputFiles[0].text).toString('base64')); };
 const { projects } = await loadTs('../src/data/projects.ts');
-const { profile: P, peers, timeline, certs, skills, levelLabel } = await loadTs('../src/data/profile.ts');
+const { profile: P, peers, timeline, skills, levelLabel } = await loadTs('../src/data/profile.ts');
 
 const L = (a) => a.filter(Boolean).join(' ');
 const profile = [
@@ -17,7 +17,6 @@ const profile = [
   { id: 'profile-goal', type: 'profile', title: '현재의 나와 목표', text: P.now.map(n => `${n.t}: ${n.d}`).join(' '), url: '/#about', unverified: P.now.some(n => n.draft) },
   { id: 'profile-edu', type: 'profile', title: '학력', text: `부산외국어대학교 러시아학, 빅데이터학 졸업(2019.03 — 2025.02). ${timeline.find(t => t.t.includes('부산외국어')).d}`, url: '/#history' },
   { id: 'profile-history', type: 'profile', title: '교육, 경험 이력', text: timeline.map(t => `${t.when} ${t.t}${t.org ? '(' + t.org + ')' : ''}${t.role ? ' ' + t.role : ''}: ${t.d}`).join(' / '), url: '/#history', unverified: timeline.some(t => t.draft) },
-  { id: 'profile-cert', type: 'profile', title: '자격, 어학', text: certs.map(c => `${c.t}(${c.org}, ${c.when})`).join('; ') + '.', url: '/#history' },
   { id: 'profile-skills', type: 'profile', title: '기술과 활용 수준', text: '활용 수준은 3단계입니다(1 프로젝트에서 사용, 2 핵심 기능을 직접 구현, 3 구조, 설계를 직접 결정). ' + skills.map(g => `${g.cat}: ` + g.items.map(i => `${i.t} 수준 ${i.lv} — ${i.d}`).join('; ')).join(' / '), url: '/#skills', unverified: skills.some(g => g.items.some(i => i.draft)) },
   { id: 'profile-career', type: 'profile', title: '프로젝트 경험 개요', text: `SSAFY에서 팀 프로젝트 4개(한페이지, FocusMate, On-Wear, DALTOORI)를, K-뉴딜 Aleph에서 AI 에이전트와 함께 6개 프로젝트(BurnIt, Cut&Note, byeol, SuGang, Reflex Hub, LLM Gateway)를 만들었습니다. 팀 프로젝트는 팀 전체가 만든 것과 직접 구현한 것을 구분해 적었고, AI가 코드를 쓴 프로젝트는 기획, 요구사항, 검수만 본인의 일로 적었습니다.`, url: '/#projects' },
   { id: 'profile-ai', type: 'profile', title: 'AI와 일하는 방식', text: 'K-뉴딜 Aleph 개인 프로젝트들은 AI 에이전트가 코드를 작성했고, 권주회는 기획, 요구사항 정의, 결과 검수를 맡았습니다. DALTOORI에서는 여러 LLM과 협업해 AI 서버를 개발하면서 생성된 코드의 보안 점검을 직접 했습니다. LLM Gateway에서는 관리자 콘솔을 서버의 실제 상태 기준으로 정리했고, Cut&Note에서는 "네트워크 전송 없음"이라는 검증 기준을 세웠습니다.', url: '/#projects' },
