@@ -5,13 +5,19 @@ import { projects } from '../data/projects';
 import '../styles/pages.css';
 const ssafy = projects.filter(p => p.group === 'ssafy'), aleph = projects.filter(p => p.group === 'aleph');
 const link = (s: string) => `/projects/${s}`;
-const skills = [
-  { t: 'Frontend', tags: ['Vue 3', 'React', 'TypeScript', 'Pinia', 'Zustand', 'Emotion', 'Vite'], n: '한페이지·FocusMate·On-Wear' },
-  { t: 'Backend', tags: ['Django REST', 'FastAPI', 'SQLite', 'Next.js'], n: '한페이지·DALTOORI·LLM Gateway' },
-  { t: 'AI · 음성', tags: ['Whisper', 'MFA', 'MeloTTS', 'LLM API', 'Gemini'], n: 'DALTOORI의 발음 평가 파이프라인' },
-  { t: 'Web · Canvas', tags: ['Canvas API', 'Web Audio', 'D3', 'Chart.js'], n: 'BurnIt · Cut&Note · byeol' },
-  { t: '품질 · 협업', tags: ['Playwright', 'pytest', 'Vitest', 'Git Flow', 'PR 리뷰'], n: 'LLM Gateway 테스트 189개' },
-  { t: '배포', tags: ['Vercel', 'Docker', 'Railway', 'Cloudflare D1', 'Neon'], n: '' },
+const can = [
+  { t: '검색·필터·상태 흐름을 끝까지 맞춥니다', d: '정렬·가격·브랜드 필터를 바꾸면 결과와 적용 칩이 어긋나던 문제, 찜 요청 중복 호출과 모달-목록 상태 불일치를 고쳤습니다.', p: 'on-wear', pn: 'On-Wear' },
+  { t: '권한·인증 흐름을 설계하고 복구합니다', d: '방장/팀원 권한별 라우팅 404와 세션 API 타입 오류를 정리했고, 인증 토큰 오류로 막힌 추천 기능과 병합 충돌로 끊긴 연결을 다시 이었습니다.', p: 'focusmate', pn: 'FocusMate' },
+  { t: '서버가 없어도 먼저 움직이는 화면을 만듭니다', d: 'API 명세 전에도 같은 형태의 더미 데이터로 화면과 시나리오를 검증하는 MOCK 모드와 가이드를 만들어 백엔드와 병렬로 일했습니다.', p: 'focusmate', pn: 'FocusMate' },
+  { t: 'AI가 쓴 코드를 믿지 않고 확인합니다', d: '생성된 코드의 보안 점검(DALTOORI), 시연용 가짜 데이터와 실제 상태 분리(LLM Gateway), “네트워크 전송 없음” 검증 기준(Cut&Note)을 직접 세웠습니다.', p: 'llm-gateway', pn: 'LLM Gateway' },
+];
+const uses = [
+  { t: 'Vue 3 · Pinia · TypeScript', d: '여러 화면이 공유하는 로그인·스터디 상태를 스토어로 모으고, 방장/팀원 권한 분기를 라우터에서 처리했습니다.', p: 'focusmate' },
+  { t: 'React · Zustand · Axios', d: '새로고침 뒤에도 인증이 유지되도록 persist를 쓰고, 토큰 주입·인증 오류 처리를 인터셉터 한 곳에 모았습니다. 검색 필터·페이지네이션·무한 스크롤을 구현했습니다.', p: 'on-wear' },
+  { t: 'Django REST · Vue', d: '도서·유저·쓰레드·방명록·추천을 앱 5개로 나눠 API를 만들고, 알라딘 API로 실제 도서 398권을 시드 데이터로 구성했습니다.', p: 'hanpage' },
+  { t: 'FastAPI · Whisper · MFA · MeloTTS', d: '음성 인식·음소 정렬·표준 발음 합성·평가를 API로 분리하고, 오래 걸리는 분석은 비동기로 처리했습니다.', p: 'daltoori' },
+  { t: 'FastAPI 게이트웨이 · Chrome MV3 · pytest', d: '민감정보를 가려 외부 LLM으로 보내고 복원하는 프록시의 관리자 콘솔과 확장 프로그램을 맡았고, 자동화 테스트가 코어 동작을 검증합니다.', p: 'llm-gateway' },
+  { t: 'Canvas API', d: '종이 연소 렌더링(BurnIt)과 사진·프레임·스티커 합성(Cut&Note)에서 서버 없이 브라우저 안에서 처리하는 구조를 택했습니다.', p: 'cut-and-note' },
 ];
 ---
 <Base>
@@ -20,18 +26,16 @@ const skills = [
       <div>
         <p class="eyebrow">Frontend Developer Portfolio</p>
         <h1>사용자의 흐름을<br /><em>끝까지</em> 다듬는 개발자.</h1>
-        <p class="lead">화면을 구현하는 데서 멈추지 않고, 사용자가 실제로 마주하는 검색·권한·상태 흐름이 끝까지 동작하는지 확인합니다. React·Vue 중심으로 일하며 필요하면 Django·FastAPI까지 범위를 넓혔습니다.</p>
-        <p style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem"><a class="btn" href="#projects">프로젝트 보기 →</a><a class="btn ghost" href="/performance">이 사이트가 빠른 이유</a></p>
+        <p class="lead">검색·권한·상태처럼 사용자가 직접 마주하는 흐름이 끝까지 동작하는지 확인합니다. Vue·React로 화면을 만들고, 필요하면 Django·FastAPI까지 범위를 넓혀 왔습니다.</p>
+        <p style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem"><a class="btn" href="#projects">프로젝트 보기 →</a><a class="btn ghost" href="#can">무엇을 할 수 있나</a></p>
       </div>
       <div class="vert" aria-hidden="true"><span>권주회</span><span class="seal">權</span></div>
     </div>
-    <div class="stats" role="list">
-      <div role="listitem"><b>10</b><small>프로젝트 · 팀 5 / 개인 5</small></div>
-      <div role="listitem"><b>370+</b><small>본인 계정 커밋 합계 (git 이력 집계)</small></div>
-      <div role="listitem"><b>4</b><small>직접 눌러볼 수 있는 원본 화면 데모</small></div>
-      <div role="listitem"><b>57–73%</b><small>2·6인 팀에서의 커밋 비중 (한페이지·Gateway)</small></div>
-      <div role="listitem"><b>−95%</b><small>캡처 이미지 17.0MB → 0.9MB</small></div>
-    </div>
+  </div></section>
+
+  <section id="can" style="padding-top:0"><div class="wrap">
+    <p class="eyebrow">What I can do</p><h2 class="h2">제가 할 수 있는 일</h2>
+    <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">{can.map(c => <a class="card panel" href={link(c.p)} style="padding:1.2rem 1.3rem;gap:.5rem"><h4 style="font-size:1.1rem">{c.t}</h4><p class="sub" style="font-size:.92rem">{c.d}</p><p class="key" style="margin-top:auto">{c.pn} 사례 →</p></a>)}</div>
   </div></section>
 
   <hr class="rule" />
@@ -40,7 +44,7 @@ const skills = [
       <p class="eyebrow">About</p>
       <h2 class="h2">화면과 데이터를<br />연결하는 개발자.</h2>
       <p>러시아학과 빅데이터학을 공부한 뒤 웹 개발 프로젝트를 수행했습니다. 검색과 필터, 권한별 화면, 상태 관리와 API 연동처럼 사용자가 직접 마주하는 흐름을 주로 다뤘고, 구현한 뒤 실제 사용 과정에서 생기는 오류를 다시 확인해 개선합니다.</p>
-      <p>SSAFY에서 4개의 팀 프로젝트를, K-뉴딜 Aleph에서 AI 에이전트와 함께 6개의 프로젝트를 만들었습니다. AI가 쓴 코드를 어디까지 이해하고 검증했는지를 프로젝트마다 솔직하게 적었습니다.</p>
+      <p>SSAFY에서 4개의 팀 프로젝트를, K-뉴딜 Aleph에서 AI 에이전트와 함께 6개의 프로젝트를 만들었습니다. 팀 프로젝트는 팀 전체가 만든 것과 제가 직접 구현한 것을 나눠 적었고, AI가 코드를 쓴 프로젝트는 제가 한 일(기획·요구사항·검수)만 적었습니다.</p>
       <div class="vals">
         <div class="val panel"><span class="n">壹</span><h4>끈기</h4><p>인증 오류와 병합 충돌로 끊긴 기능을 끝까지 복구했습니다.</p><a href={link('hanpage')}>한페이지 →</a></div>
         <div class="val panel"><span class="n">貳</span><h4>주도성</h4><p>검색부터 결과·찜까지, 흐름 전체를 먼저 잡고 구현했습니다.</p><a href={link('on-wear')}>On-Wear →</a></div>
@@ -57,15 +61,16 @@ const skills = [
   <section id="projects"><div class="wrap">
     <p class="eyebrow">Projects · 10</p>
     <h2 class="h2">작업 기록</h2>
-    <p class="lead">▶ 표시가 있는 프로젝트는 상세 페이지에서 더미 데이터로 동작하는 데모를 직접 눌러볼 수 있습니다. 모든 수치는 저장소에서 직접 집계했고, 근거를 상세 페이지에 함께 적었습니다.</p>
+    <p class="lead">각 프로젝트는 개요 → 문제 정의 → 시스템 설계 → 내가 한 일 → 문제 해결·검증 → 결과·회고 순서로 정리했습니다. ▶ 표시가 있는 프로젝트는 원본 화면을 그대로 담은 데모를 눌러볼 수 있습니다.</p>
     <div class="pgroup"><h3>SSAFY 팀 프로젝트</h3><div class="cards">{ssafy.map(p => <ProjectCard p={p} />)}</div></div>
     <div class="pgroup"><h3>K-뉴딜 Aleph · AI 협업 개발</h3><div class="cards">{aleph.map(p => <ProjectCard p={p} />)}</div></div>
   </div></section>
 
   <hr class="rule" />
   <section id="skills"><div class="wrap">
-    <p class="eyebrow">Skills</p><h2 class="h2">쓴 기술과 쓴 곳</h2>
-    <div class="skills">{skills.map(s => <div class="skill panel"><h4>{s.t}</h4><div class="tags">{s.tags.map(t => <span class="tag">{t}</span>)}</div>{s.n && <small>{s.n}</small>}</div>)}</div>
+    <p class="eyebrow">How I used them</p><h2 class="h2">기술을 어떻게 썼나</h2>
+    <p class="lead" style="margin-bottom:1.2rem">쓴 기술의 목록이 아니라, 각 기술로 무엇을 해결했는지입니다.</p>
+    <table class="why" style="max-width:none"><tbody>{uses.map(u => <tr><td>{u.t}</td><td>{u.d}</td><td><a href={link(u.p)} style="white-space:nowrap">사례 →</a></td></tr>)}</tbody></table>
   </div></section>
 
   <hr class="rule" />

@@ -23,20 +23,20 @@ p { margin: 0 0 .9em; }
 .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: .6rem 1rem; z-index: 100; }
 .skip:focus { left: 0; }
 
-/* ── 하늘: 산수 + 흐르는 구름 (transform 만 사용 → 합성 레이어에서 처리) ── */
-.sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: linear-gradient(#f7f2e8 0%, var(--paper) 55%, #eadfca 100%); contain: strict; }
-.sky .land { position: absolute; left: 0; right: 0; bottom: 0; height: 62vh; background: url(/img/ink/landscape.webp) center bottom / cover no-repeat; opacity: .42; mix-blend-mode: multiply; -webkit-mask-image: linear-gradient(transparent, #000 40%); mask-image: linear-gradient(transparent, #000 40%); }
-.sky .cloud { position: absolute; left: 0; width: calc(100% + 1600px); height: 420px; background: url(/img/ink/cloud-far.webp) repeat-x 0 0 / 1600px 420px; will-change: transform; animation: drift var(--t) linear infinite; opacity: var(--o); }
-.sky .c1 { top: 4vh; --t: 150s; --o: .5; }
-.sky .c2 { top: 30vh; --t: 105s; --o: .42; background-image: url(/img/ink/cloud-mid.webp); animation-direction: reverse; }
-.sky .c3 { bottom: -4vh; --t: 70s; --o: .5; background-image: url(/img/ink/cloud-near.webp); }
+/* ── 하늘: 수묵 산수 + 흐르는 구름결 + 산허리 안개 (transform 만 사용 → 합성 레이어) ── */
+.sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: radial-gradient(120% 80% at 50% 0%, #f8f4ea 0%, var(--paper) 60%, #e9dfca 100%); contain: strict; }
+.sky .land { position: absolute; inset: 0; background: url(/img/ink/mountains.webp) center bottom / cover no-repeat; opacity: .92; }
+.sky .rib { position: absolute; left: 0; width: calc(100% + 2400px); height: 560px; background-repeat: repeat-x; background-size: 2400px 560px; will-change: transform; animation: driftR var(--t) linear infinite; }
+.sky .r1 { top: -2vh; background-image: url(/img/ink/ribbon-a.webp); --t: 260s; opacity: .85; }
+.sky .r2 { top: 22vh; background-image: url(/img/ink/ribbon-b.webp); --t: 200s; opacity: .6; animation-direction: reverse; }
+.sky .fog { position: absolute; left: 0; width: calc(100% + 1600px); height: 420px; background-repeat: repeat-x; background-size: 1600px 420px; will-change: transform; animation: drift var(--t) linear infinite; opacity: var(--o); }
+.sky .f1 { bottom: 26vh; background-image: url(/img/ink/fog-a.webp); --t: 170s; --o: .8; }
+.sky .f2 { bottom: -6vh; background-image: url(/img/ink/fog-b.webp); --t: 120s; --o: .85; animation-direction: reverse; }
 @keyframes drift { to { transform: translate3d(-1600px, 0, 0); } }
-.sky svg.sym { position: absolute; width: 220px; color: var(--ink-2); opacity: .32; will-change: transform; animation: float var(--t) ease-in-out infinite alternate; }
-.sky .s1 { top: 14vh; left: 8vw; --t: 38s; } .sky .s2 { top: 58vh; right: 6vw; width: 280px; --t: 52s; animation-delay: -20s; }
-@keyframes float { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(70px, -26px, 0); } }
-.paused .sky .cloud, .paused .sky svg.sym { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) { .sky .cloud, .sky svg.sym { animation: none; } html { scroll-behavior: auto; } }
-@media (max-width: 700px) { .sky .c3, .sky .s2 { display: none; } }
+@keyframes driftR { to { transform: translate3d(-2400px, 0, 0); } }
+.paused .sky .rib, .paused .sky .fog { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .sky .rib, .sky .fog { animation: none; } html { scroll-behavior: auto; } }
+@media (max-width: 700px) { .sky .r2, .sky .f1 { display: none; } .sky .land { background-position: 30% bottom; } }
 
 /* ── 헤더 ── */
 .top { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(8px); background: rgba(244, 239, 229, .82); border-bottom: 1px solid var(--line); }
@@ -81,3 +81,5 @@ footer.foot { padding: 3rem 0 4rem; color: var(--ink-2); font-size: .88rem; bord
 
 /* 나눔명조는 700 한 가지 굵기만 내려받는다(폰트 전송량 절반). 400이 필요한 곳도 700으로 통일 */
 .vert, .pola span, .val .n, .demo-note, .lead[style*='serif'], .crumb { font-weight: 700; }
+
+.hero h1, .hero .lead, .hero .eyebrow { text-shadow: 0 0 22px var(--paper), 0 0 8px var(--paper); }

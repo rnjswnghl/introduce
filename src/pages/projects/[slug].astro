@@ -5,6 +5,7 @@ import { projects } from '../../data/projects';
 import '../../styles/pages.css';
 export function getStaticPaths() { return projects.map((p, i) => ({ params: { slug: p.slug }, props: { p, prev: projects[i - 1], next: projects[i + 1] } })); }
 const { p, prev, next } = Astro.props;
+const mineDraft = p.group === 'aleph';
 ---
 <Base title={`${p.name} · 권주회 포트폴리오`} desc={p.summary} nav="/#projects">
   <div class="wrap phead" style={`--accent:${p.accent}`}>
@@ -14,52 +15,68 @@ const { p, prev, next } = Astro.props;
     <p class="lead" style="font-family:var(--serif);font-size:1.15rem">{p.tagline} — {p.kor}</p>
     <dl class="meta">
       <div><dt>기간</dt><dd>{p.period}</dd></div>
-      <div><dt>구성</dt><dd>{p.kind === 'solo' ? '개인 프로젝트' : `${p.teamSize}인 팀`}</dd></div>
-      <div><dt>역할</dt><dd>{p.role}</dd></div>
+      <div><dt>형태</dt><dd>{p.kind === 'solo' ? '개인 프로젝트' : `${p.teamSize}인 팀 프로젝트`}</dd></div>
+      <div><dt>내 역할</dt><dd>{p.role}</dd></div>
       {p.ai && <div><dt>AI 활용</dt><dd>{p.ai}</dd></div>}
     </dl>
   </div>
 
-  <section style="padding-top:2.5rem"><div class="wrap">
-    <div class="cols">
-      <div>
-        <h2 class="h2" style="font-size:1.5rem">개요</h2><p>{p.summary}</p>
-        <h2 class="h2" style="font-size:1.5rem;margin-top:1.8rem">내가 한 일</h2>
-        <ul class="list">{p.mine.map(m => <li>{m}</li>)}</ul>
-      </div>
-      <div>
-        <h2 class="h2" style="font-size:1.5rem">숫자로 보면</h2>
-        <div class="stats" style="grid-template-columns:1fr;margin-top:1rem">{p.stats.map(s => <div><b>{s.v}</b><small>{s.label}{s.src ? <span style="opacity:.65"> · {s.src}</span> : ''}</small></div>)}</div>
-        <p style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:.35rem">{p.stack.map(t => <span class="tag">{t}</span>)}</p>
-      </div>
-    </div>
-  </div></section>
+  <div class="wrap">
+    <section class="sec"><h2><span class="n">①</span>프로젝트 개요</h2><p style="max-width:70ch">{p.summary}</p></section>
 
-  {p.demo && <section style="padding-top:0"><div class="wrap">
-    <p class="eyebrow">Live Demo</p><h2 class="h2" style="font-size:1.5rem">직접 눌러보기</h2>
+    <section class="sec"><h2><span class="n">②</span>문제 정의 및 목표</h2>
+      <div class="pq"><div class="panel"><h4>왜 필요한가</h4><p>{p.goal.problem}</p></div><div class="panel"><h4>무엇을 목표로 했나</h4><p>{p.goal.goal}</p></div></div></section>
+
+    <section class="sec"><h2><span class="n">③</span>시스템 설계와 기술 선택</h2>
+      <div class="archwrap">
+        <div><div class="arch">{p.arch.map((a, i) => <><div class="node"><b>{a.t}</b><span>{a.r}</span></div>{i < p.arch.length - 1 && <div class="arr" aria-hidden="true">↓</div>}</>)}</div>
+          {p.archNote && <p class="note">{p.archNote}</p>}</div>
+        <div><p class="eyebrow" style="margin-bottom:.4rem">어떻게, 왜 썼나</p>
+          <table class="why"><tbody>{p.stack.map(s => <tr><td>{s.t}</td><td>{s.why}</td></tr>)}</tbody></table></div>
+      </div></section>
+
+    <section class="sec"><h2><span class="n">④</span>담당 역할 및 구현 내용</h2>
+      <div class="who">
+        {p.team.length > 0 && <div class="panel"><h4>팀 / 공동으로 만든 것</h4><ul class="list">{p.team.map(t => <li>{t}</li>)}</ul></div>}
+        <div class="panel me" style={p.team.length ? '' : 'grid-column:1/-1'}><h4>내가 직접 구현한 것{mineDraft && <span class="tag" title="요구사항·검수 중심의 역할 문구입니다. 실제와 다르면 수정이 필요합니다.">검수 전</span>}</h4><ul class="list">{p.mine.map(t => <li>{t}</li>)}</ul></div>
+      </div>
+      {p.mineNote && <p class="note">{p.mineNote}</p>}
+    </section>
+  </div>
+
+  {p.demo && <section style="padding:2.2rem 0 0"><div class="wrap">
+    <h2 class="h2" style="font-size:1.45rem"><span class="n" style="font:700 .95rem var(--serif);color:var(--seal);border:1px solid var(--seal);border-radius:3px;padding:.05rem .5rem;margin-right:.6rem">구현 결과</span>직접 눌러보기</h2>
     <p class="lead" style="margin-bottom:1.2rem">원본 프로젝트의 프론트엔드 화면을 그대로 빌드하고, 서버 대신 더미 데이터를 연결했습니다. 실행 버튼을 누를 때만 코드를 내려받습니다.</p>
     <DemoFrame kind={p.demo} name={p.name} poster={`/img/p/${p.cover}.webp`} />
   </div></section>}
 
-  {p.troubles.length > 0 && <section style="padding-top:0"><div class="wrap">
-    <p class="eyebrow">Troubleshooting</p><h2 class="h2" style="font-size:1.5rem">문제 → 원인 → 해결</h2>
-    {p.troubles.map(t => <article class="tro panel">
-      <h4>{t.title}{t.draft && <span class="tag" title="커밋·코드로 추정한 초안입니다. 확인 후 확정합니다.">검수 전</span>}</h4>
-      <dl><dt>문제</dt><dd>{t.problem}</dd>{t.cause && <><dt>원인</dt><dd>{t.cause}</dd></>}<dt>해결</dt><dd>{t.fix}</dd>{t.result && <><dt>결과</dt><dd>{t.result}</dd></>}</dl>
-    </article>)}
-    {p.decisions && p.decisions.map(d => <article class="tro panel"><h4>{d.t}</h4><p style="margin:0">{d.d}</p></article>)}
-    {p.learned && <article class="tro panel"><h4>배운 점</h4><ul class="list">{p.learned.map(l => <li>{l}</li>)}</ul></article>}
-  </div></section>}
-
-  {p.shots.length > 0 && <section style="padding-top:0"><div class="wrap">
-    <p class="eyebrow">Screens · {p.shots.length}</p><h2 class="h2" style="font-size:1.5rem">화면 기록</h2>
+  {p.shots.length > 0 && <section style="padding:2.2rem 0 0"><div class="wrap">
+    <h2 class="h2" style="font-size:1.45rem"><span class="n" style="font:700 .95rem var(--serif);color:var(--seal);border:1px solid var(--seal);border-radius:3px;padding:.05rem .5rem;margin-right:.6rem">실행 화면</span>{p.shots.length}장</h2>
     <div class="shots" id="shots">{p.shots.map((s, i) => <button class:list={['shot', s.mobile && 'm']} type="button" data-i={i} data-src={s.src} data-cap={s.cap} aria-label={`${s.cap} 크게 보기`}><figure><img src={s.src} alt={s.cap} loading="lazy" decoding="async" width={s.mobile ? 390 : 1000} height={s.mobile ? 844 : 625} /><figcaption>{s.cap}</figcaption></figure></button>)}</div>
     <dialog class="lb" id="lb"><img id="lbimg" alt="" /><p id="lbcap"></p><button class="x" aria-label="닫기">✕</button><button class="prev" aria-label="이전">‹</button><button class="next" aria-label="다음">›</button></dialog>
   </div></section>}
 
-  {p.links.length > 0 && <section style="padding-top:0"><div class="wrap" style="display:flex;gap:.7rem;flex-wrap:wrap">{p.links.map(l => <a class="btn ghost" href={l.href} rel="noopener">{l.label} ↗</a>)}</div></section>}
+  <div class="wrap">
+    <section class="sec"><h2><span class="n">⑤</span>문제 해결 및 검증</h2>
+      {p.troubles.length === 0 && <p class="lead">이 프로젝트는 별도로 기록한 트러블슈팅이 없습니다. 검증 방식은 아래 “결과 및 회고”에 적었습니다.</p>}
+      {p.troubles.map(t => <article class="tro panel">
+        <h4>{t.title}{t.draft && <span class="tag" title="커밋·코드로 추정한 초안입니다. 확인 후 확정합니다.">검수 전</span>}</h4>
+        <dl><dt>문제</dt><dd>{t.problem}</dd>{t.cause && <><dt>원인</dt><dd>{t.cause}</dd></>}<dt>해결</dt><dd>{t.fix}</dd>{t.verify && <><dt>검증</dt><dd class="vf">{t.verify}</dd></>}{t.result && <><dt>결과</dt><dd>{t.result}</dd></>}</dl>
+      </article>)}
+      {p.evidence && <article class="tro panel"><h4>검증 근거</h4><ul class="list">{p.evidence.map(e => <li>{e}</li>)}</ul></article>}
+    </section>
 
-  <div class="wrap pager">{prev ? <a href={`/projects/${prev.slug}`}>← {prev.name}</a> : <span />}{next ? <a href={`/projects/${next.slug}`}>{next.name} →</a> : <span />}</div>
+    <section class="sec"><h2><span class="n">⑥</span>결과 및 회고{!p.learnedFromReadme && <span class="tag" title="README·커밋에 없는 회고는 제 추정 문구입니다. 본인의 말로 교체가 필요합니다.">회고는 초안</span>}</h2>
+      <div class="three">
+        <div class="panel"><h4>구현한 것</h4><ul class="list">{p.done.map(d => <li>{d}</li>)}</ul></div>
+        <div class="panel"><h4>미완성·한계·향후 개선</h4><ul class="list">{p.gaps.map(d => <li>{d}</li>)}</ul></div>
+        <div class="panel"><h4>배운 점</h4><ul class="list">{p.learned.map(d => <li>{d}</li>)}</ul></div>
+      </div>
+    </section>
+
+    {p.links.length > 0 && <p style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2rem">{p.links.map(l => <a class="btn ghost" href={l.href} rel="noopener">{l.label} ↗</a>)}</p>}
+    <div class="pager">{prev ? <a href={`/projects/${prev.slug}`}>← {prev.name}</a> : <span />}{next ? <a href={`/projects/${next.slug}`}>{next.name} →</a> : <span />}</div>
+  </div>
   <script is:inline>
   (function(){var g=document.getElementById('shots');if(!g)return;var d=document.getElementById('lb'),im=document.getElementById('lbimg'),cp=document.getElementById('lbcap'),b=[].slice.call(g.children),i=0;
   function show(n){i=(n+b.length)%b.length;im.src=b[i].dataset.src;im.alt=b[i].dataset.cap;cp.textContent=b[i].dataset.cap+'  ('+(i+1)+'/'+b.length+')'}

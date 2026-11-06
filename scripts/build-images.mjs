@@ -48,7 +48,6 @@ await conv(join(old, 'project3/public/images/FMlogo.png'), out('demo','focusmate
 
 // 3) 수묵 장식 (introme)
 const intro = join(SRC, 'introme/dist/assets');
-await sharp(join(intro, 'ink-landscape-bg.webp')).toFile(out('ink','landscape.webp')).then(i => (total += i.size));
 await conv(join(intro, 'ink-cat.png'), out('ink','cat.webp'), { w: 360, q: 80 });
 await conv(join(intro, 'autumn-courtyard.png'), out('ink','courtyard.webp'), { w: 760, q: 70 });
 await conv(join(intro, 'autumn-desk.png'), out('ink','desk.webp'), { w: 760, q: 70 });
