@@ -1,0 +1,112 @@
+---
+// 안내 고양이 챗봇. 기본: 브라우저에서 포트폴리오 기록(chat-kb.json)을 검색해 근거 있는 답만 한다.
+// ANTHROPIC_API_KEY 가 설정된 배포에서는 /api/chat(LLM)을 먼저 시도하고, 실패하면 로컬 검색으로 자동 전환한다.
+const chips = ['어떤 프로젝트를 했나요?', '권주회 님은 어떤 사람인가요?', 'On-Wear에서 맡은 역할은?', '가장 어려웠던 문제는 뭐였나요?', 'AI는 어떻게 활용했나요?'];
+---
+<div id="cat" class="cat">
+  <button class="cat-btn" type="button" aria-expanded="false" aria-controls="cat-panel" aria-label="안내 고양이에게 권주회에 대해 물어보기">
+    <img src="/img/ink/cat.webp" alt="" width="360" height="300" loading="lazy" decoding="async" />
+    <span class="cat-hint" id="cat-hint">궁금한 게 있나요?</span>
+  </button>
+  <section id="cat-panel" class="cat-panel" role="dialog" aria-label="권주회에 대해 묻고 답하기" hidden>
+    <header><img src="/img/ink/cat.webp" alt="" width="360" height="300" /><div><b>안내 고양이</b><small id="cat-mode">기록에서 찾아 답해요</small></div><button type="button" class="cat-x" aria-label="닫기">✕</button></header>
+    <ol class="cat-log" id="cat-log" aria-live="polite"></ol>
+    <div class="cat-chips" id="cat-chips">{chips.map(c => <button type="button" class="cat-chip">{c}</button>)}</div>
+    <form class="cat-form" id="cat-form"><input id="cat-in" type="text" maxlength="300" autocomplete="off" placeholder="권주회 님에 대해 물어보세요" aria-label="질문 입력" /><button type="submit" aria-label="보내기">↵</button></form>
+    <p class="cat-note">포트폴리오에 실린 기록만 근거로 답해요. 없는 내용은 모른다고 말해요.</p>
+  </section>
+</div>
+<style is:global>
+  .cat { position: fixed; right: 0; bottom: 0; z-index: 30; }
+  .cat-btn { position: fixed; right: clamp(8px, 2vw, 28px); bottom: 8px; width: clamp(78px, 7vw, 108px); padding: 0; border: 0; background: none; cursor: pointer; filter: drop-shadow(0 6px 10px rgba(52, 46, 36, .22)); transition: transform .25s; }
+  .cat-btn:hover { transform: translateY(-3px); } .cat-btn img { width: 100%; height: auto; display: block; opacity: .9; }
+  .cat-hint { position: absolute; right: 58%; bottom: 82%; white-space: nowrap; background: var(--card); border: 1px solid var(--line); border-radius: 10px 10px 2px 10px; padding: .3rem .7rem; font-size: .78rem; color: var(--ink-2); box-shadow: 0 6px 16px -10px rgba(40, 25, 10, .5); }
+  .cat-hint[hidden] { display: none; }
+  .cat-panel { position: fixed; right: clamp(8px, 2vw, 28px); bottom: calc(clamp(78px, 7vw, 108px) * .85 + 16px); width: min(390px, calc(100vw - 16px)); height: min(560px, 72vh); display: flex; flex-direction: column; background: rgba(251, 248, 241, .97); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 24px 60px -24px rgba(40, 25, 10, .55); overflow: hidden; }
+  .cat-panel[hidden] { display: none; }
+  .cat-panel header { display: flex; gap: .7rem; align-items: center; padding: .7rem .9rem; border-bottom: 1px solid var(--line); background: rgba(236, 227, 210, .6); }
+  .cat-panel header img { width: 40px; height: auto; } .cat-panel header div { flex: 1; line-height: 1.3; } .cat-panel header b { font-family: var(--serif); display: block; } .cat-panel header small { color: var(--ink-2); font-size: .74rem; }
+  .cat-x { border: 0; background: none; font-size: 1rem; cursor: pointer; color: var(--ink-2); padding: .4rem; }
+  .cat-log { list-style: none; margin: 0; padding: .9rem; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: .6rem; }
+  .cat-log li { max-width: 88%; padding: .55rem .8rem; border-radius: 10px; font-size: .9rem; line-height: 1.65; white-space: pre-wrap; word-break: keep-all; }
+  .cat-log .bot { align-self: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 10px 10px 10px 2px; }
+  .cat-log .me { align-self: flex-end; background: var(--ink); color: #f6efe2; border-radius: 10px 10px 2px 10px; }
+  .cat-log .sub { display: block; margin-top: .4rem; font-size: .76rem; color: var(--ink-2); }
+  .cat-log a { color: var(--seal); font-weight: 600; }
+  .cat-log .typing { opacity: .6; }
+  .cat-chips[hidden] { display: none; }
+  .cat-chips { display: flex; flex-wrap: wrap; gap: .35rem; padding: 0 .9rem .6rem; }
+  .cat-chip { font: inherit; font-size: .76rem; border: 1px solid var(--line); background: #fff; border-radius: 99px; padding: .25rem .7rem; cursor: pointer; color: var(--ink-2); } .cat-chip:hover { border-color: var(--seal); color: var(--seal); }
+  .cat-form { display: flex; gap: .4rem; padding: .6rem .9rem; border-top: 1px solid var(--line); }
+  .cat-form input { flex: 1; font: inherit; font-size: .9rem; padding: .5rem .7rem; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); min-width: 0; }
+  .cat-form button { font: inherit; width: 42px; border: 0; border-radius: 6px; background: var(--ink); color: #fff; cursor: pointer; } .cat-form button:hover { background: var(--seal); }
+  .cat-note { margin: 0; padding: 0 .9rem .6rem; font-size: .7rem; color: var(--ink-2); }
+  @media (max-width: 560px) { .cat-panel { right: 4px; width: calc(100vw - 8px); height: 74vh; } .cat-hint { display: none; } }
+</style>
+<script>
+  type Chunk = { id: string; type: string; title: string; text: string; url: string; project?: string; projectName?: string; unverified?: boolean };
+  type KB = { aliases: Record<string, string[]>; projects: { slug: string; name: string; kor: string }[]; chunks: Chunk[] };
+  const $ = (s: string) => document.querySelector(s) as HTMLElement;
+  const btn = $('.cat-btn') as HTMLButtonElement, panel = $('#cat-panel'), log = $('#cat-log'), form = $('#cat-form') as HTMLFormElement, input = $('#cat-in') as HTMLInputElement, chips = $('#cat-chips'), modeEl = $('#cat-mode'), hint = $('#cat-hint');
+  let kb: KB | null = null, mode: 'llm' | 'local' = 'llm', busy = false; const history: { role: string; content: string }[] = [];
+  try { if (sessionStorage.getItem('cat-hint') === '1') hint.hidden = true; } catch {}
+  setTimeout(() => { hint.hidden = true; }, 9000);
+
+  const open = (v: boolean) => { panel.hidden = !v; btn.setAttribute('aria-expanded', String(v)); hint.hidden = true; try { sessionStorage.setItem('cat-hint', '1'); } catch {} if (v) { if (!log.children.length) say('bot', '안녕하세요, 저는 권주회 님의 포트폴리오를 안내하는 고양이예요. 프로젝트, 맡은 역할, 해결한 문제, 쓴 기술 같은 걸 물어보세요. 포트폴리오에 실린 기록만 근거로 답해요.'); input.focus(); } else btn.focus(); };
+  btn.addEventListener('click', () => open(panel.hidden));
+  $('.cat-x').addEventListener('click', () => open(false));
+  panel.addEventListener('keydown', e => { if ((e as KeyboardEvent).key === 'Escape') open(false); });
+  chips.addEventListener('click', e => { const t = (e.target as HTMLElement).closest('.cat-chip'); if (t) ask(t.textContent || ''); });
+  form.addEventListener('submit', e => { e.preventDefault(); const v = input.value.trim(); if (v) { input.value = ''; ask(v); } });
+
+  function say(who: 'bot' | 'me', text: string, extra?: { links?: { label: string; url: string }[]; note?: string; cls?: string }) {
+    const li = document.createElement('li'); li.className = who + (extra?.cls ? ' ' + extra.cls : '');
+    // 답변 텍스트는 textContent 로만 넣고, 경로(/projects/..)만 안전하게 링크로 바꾼다
+    const parts = text.split(/(\/projects\/[a-z-]+|\/#[a-z]+)/g);
+    parts.forEach(p => { if (/^\/(projects\/[a-z-]+|#[a-z]+)$/.test(p)) { const a = document.createElement('a'); a.href = p; a.textContent = p; li.append(a); } else li.append(document.createTextNode(p)); });
+    if (extra?.links?.length) { const s = document.createElement('span'); s.className = 'sub'; s.append('더 보기: '); extra.links.forEach((l, i) => { const a = document.createElement('a'); a.href = l.url; a.textContent = l.label; if (i) s.append(' · '); s.append(a); }); li.append(s); }
+    if (extra?.note) { const s = document.createElement('span'); s.className = 'sub'; s.textContent = extra.note; li.append(s); }
+    log.append(li); log.scrollTop = log.scrollHeight; return li;
+  }
+
+  async function ask(q: string) {
+    if (busy) return; busy = true; chips.hidden = true; say('me', q); history.push({ role: 'user', content: q });
+    const wait = say('bot', '기록을 찾아보는 중…', { cls: 'typing' });
+    let reply: { text: string; links?: { label: string; url: string }[]; note?: string } | null = null;
+    if (mode === 'llm') {
+      try {
+        const r = await fetch('/api/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ messages: history.slice(-8) }) });
+        if (r.ok) { const j = await r.json(); if (j.reply) { reply = { text: j.reply }; modeEl.textContent = 'AI가 기록을 바탕으로 답해요'; } } else if (r.status === 429) reply = { text: '질문이 너무 빨리 들어왔어요. 잠시 뒤에 다시 물어봐 주세요.' }; else mode = 'local';
+      } catch { mode = 'local'; }
+    }
+    if (!reply) { if (!kb) { try { kb = await (await fetch('/chat-kb.json')).json(); } catch {} } reply = kb ? localAnswer(q, kb) : { text: '지금은 기록을 불러오지 못했어요. 잠시 뒤에 다시 시도해 주세요.' }; modeEl.textContent = '기록에서 찾아 답해요'; }
+    wait.remove(); say('bot', reply.text, { links: reply.links, note: reply.note }); history.push({ role: 'assistant', content: reply.text }); busy = false;
+  }
+
+  // ── 로컬 검색 모드: 질문에서 프로젝트·의도를 찾아 기록 조각을 그대로 보여준다 (생성·추측 없음) ──
+  const INTENTS: [string, RegExp][] = [
+    ['trouble', /문제|트러블|어려|힘들|버그|해결|이슈|오류|막혔|고쳤/], ['role', /역할|맡|담당|뭐\s*했|무엇을\s*했|기여|직접|구현한/], ['stack', /기술|스택|사용|썼|툴|도구|라이브러리|프레임워크|구조|아키텍처/],
+    ['gap', /한계|아쉬|부족|미완|개선|향후/], ['learn', /배운|느낀|회고|성장|깨달/], ['goal', /왜|목적|목표|배경|필요/], ['result', /결과|성과|완성|기능|구현됐|구현된/], ['demo', /데모|체험|눌러|시연|화면/], ['overview', /소개|개요|무슨|뭐예요|뭔가요|설명|어떤\s*프로젝트/],
+  ];
+  const norm = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}&\-\s]/gu, ' ');
+  function findProject(q: string, kb: KB) { const n = norm(q); let best: string | null = null, len = 0; for (const [slug, al] of Object.entries(kb.aliases)) for (const a of al) if (n.includes(a.toLowerCase()) && a.length > len) { best = slug; len = a.length; } return best; }
+  const pick = (kb: KB, ids: string[]) => ids.map(id => kb.chunks.find(c => c.id === id)).filter(Boolean) as Chunk[];
+  const fmt = (cs: Chunk[]) => ({ text: cs.map(c => c.text).join('\n\n'), links: [...new Map(cs.map(c => [c.url, { label: c.url.startsWith('/projects') ? (c.projectName || '자세히') : '소개', url: c.url }])).values()], note: cs.some(c => c.unverified) ? '※ 아직 정리 중인 내용이라 확정 전일 수 있어요.' : undefined });
+  function localAnswer(q: string, kb: KB) {
+    const n = norm(q), proj = findProject(q, kb), intent = INTENTS.find(([, re]) => re.test(q))?.[0];
+    if (!proj) {
+      if (/연락|이메일|메일|깃허브|github|링크|전화/.test(n)) return fmt(pick(kb, ['profile-contact']));
+      if (/\bai\b|바이브|llm|에이전트|챗gpt|chatgpt|codex|클로드|claude/.test(n)) return fmt(pick(kb, ['profile-ai']));
+      if (/누구|전공|학력|강점|장점|성격|일하는|어떤\s*사람|지원|직무|사람/.test(n)) return fmt(pick(kb, ['profile-intro', 'profile-strength']));
+      if (/프로젝트|경험|포트폴리오|뭐\s*했|무슨\s*일|뭘\s*했/.test(n) && (!intent || intent === 'overview' || intent === 'role')) { const list = kb.projects.map(p => `· ${p.name} — ${p.kor}`).join('\n'); return { text: `지금 소개된 프로젝트는 ${kb.projects.length}개예요.\n${list}\n\n궁금한 프로젝트 이름을 넣어 물어보세요. 예: “On-Wear에서 맡은 역할은?”`, links: [{ label: '프로젝트 목록', url: '/#projects' }] }; }
+      if (intent === 'trouble') { const ts = kb.chunks.filter(c => c.type === 'trouble' && !c.unverified).slice(0, 3); if (ts.length) return { text: '확정된 해결 사례를 먼저 소개할게요.\n\n' + ts.map(c => `· ${c.title}\n${c.text}`).join('\n\n'), links: ts.map(c => ({ label: c.projectName || '', url: c.url })) }; }
+    }
+    if (proj) { const map: Record<string, string[]> = { trouble: ['trouble'], role: ['role'], stack: ['stack'], gap: ['gap'], learn: ['learn'], goal: ['goal'], result: ['result'], demo: ['demo'], overview: ['overview'] }; const types = map[intent || 'overview'] || ['overview'];
+      let cs = kb.chunks.filter(c => c.project === proj && types.includes(c.type)); if (!cs.length) cs = pick(kb, [`${proj}-overview`]); if (!intent) cs = pick(kb, [`${proj}-overview`, `${proj}-role`]); return fmt(cs.slice(0, 3)); }
+    // 키워드 겹침 점수
+    const toks = [...new Set(n.split(/\s+/).filter(t => t.length >= 2))]; let best: Chunk | null = null, bs = 0;
+    for (const c of kb.chunks) { const hay = norm(c.title + ' ' + c.text); let s = 0; for (const t of toks) if (hay.includes(t)) s += t.length >= 3 ? 2 : 1; if (s > bs) { bs = s; best = c; } }
+    if (best && bs >= 3) return fmt([best]);
+    return { text: '그건 제가 가진 기록에서 찾지 못했어요. 프로젝트 이름(예: 한페이지, FocusMate, On-Wear, DALTOORI)과 함께 “맡은 역할”, “해결한 문제”, “쓴 기술”처럼 물어보시면 잘 찾아요. 그 밖의 내용은 GitHub(https://github.com/rnjswnghl)에서 확인하거나 직접 문의해 주세요.' };
+  }
+</script>
