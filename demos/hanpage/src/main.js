@@ -1,14 +1,14 @@
 import '@/mock/install'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
 
 import api from '@/utils/api'  // ★ api 인스턴스 가져오기
-import { safeStorage } from '@/utils/storage'
 
-// iframe에서 localStorage 접근 시도 (에러 처리)
-const accessToken = safeStorage.getItem('accessToken')
+const accessToken = localStorage.getItem('accessToken')
 if (accessToken) {
   api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
 }
@@ -23,3 +23,5 @@ app.use(router)
 app.use(Toast)
 
 app.mount('#app')
+
+import('bootstrap/dist/js/bootstrap.bundle.min.js')

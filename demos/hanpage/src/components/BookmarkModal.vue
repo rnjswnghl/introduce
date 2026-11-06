@@ -100,7 +100,6 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import axios from 'axios'
-import { safeStorage } from '@/utils/storage'
 
 const props = defineProps({
   show: Boolean,
@@ -116,26 +115,11 @@ const editFolderName = ref('')
 const currentFolder = ref(null)
 const showEditFolderModal = ref(false)
 
-// 모달이 열려있는 동안 배경 스크롤 잠금 (중첩 모달 포함)
-watch(
-  () => props.show || showEditFolderModal.value,
-  (visible) => {
-    if (visible) {
-      document.body.style.overflow = 'hidden'
-      document.documentElement.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-      document.documentElement.style.overflow = ''
-    }
-  },
-  { immediate: true },
-)
-
 const fetchFolders = async () => {
   try {
     const { data } = await axios.get('/api/books/folders/', {
       headers: {
-        Authorization: `Bearer ${safeStorage.getItem('accessToken')}`
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
       }
     })
     folders.value = data
@@ -156,7 +140,7 @@ const createFolder = async () => {
       name: newFolderName.value
     }, {
       headers: {
-        Authorization: `Bearer ${safeStorage.getItem('accessToken')}`
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
       }
     })
     folders.value.push(data)
@@ -182,7 +166,7 @@ const updateFolder = async () => {
       name: editFolderName.value
     }, {
       headers: {
-        Authorization: `Bearer ${safeStorage.getItem('accessToken')}`
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
       }
     })
     const index = folders.value.findIndex(f => f.id === currentFolder.value.id)
@@ -207,7 +191,7 @@ const deleteFolder = async (folder) => {
   try {
     await axios.delete(`/api/books/folders/${folder.id}/`, {
       headers: {
-        Authorization: `Bearer ${safeStorage.getItem('accessToken')}`
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
       }
     })
     folders.value = folders.value.filter(f => f.id !== folder.id)
@@ -229,7 +213,7 @@ const saveBookmark = async () => {
       folder_id: selectedFolderId.value
     }, {
       headers: {
-        Authorization: `Bearer ${safeStorage.getItem('accessToken')}`
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
       }
     })
     emit('saved')

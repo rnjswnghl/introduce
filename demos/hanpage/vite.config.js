@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/demos/hanpage/', // 포트폴리오에서 iframe으로 로드할 때 올바른 경로
+  base: '/demos/hanpage/',
   plugins: [
     vue(),
   ],

@@ -63,7 +63,7 @@ table.cmp { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top
 .arch .node b { display: block; font-family: var(--serif); font-size: 1.05rem; } .arch .node span { font-size: .85rem; color: var(--ink-2); }
 .arch .arr { text-align: center; color: var(--seal); line-height: 1.5; font-size: 1.1rem; }
 .archwrap { display: grid; grid-template-columns: minmax(0, 640px) 1fr; gap: 2rem; align-items: start; } @media (max-width: 900px) { .archwrap { grid-template-columns: 1fr; } }
-.why { width: 100%; border-collapse: collapse; font-size: .92rem; } .why td { padding: .6rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; } .why td:first-child { font-weight: 700; white-space: nowrap; padding-right: 1rem; }
+.why { width: 100%; border-collapse: collapse; font-size: .92rem; } .why td { padding: .6rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; } .why td:first-child { font-weight: 700; width: 10.5rem; padding-right: 1rem; }
 .who { display: grid; grid-template-columns: 1fr 1.25fr; gap: 1rem; } @media (max-width: 760px) { .who { grid-template-columns: 1fr; } }
 .who > div { padding: 1.1rem 1.25rem; } .who .me { border-color: var(--seal); background: rgba(255, 250, 242, .92); }
 .who h4 { font-size: .95rem; margin-bottom: .6rem; display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
