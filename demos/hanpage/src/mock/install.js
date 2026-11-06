@@ -116,6 +116,8 @@ axios.defaults.adapter = config => {
   const url = full.replace(/^https?:\/\/[^/]+/, '').replace(/^\/?api\//, '').replace(/^\//, '').split('?')[0]
   const q = { ...(config.params || {}) }; const ix = full.indexOf('?'); if (ix > 0) new URLSearchParams(full.slice(ix)).forEach((v, k) => (q[k] = v))
   let body = {}; try { body = typeof config.data === 'string' ? JSON.parse(config.data) : (config.data instanceof FormData ? Object.fromEntries(config.data) : config.data || {}) } catch (e) {}
-  const d = route((config.method || 'get').toLowerCase(), url, q, body)
+  const raw = route((config.method || 'get').toLowerCase(), url, q, body)
+  // 실제 서버처럼 매번 새 응답 객체를 돌려준다(같은 배열을 돌려주면 Vue가 변경을 감지하지 못해 화면이 갱신되지 않는다)
+  const d = raw && typeof raw === 'object' ? structuredClone(raw) : raw
   return Promise.resolve(ok(config, d, d === null ? 204 : (config.method || 'get') === 'post' ? 201 : 200))
 }
