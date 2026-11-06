@@ -2,7 +2,7 @@
 .pgroup { margin-top: 2.4rem; }
 .pgroup h3 { font-size: 1.1rem; color: var(--ink-2); display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem; }
 .pgroup h3::after { content: ''; flex: 1; height: 1px; background: var(--line); }
-.cards { align-items: start; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.2rem; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.2rem; }
 .card { display: flex; flex-direction: column; text-decoration: none; overflow: hidden; transition: transform .25s, box-shadow .25s; color: inherit; }
 .card:hover { transform: translateY(-3px); color: inherit; box-shadow: 0 14px 30px -18px rgba(60, 40, 20, .5); }
 .card .cv { aspect-ratio: 16/10; background: var(--paper-2); position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
@@ -87,3 +87,7 @@ table.cmp { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top
 @media (max-width: 640px) { .tl li { grid-template-columns: 1fr; gap: .2rem; } .vals2 div { grid-template-columns: 1fr; gap: 0; } }
 .subh { font-size: 1.1rem; margin: 1.2rem 0 .6rem; }
 .peers { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: .9rem 2rem; margin: .4rem 0 1.6rem; } .peers div { display: grid; gap: .15rem; padding: .7rem 0 .7rem 1rem; border-left: 2px solid var(--seal); } .peers b { font-family: var(--serif); font-size: 1.05rem; } .peers span { font-size: .9rem; color: var(--ink-2); line-height: 1.65; }
+
+.card { position: relative; } .card h4 a.stretch { color: inherit; text-decoration: none; } .card h4 a.stretch::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+.card .site { position: relative; z-index: 2; font-size: .8rem; line-height: 1; padding: .38rem .7rem; border: 1px solid var(--seal); border-radius: 999px; color: var(--seal); text-decoration: none; background: transparent; } .card .site:hover { background: var(--seal); color: #fdfaf3; }
+.card .per { margin: 0; font-size: .85rem; color: var(--ink-2); }
