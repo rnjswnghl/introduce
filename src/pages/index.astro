@@ -8,8 +8,7 @@ const link = (s: string) => `/projects/${s}`;
 const can = [
   { t: '검색·필터·상태 흐름을 끝까지 맞춥니다', d: '정렬·가격·브랜드 필터를 바꾸면 결과와 적용 칩이 어긋나던 문제, 찜 요청 중복 호출과 모달-목록 상태 불일치를 고쳤습니다.', p: 'on-wear', pn: 'On-Wear' },
   { t: '권한·인증 흐름을 설계하고 복구합니다', d: '방장/팀원 권한별 라우팅 404와 세션 API 타입 오류를 정리했고, 인증 토큰 오류로 막힌 추천 기능과 병합 충돌로 끊긴 연결을 다시 이었습니다.', p: 'focusmate', pn: 'FocusMate' },
-  { t: '서버가 없어도 먼저 움직이는 화면을 만듭니다', d: 'API 명세 전에도 같은 형태의 더미 데이터로 화면과 시나리오를 검증하는 MOCK 모드와 가이드를 만들어 백엔드와 병렬로 일했습니다.', p: 'focusmate', pn: 'FocusMate' },
-  { t: 'AI가 쓴 코드를 믿지 않고 확인합니다', d: '생성된 코드의 보안 점검(DALTOORI), 시연용 가짜 데이터와 실제 상태 분리(LLM Gateway), “네트워크 전송 없음” 검증 기준(Cut&Note)을 직접 세웠습니다.', p: 'llm-gateway', pn: 'LLM Gateway' },
+  { t: 'AI가 쓴 코드를 믿지 않고 확인합니다', d: '생성된 코드의 보안 점검(DALTOORI), 콘솔을 서버의 실제 상태 기준으로 정리(LLM Gateway), “네트워크 전송 없음” 검증 기준(Cut&Note)을 직접 세웠습니다.', p: 'llm-gateway', pn: 'LLM Gateway' },
 ];
 const uses = [
   { t: 'Vue 3 · Pinia · TypeScript', d: '여러 화면이 공유하는 로그인·스터디 상태를 스토어로 모으고, 방장/팀원 권한 분기를 라우터에서 처리했습니다.', p: 'focusmate' },

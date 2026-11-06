@@ -5,7 +5,7 @@
 ## 구조
 - `src/` Astro 사이트 (홈, 프로젝트 상세 10개, 성능 기록)
 - `src/data/projects.ts` 모든 프로젝트 콘텐츠·수치(출처 포함). `draft: true` = 검수 전 초안
-- `demos/` 원본 프로젝트 프론트 소스(한페이지·FocusMate·On-Wear·DALTOORI). 화면 코드는 원본 그대로, 서버 자리에만 목업을 연결
+- `demos/` 원본 프로젝트 프론트 소스(한페이지·FocusMate·On-Wear·DALTOORI). 화면 코드는 원본 그대로
 - `public/demos/` 위 데모의 빌드 결과(정적). 배포는 이 폴더를 그대로 사용
 - `scripts/` (배경 모션은 FlowingSky 셰이더), 이미지/데모 에셋 최적화, 성능 측정
 - `docs/TOOLS.md` 사용한 오픈소스·스킬
