@@ -20,7 +20,7 @@ body {
   font-family: var(--font-main);
   line-height: 1.6;
   color: #333;
-  background-color: #e9e4d8;
+  background-color: #dde3dc;
 }
 
 h1, h2, h3, h4, h5, h6 {
