@@ -123,9 +123,7 @@ const nextRandomPage = () => {
 
 <style scoped>
 .recommendations-container {
-  background: #1f1f1f;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
-  border-radius: 12px;
+  background: transparent;
   padding: 1.5rem 1rem !important;
 }
 
@@ -133,7 +131,7 @@ const nextRandomPage = () => {
   width: 1px;
   flex: none;
   padding: 0 !important; /* .row > * 의 기본 좌우 여백이 선을 두껍게 만든다 */
-  background: rgba(246, 241, 225, 0.18);
+  background: rgba(95, 122, 105, 0.35);
   margin: 0 4px;
   height: 200px;
   border-radius: 1px;

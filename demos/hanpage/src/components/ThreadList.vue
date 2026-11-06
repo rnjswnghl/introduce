@@ -44,7 +44,7 @@ watch(
 
 <template>
   <div class="thread-list-container">
-    <div class="thread-list-header">
+    <div v-if="bookId == null" class="thread-list-header">
       <h3 class="thread-list-title">
         {{ userId ? '내가 쓴 쓰레드' : '전체 쓰레드 목록' }}
       </h3>
@@ -101,17 +101,12 @@ watch(
 
 .empty-state {
   text-align: center;
-  padding: 2.5rem 1rem;
+  padding: 1.5rem 1rem;
   color: #5b6760;
-  background: rgba(95, 122, 105, 0.08);
-  border: 1.5px dashed rgba(95, 122, 105, 0.5);
-  border-radius: 10px;
 }
 
 .empty-state i {
-  font-size: 2.2rem;
-  margin-bottom: 0.8rem;
-  color: #5f7a69;
+  display: none;
 }
 
 .empty-state p {
