@@ -150,7 +150,7 @@ async function submitSignup() {
   align-items: start;
   min-height: 100vh;
   padding-top: 4rem;
-  background-color: #f9f9f9;
+  background-color: transparent;
   box-sizing: border-box;
 }
 
