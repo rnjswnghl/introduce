@@ -50,6 +50,7 @@
     gap: 1rem;
     align-items: center;
     font-weight: 600;
+    margin-top: 0.9rem;
   }
   label {
     cursor: pointer;
@@ -61,5 +62,6 @@
     margin-right: 0.3rem;
     cursor: pointer;
   }
-  </style>
+  input[type='radio'] { accent-color: #5f7a69; }
+</style>
   

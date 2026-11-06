@@ -464,9 +464,12 @@ watch(
 }
 
 .mypage-header h2 {
-  font-size: 2rem;
-  color: #333;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2f3a33;
   margin: 0;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid #5f7a69;
 }
 
 .mypage-content {
@@ -531,6 +534,10 @@ watch(
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .mypage-nav button {
@@ -540,11 +547,14 @@ watch(
   background: none;
   border: none;
   border-radius: 8px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   cursor: pointer;
   transition: all 0.3s;
-  color: #666;
+  color: #555;
 }
+
+.mypage-nav button:focus { outline: none; }
+.mypage-nav button:focus-visible { outline: 2px solid #5f7a69; outline-offset: -2px; }
 
 .mypage-nav button:hover {
   background: #f0f0f0;
@@ -847,10 +857,7 @@ watch(
   border-radius: 50%;
 }
 .profile-edit-tab {
-  display: flex;
-  justify-content: center; /* 수평 중앙 정렬 */
-  align-items: center;     /* 수직 중앙 정렬 (옵션) */
-  padding: 2rem;
+  padding: 0.5rem;
 }
 
 
