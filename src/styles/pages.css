@@ -17,19 +17,7 @@
 .card .key { font-size: .85rem; color: var(--seal); font-weight: 600; margin: 0; }
 
 /* 소개 */
-.about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: start; }
-@media (max-width: 800px) { .about { grid-template-columns: 1fr; } }
-.polas { position: relative; height: 380px; }
-.pola { position: absolute; width: 62%; background: #faf7f0; padding: 10px 10px 34px; box-shadow: 0 10px 26px -12px rgba(50, 30, 10, .5); }
-.pola img { aspect-ratio: 1/1; object-fit: cover; width: 100%; }
-.pola span { position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; font: .78rem var(--serif); color: var(--ink-2); }
-.pola.a { left: 0; top: 0; transform: rotate(-5deg); } .pola.b { right: 0; bottom: 0; transform: rotate(6deg); }
-@media (prefers-reduced-motion: no-preference) { .pola.a { animation: bob 11s ease-in-out infinite; } .pola.b { animation: bob 13s ease-in-out infinite reverse; } .paused .pola { animation-play-state: paused; } }
-@keyframes bob { 50% { transform: translateY(-5px) rotate(-3deg); } }
-.vals { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-top: 2rem; }
-.val { padding: 1.1rem 1.2rem; } .val .n { font: .8rem var(--serif); color: var(--seal); } .val h4 { margin: .2rem 0 .4rem; font-size: 1.15rem; }
-.val p { font-size: .9rem; color: var(--ink-2); margin: 0 0 .6rem; } .val a { font-size: .85rem; font-weight: 600; }
-
+.about { max-width: 760px; }
 /* 기술 */
 .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
 .skill { padding: 1.1rem 1.2rem; } .skill h4 { font-size: 1.05rem; margin-bottom: .7rem; } .skill .tags { display: flex; flex-wrap: wrap; gap: .35rem; }

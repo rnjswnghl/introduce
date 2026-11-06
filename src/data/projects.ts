@@ -100,7 +100,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'daltoori', no: '肆', name: 'DALTOORI', kor: '한국어 발음·억양 분석 학습 앱', group: 'ssafy', kind: 'team', teamSize: 5,
-    period: '2025.10.30 — 11.24', role: 'AI 서버(FastAPI) — 음성 평가·TTS·즉시 피드백 API (LLM과 함께 개발)', roleShort: 'Backend · AI', tagline: '말하면 바로 알려주는 발음 코치', accent: '#d08a3c', cover: 'daltoori',
+    period: '2025.10.30 — 11.24', role: 'AI 서버(FastAPI) — 음성 평가·TTS·즉시 피드백 API (LLM과 함께 개발)', roleShort: 'Backend · AI', tagline: '말하면 바로 알려주는 발음 코치', accent: '#d08a3c', cover: 'daltoori-learn',
     summary: '한국어 발음과 억양을 분석해 학습자에게 즉시 피드백을 주는 모바일 서비스입니다. 저는 AI 서버 쪽에서 음성 평가·참조음 생성·피드백 API를 FastAPI로 구현했고, 이 영역은 여러 LLM과 협업하며 개발했습니다.',
     goal: { problem: '외국인 한국어 학습자는 자기 발음이 어디가 틀렸는지 스스로 알기 어렵고, 교정은 사람 선생님에게 의존합니다.', goal: '학습자가 문장을 읽으면 표준 발음(참조음)과 비교한 음절별 평가와 억양 피드백을 바로 돌려주는 것.' },
     stack: [

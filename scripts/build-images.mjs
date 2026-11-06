@@ -46,10 +46,4 @@ for (const f of readdirSync(cl).sort()) { await conv(join(cl, f), out('demo','on
 await conv(join(old, 'project3/public/images/meeting.png'), out('demo','focusmate','meeting.webp'), { w: 720 });
 await conv(join(old, 'project3/public/images/FMlogo.png'), out('demo','focusmate','logo.webp'), { w: 160 });
 
-// 3) 수묵 장식 (introme)
-const intro = join(SRC, 'introme/dist/assets');
-await conv(join(intro, 'ink-cat.png'), out('ink','cat.webp'), { w: 360, q: 80 });
-await conv(join(intro, 'autumn-courtyard.png'), out('ink','courtyard.webp'), { w: 760, q: 70 });
-await conv(join(intro, 'autumn-desk.png'), out('ink','desk.webp'), { w: 760, q: 70 });
-
 console.log('done, total', (total / 1024).toFixed(0), 'KB');

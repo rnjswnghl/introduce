@@ -7,7 +7,7 @@
 - `src/data/projects.ts` 모든 프로젝트 콘텐츠·수치(출처 포함). `draft: true` = 검수 전 초안
 - `demos/` 원본 프로젝트 프론트 소스(한페이지·FocusMate·On-Wear·DALTOORI). 화면 코드는 원본 그대로, 서버 자리에만 목업을 연결
 - `public/demos/` 위 데모의 빌드 결과(정적). 배포는 이 폴더를 그대로 사용
-- `scripts/` 산수(build-shanshui)·서운문 구름(build-xiangyun) 생성, 이미지/데모 에셋 최적화, 성능 측정
+- `scripts/` 안개(build-mist) 생성, 이미지/데모 에셋 최적화, 성능 측정
 - `docs/TOOLS.md` 사용한 오픈소스·스킬
 
 ## 실행
