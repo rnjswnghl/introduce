@@ -82,12 +82,14 @@ const submitForm = async () => {
 input,
 textarea {
   width: 100%;
-  padding: 0.5rem;
-  background-color: #2c2c2c;
+  padding: 0.55rem 0.7rem;
+  background-color: #1f1f1f;
   color: #eee;
-  border: 1px solid #555;
-  border-radius: 6px;
+  border: 1px solid #4a4a4a;
+  border-radius: 8px;
 }
+input:focus,
+textarea:focus { outline: none; border-color: #7f9c8b; box-shadow: 0 0 0 3px rgba(95, 122, 105, 0.3); }
 
 textarea {
   resize: vertical;
@@ -97,10 +99,10 @@ button {
   align-self: flex-start;
   position: relative;
   padding: 0.6rem 1.2rem;
-  background-color: #4caf50;
-  color: white;
+  background-color: #5f7a69;
+  color: #f6f1e1;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -113,7 +115,7 @@ button:disabled {
 }
 
 button:hover:enabled {
-  background-color: #45a049;
+  background-color: #4d6556;
 }
 
 /* 로딩 스피너 스타일 */
@@ -121,7 +123,7 @@ button:hover:enabled {
   width: 16px;
   height: 16px;
   border: 2px solid #eee;
-  border-top: 2px solid #4caf50;
+  border-top: 2px solid #5f7a69;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }

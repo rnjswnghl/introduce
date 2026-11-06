@@ -160,9 +160,9 @@ async function submitSignup() {
   gap: 1rem;
   width: 360px;
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 12px;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .signup-form input,
@@ -170,7 +170,7 @@ async function submitSignup() {
   height: 40px;
   font-size: 16px;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #cbd3cd;
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
@@ -193,7 +193,7 @@ async function submitSignup() {
   height: 40px;
   font-size: 16px;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #cbd3cd;
   border-radius: 4px;
   box-sizing: border-box;
   font-family: inherit;
@@ -217,17 +217,17 @@ async function submitSignup() {
 .signup-form button {
   height: 44px;
   font-size: 18px;
-  background-color: #d4a373;
+  background-color: #5f7a69;
   border: none;
   border-radius: 6px;
-  color: white;
+  color: #f6f1e1;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .signup-form button:hover {
-  background-color: #b17a4a;
+  background-color: #4d6556;
 }
 
 .name {
@@ -240,4 +240,7 @@ async function submitSignup() {
   margin-top: 0;
   margin-bottom: 5px;
 }
+input[type='radio'], input[type='checkbox'] { accent-color: #5f7a69; }
+.signup-form input[type='radio'], .signup-form input[type='checkbox'] { width: 18px; height: 18px; padding: 0; margin: 0; }
+.signup-form input:focus, .signup-form select:focus { outline: none; border-color: #5f7a69; box-shadow: 0 0 0 3px rgba(95, 122, 105, 0.2); }
 </style>
