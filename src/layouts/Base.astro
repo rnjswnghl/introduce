@@ -32,6 +32,7 @@ const links = [['/#about', '프로필'], ['/#skills', '기술'], ['/#projects', 
   </div></footer>
   <CatChat />
   <script is:inline>
+    (function(){var r=document.documentElement,t=0;function u(){t=0;var h=Math.max(innerHeight*.7,1);r.style.setProperty('--veil',Math.min(Math.max(scrollY/h,0),1).toFixed(3))}addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(u)},{passive:true});u()})();
     (function(){var b=document.getElementById('motion'),r=document.documentElement;
     function s(){var p=r.classList.contains('paused');b.setAttribute('aria-pressed',p);b.textContent=p?'움직임 다시 켜기':'움직임 멈추기'}
     b.addEventListener('click',function(){r.classList.toggle('paused');try{localStorage.setItem('motion',r.classList.contains('paused')?'off':'on')}catch(e){}s()});s();})();

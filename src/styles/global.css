@@ -79,7 +79,6 @@ footer.foot { padding: 3rem 0 4rem; color: var(--ink-2); font-size: .88rem; }
 
 /* 영역 구분: 히어로가 첫 화면을 채우고, 이후 영역은 배경 위에 그대로 이어진다(선, 띠 없음) */
 main > hr.rule { display: none; }
-/* 글자 뒤는 가장자리가 번지는 옅은 안개색 막으로 받쳐 읽기 쉽게 한다(블러 없음) */
-main > section:not(.hero) :is(.h2, .eyebrow, .lead, .legend, .about > p, .about .subh, .about .vals2, .tl .when, .tl li > div) { text-shadow: none; width: fit-content; max-width: 100%; padding: .1rem .8rem; margin-left: -.8rem; border-radius: 24px; background: rgba(247, 243, 235, .5); box-shadow: 0 0 20px 14px rgba(247, 243, 235, .5); }
-main > section:not(.hero) .about > p { max-width: 760px !important; } main > section:not(.hero) .lead { max-width: 62ch !important; }
-main > section:not(.hero) .pgroup > h3 { text-shadow: none; }
+/* 글자 뒤 배경: 영역을 따로 가리지 않고, 히어로를 지나면 배경 전체가 고르게 흐려진다(스크롤 비율에 따라 부드럽게, 블러 정도는 이전 버전과 같다) */
+.sky::after { content: ''; position: absolute; inset: 0; background: rgba(247, 243, 235, calc(var(--veil, 0) * .3)); -webkit-backdrop-filter: blur(calc(var(--veil, 0) * 5px)); backdrop-filter: blur(calc(var(--veil, 0) * 5px)); pointer-events: none; }
+main > section:not(.hero) :is(.h2, .eyebrow, .lead, .legend, .about > p, .about .subh, .about .vals2, .tl .when, .tl li > div, .pgroup > h3) { text-shadow: none; }
