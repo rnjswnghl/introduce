@@ -18,7 +18,7 @@
 .card .key { font-size: .85rem; color: var(--seal); font-weight: 600; margin: 0; }
 
 /* 소개 */
-.about { max-width: 760px; }
+.about > p, .about > ul, .about > dl, .about > div { max-width: 760px; }
 /* 기술 */
 .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
 .skill { padding: 1.1rem 1.2rem; } .skill h4 { font-size: 1.05rem; margin-bottom: .7rem; } .skill .tags { display: flex; flex-wrap: wrap; gap: .35rem; }
@@ -72,7 +72,7 @@ table.cmp { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top
 /* 프로필, 기술, 이력 */
 .now { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin: 1.6rem 0 1rem; max-width: none; }
 .now .panel { padding: 1rem 1.15rem; } .now h4 { font-size: 1rem; margin-bottom: .35rem; display: flex; gap: .5rem; align-items: baseline; flex-wrap: wrap; } .now p { margin: 0; font-size: .92rem; color: var(--ink-2); }
-.about { max-width: 1000px; } .about > p { max-width: 70ch; }
+
 .vals2 { display: grid; gap: .45rem; margin-top: .8rem; font-size: .93rem; } .vals2 div { display: grid; grid-template-columns: 5.2rem 1fr; gap: .8rem; } .vals2 b { font-family: var(--serif); color: var(--seal); } .vals2 span { color: var(--ink-2); }
 .legend { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; font-size: .82rem; color: var(--ink-2); margin: 0 0 1.2rem; } .legend span { display: inline-flex; align-items: center; gap: .5rem; }
 .dots { display: inline-block; width: 40px; height: 6px; flex: none; background: linear-gradient(90deg, var(--seal) 0 11px, transparent 11px 14px, var(--seal) 14px 25px, transparent 25px 28px, var(--seal) 28px 40px); -webkit-mask: linear-gradient(90deg, #000 var(--on), rgba(0,0,0,.22) var(--on)); mask: linear-gradient(90deg, #000 var(--on), rgba(0,0,0,.22) var(--on)); }
