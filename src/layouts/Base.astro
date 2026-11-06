@@ -4,7 +4,7 @@ import CatChat from '../components/CatChat.astro';
 import Lantern from '../components/Lantern.astro';
 import FlowingSky from '../components/FlowingSky.astro';
 interface Props { title?: string; desc?: string; nav?: string }
-const { title = '권주회 · 프론트엔드 포트폴리오', desc = '사용자의 흐름을 끝까지 다듬는 프론트엔드 개발자 권주회의 작업 기록', nav = '' } = Astro.props;
+const { title = '권주회 · 포트폴리오', desc = '사용자의 흐름을 끝까지 다듬는 개발자 권주회의 작업 기록', nav = '' } = Astro.props;
 const links = [['/#about', '소개'], ['/#projects', '프로젝트'], ['/#skills', '기술 활용'], ['/#contact', '연락']];
 ---
 <!doctype html>
@@ -13,7 +13,7 @@ const links = [['/#about', '소개'], ['/#projects', '프로젝트'], ['/#skills
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{title}</title><meta name="description" content={desc} />
   <meta property="og:title" content={title} /><meta property="og:description" content={desc} /><meta name="theme-color" content="#f4efe5" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 74'%3E%3Cg transform='rotate(5 30 30)' stroke='%238e3a2a' stroke-linecap='round' stroke-linejoin='round' stroke-width='3.2'%3E%3Cpath d='M29 1.5h8M33 1.5V8' fill='none'/%3E%3Cpath d='M42 15L50 10.5V42L42 46.5Z' fill='%23e7ddcd'/%3E%3Cpath d='M17.5 15L26 10.5H50L42 15Z' fill='%23f1e9db'/%3E%3Cpath d='M17.5 15H42V46.5H17.5Z' fill='%23faf6ee'/%3E%3Cpath d='M25.5 15V46.5M34 15V46.5' fill='none' stroke-width='1.6' opacity='.55'/%3E%3Cpath d='M25 47.500c-.5 4-3.500 7-7 9.500M30 47.500c0 5-2 9-6 13M35 47.500c1 4-.5 7-3.500 10' fill='none' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 86'%3E%3Cg transform='rotate(4 36 32)' stroke='%238e3a2a' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'%3E%3Ccircle cx='36' cy='3.2' r='1.8' fill='none'/%3E%3Cpath d='M36 5V10' fill='none'/%3E%3Cpath d='M19.5 18C19.5 12 27 9.5 36 9.5S52.5 12 52.5 18Q36 20.5 19.5 18Z' fill='%23efe6d6'/%3E%3Cpath d='M22 18.5C19.5 28 19.5 39 22.5 48.5Q23.5 51.5 27 51.5H45Q48.5 51.5 49.5 48.5C52.5 39 52.5 28 50 18.5Q36 21 22 18.5Z' fill='%23faf6ee'/%3E%3Cpath d='M25 51.5Q36 54 47 51.5V54Q47 57 44 57H28Q25 57 25 54Z' fill='%23efe6d6'/%3E%3Cg fill='none' stroke-width='2.4'%3E%3Cpath d='M29.5 58C23 63 30 69 20 79M33 59C29 66 36 73 30 84M37 59.5C40 66 35 73 39 84.5M41 58.5C47 63 41 69 51 79'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E" />
   <script is:inline>try{if(localStorage.getItem('motion')==='off')document.documentElement.classList.add('paused')}catch(e){}</script>
 </head>
 <body>
@@ -27,7 +27,7 @@ const links = [['/#about', '소개'], ['/#projects', '프로젝트'], ['/#skills
   </div></header>
   <main id="main"><slot /></main>
   <footer class="foot"><div class="wrap">
-    <p>© 2026 권주회 · 프론트엔드 개발자 포트폴리오</p>
+    <p>© 2026 권주회 · 포트폴리오</p>
     
   </div></footer>
   <CatChat />
