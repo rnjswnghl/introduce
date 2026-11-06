@@ -23,13 +23,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import lib from '@/assets/lib.jpg'
 import BestSeller from '@/components/BestSeller.vue'
 import CategoryCards from '@/components/CategoryCards.vue'
 import ThreadListMini from '@/components/ThreadListMini.vue'
 
 const bestSeller = ref(null)
+
+// 히어로가 첫 화면(상단 메뉴 제외)을 꽉 채우도록 메뉴 높이를 CSS 변수로 알려준다(좁은 화면은 메뉴가 줄바꿈되어 높이가 달라짐)
+const setNavH = () => {
+  const nav = document.querySelector('nav')
+  if (nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px')
+}
+onMounted(() => { setNavH(); window.addEventListener('resize', setNavH) })
+onBeforeUnmount(() => window.removeEventListener('resize', setNavH))
 
 function scrollToBestSeller() {
   bestSeller.value?.$el.scrollIntoView({ behavior: 'smooth' })
@@ -42,7 +50,9 @@ function scrollToBestSeller() {
   z-index: 1;
   background-size: cover;
   background-position: center;
-  height: 700px;
+  height: calc(100vh - var(--nav-h, 76px));
+  height: calc(100svh - var(--nav-h, 76px));
+  min-height: 480px;
   width: 100%;
   display: flex;
   justify-content: center;
