@@ -106,7 +106,7 @@ watch(() => route.query.category, (newVal) => {
 <style scoped>
 .book-list-view {
   font-family: 'Noto Serif KR', serif;
-  background-color: #f8f9fa;
+  background-color: transparent;
 }
 
 .title {
