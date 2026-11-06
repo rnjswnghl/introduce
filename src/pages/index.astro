@@ -23,12 +23,9 @@ const link = (s: string) => `/projects/${s}`;
   <hr class="rule" />
   <section id="about"><div class="wrap about">
     <p class="eyebrow">Profile</p>
-    <h2 class="h2">{profile.sentence}</h2>
-    <p>러시아학과 빅데이터학을 공부한 뒤 웹 개발 프로젝트를 수행했습니다. 검색과 필터, 권한별 화면, 상태 관리와 API 연동처럼 사용자가 직접 마주하는 흐름을 주로 다뤘고, 구현한 뒤 실제 사용 과정에서 생기는 오류를 다시 확인해 개선합니다.</p>
-    <p>{profile.way}</p>
-    <div class="now">{profile.now.map(n => <div class="panel"><h4>{n.t}{n.draft && <span class="tag" title="본인 확인이 필요한 문구입니다.">검수 전</span>}</h4><p>{n.d}</p></div>)}</div>
-    <h3 class="subh">동료들이 말해주는 저</h3>
-    <div class="peers">{peers.map(x => <div><b>{x.t}</b><span>{x.d}</span></div>)}</div>
+    <h2 class="h2">저는 이런 개발자입니다.</h2>
+    <p>러시아학과 빅데이터학을 공부한 뒤 웹 개발 프로젝트를 수행했습니다. 검색과 필터, 권한별 화면, 상태 관리처럼 사용자가 직접 마주하는 흐름을 주로 다뤘고, 화면(Vue·React)에서 API(Django·FastAPI), AI 연동까지 서비스를 이어서 구현합니다.</p>
+    <p>모르는 것은 이해할 때까지 묻고, 도구를 바꿔가며 시도합니다. 함께한 동료들은 저를 “{peers[0].t.replace('하는 사람','하고')}, {peers[1].t.replace('하는 사람','하는 사람')}”이라고 말합니다.</p>
     <h3 class="subh">핵심 가치</h3>
     <div class="vals2">{profile.values.map(v => <div><b>{v.t}</b><span>{v.d}</span></div>)}</div>
   </div></section>
@@ -42,20 +39,20 @@ const link = (s: string) => `/projects/${s}`;
   </div></section>
 
   <hr class="rule" />
-  <section id="history"><div class="wrap">
-    <p class="eyebrow">Experience</p><h2 class="h2">이력</h2>
-    <ol class="tl">{timeline.map(t => <li><span class="when">{t.when}{t.state && <b class="tag cel">{t.state}</b>}</span><div><h4>{t.t}{t.draft && <span class="tag" title="본인 확인이 필요한 문구입니다.">검수 전</span>}</h4><p class="org">{[t.org, t.role].filter(Boolean).join(' · ')}</p><p>{t.d}{t.link && <> <a href={t.link}>프로젝트 →</a></>}</p></div></li>)}</ol>
-    <h3 class="subh">자격 · 어학</h3>
-    <ul class="certs">{certs.map(c => <li><b>{c.t}</b><span>{c.org} · {c.when}</span></li>)}</ul>
-  </div></section>
-
-  <hr class="rule" />
   <section id="projects"><div class="wrap">
     <p class="eyebrow">Projects · 10</p>
     <h2 class="h2">작업 기록</h2>
     <p class="lead">각 프로젝트는 개요 → 문제 정의 → 시스템 설계 → 내가 한 일 → 문제 해결·검증 → 결과·회고 순서로 정리했습니다. ▶ 표시가 있는 프로젝트는 구현한 화면을 직접 눌러볼 수 있습니다.</p>
     <div class="pgroup"><h3>SSAFY 팀 프로젝트</h3><div class="cards">{ssafy.map(p => <ProjectCard p={p} />)}</div></div>
     <div class="pgroup"><h3>K-뉴딜 Aleph · AI 협업 개발</h3><div class="cards">{aleph.map(p => <ProjectCard p={p} />)}</div></div>
+  </div></section>
+
+  <hr class="rule" />
+  <section id="history"><div class="wrap">
+    <p class="eyebrow">Experience</p><h2 class="h2">이력</h2>
+    <ol class="tl">{timeline.map(t => <li><span class="when">{t.when}{t.state && <b class="tag cel">{t.state}</b>}</span><div><h4>{t.t}{t.draft && <span class="tag" title="본인 확인이 필요한 문구입니다.">검수 전</span>}</h4><p class="org">{[t.org, t.role].filter(Boolean).join(' · ')}</p><p>{t.d}{t.link && <> <a href={t.link}>프로젝트 →</a></>}</p></div></li>)}</ol>
+    <h3 class="subh">자격 · 어학</h3>
+    <ul class="certs">{certs.map(c => <li><b>{c.t}</b><span>{c.org} · {c.when}</span></li>)}</ul>
   </div></section>
 
   <hr class="rule" />
