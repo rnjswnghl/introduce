@@ -83,7 +83,7 @@ footer.foot { padding: 3rem 0 4rem; color: var(--ink-2); font-size: .88rem; }
 /* 영역 구분: 히어로가 첫 화면을 채우고, 이후 영역은 배경 위에 그대로 이어진다(선, 띠 없음) */
 main > hr.rule { display: none; }
 /* 글자 뒤는 종이색 후광으로만 받친다(영역 상자, 블러 없음) */
-main > section:not(.hero) :is(.h2, .eyebrow, .lead, .legend, .pgroup h3, .tl .when, .tl .org, .tl p, .about > p) { text-shadow: 0 0 16px var(--paper), 0 0 10px var(--paper), 0 0 5px var(--paper), 0 0 3px var(--paper), 0 0 3px var(--paper); }
+main > section:not(.hero) :is(.h2, .eyebrow, .lead, .legend, .pgroup h3, .tl .when, .tl .org, .tl p, .about > p, .about .subh, .vals2 b, .vals2 span, .vals2 .vt, .vals2 .no) { text-shadow: 0 0 16px var(--paper), 0 0 10px var(--paper), 0 0 5px var(--paper), 0 0 3px var(--paper), 0 0 3px var(--paper); }
 
 /* 글자 드래그 선택, 이미지 끌기를 막는다(입력창은 예외). 화면 캡처는 막지 않는다. */
 body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
