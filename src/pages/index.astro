@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
-import { profile, peers, timeline, skills, levelLabel } from '../data/profile';
+import { profile, timeline, skills, levelLabel } from '../data/profile';
 import '../styles/pages.css';
 const ssafy = projects.filter(p => p.group === 'ssafy'), aleph = projects.filter(p => p.group === 'aleph');
 const link = (s: string) => `/projects/${s}`;
@@ -12,7 +12,7 @@ const link = (s: string) => `/projects/${s}`;
     <div class="grid">
       <div>
         <p class="eyebrow">Portfolio / {profile.en}</p>
-        <h1>시작하면<br /><em>쉽게 놓지 않는</em> 사람.</h1>
+        <h1>문제를 발견하면<br /><em>끝까지 파고드는</em> 개발자.</h1>
         <p class="lead">{profile.one}</p>
         <p style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem"><a class="btn" href="#projects">프로젝트 보기 →</a><a class="btn ghost" href="#skills">기술 보기</a></p>
       </div>
@@ -23,11 +23,10 @@ const link = (s: string) => `/projects/${s}`;
   <hr class="rule" />
   <section id="about"><div class="wrap about">
     <p class="eyebrow">Profile</p>
-    <h2 class="h2">저는 이런 사람입니다.</h2>
-    <p>한 번 시작한 일은 결과가 나올 때까지 붙잡습니다.</p>
-    <p>함께한 동료들은 제가 컨디션이 좋지 않은 날에도 자리를 지키고, 하기 싫은 일도 미루지 않고 바로 처리한다고 말합니다.</p>
+    <h2 class="h2">일하는 방식에도 기준이 있습니다.</h2>
+    <p>{profile.way}</p>
     <h3 class="subh">핵심 가치</h3>
-    <div class="vals2">{profile.values.map(v => <div><b>{v.t}</b><span>{v.d}</span></div>)}</div>
+    <div class="vals2">{profile.values.map((v, i) => <div><i class="no">{String(i + 1).padStart(2, '0')}</i><b>{v.t}</b><span>{v.d}</span></div>)}</div>
   </div></section>
 
   <hr class="rule" />
