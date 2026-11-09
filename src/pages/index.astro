@@ -23,7 +23,7 @@ const link = (s: string) => `/projects/${s}`;
   <hr class="rule" />
   <section id="about"><div class="wrap about">
     <p class="eyebrow">Profile</p>
-    <h2 class="h2">일하는 방식에도 기준이 있습니다.</h2>
+    <h2 class="h2">일을 대하는 세 가지 기준.</h2>
     <p>{profile.way}</p>
     <h3 class="subh">핵심 가치</h3>
     <div class="vals2">{profile.values.map((v, i) => <div><i class="no">{String(i + 1).padStart(2, '0')}</i><b>{v.t}</b><span>{v.d}</span></div>)}</div>
