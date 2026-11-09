@@ -21,7 +21,7 @@ const P = (n: string, cap: string, mobile = false): Shot => ({ src: `/img/p/${n}
 export const projects: Project[] = [
   {
     slug: 'hanpage', no: '壹', name: '한페이지', kor: '도서 추천, 독서 기록 커뮤니티', group: 'ssafy', kind: 'team', teamSize: 2,
-    period: '2025.05.22 — 05.28', role: '팀장, 백엔드 초기 설계 + 도서 탐색/추천/마이페이지 구현', roleShort: 'Team Lead, Full-stack', tagline: '문장 속 당신을 만나는 곳', accent: '#55705f', cover: 'hanpage-bestsellers',
+    period: '2025.05.22 — 05.28', role: '팀장, 백엔드 초기 설계 + 도서 탐색/추천/마이페이지 구현', roleShort: 'Team Lead, Full-stack', tagline: '문장 속 당신을 만나는 곳', accent: '#55705f', cover: 'hanpage-cover.e4d4e956',
     summary: '도서를 검색하고 취향에 맞는 책을 추천받으며, 읽은 책에 대한 기록(쓰레드)을 나누는 도서 추천, 독서 기록 커뮤니티 웹 서비스입니다. Django REST 백엔드와 Vue 3 프론트로 구성했고, 2인 팀의 팀장으로 도서 데이터 구성과 백엔드 구조 설계, 도서 탐색, 상세, 추천, 마이페이지, 방문록, 지도 화면을 맡았습니다.',
     goal: { problem: '읽을 책을 고르는 일과 읽은 뒤의 감상을 나누는 일이 서로 다른 서비스에 흩어져 있어, 취향에 맞는 책을 찾고 같은 책을 읽은 사람과 이야기하는 흐름이 끊깁니다.', goal: '사용자 맞춤 도서 추천, 독서 기록 커뮤니티, 외부 API(음성, 저자 정보, AI 이미지)를 한 서비스에서 이어지는 경험으로 만드는 것.' },
     stack: [
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     gaps: ['협업 필터링 같은 사용자 행동 기반 추천으로 확장', '구상한 기능: 댓글 감정 이모지 자동 생성, 독서 퀴즈, 실시간 쓰레드 랭킹, 도서 투표'],
     learned: ['기능을 하나 붙일 때마다 다른 곳에서 버그가 생기는 경험을 통해, 브랜치 단위와 DB 파일 관리 같은 협업 규칙이 먼저라는 점을 배웠습니다.', '서로 파트를 바꿔가며 협업하며 상대 코드를 읽고 고치는 연습이 됐습니다.'],
     learnedFromReadme: true,
-    shots: [P('hanpage-home', '메인, 히어로'), P('hanpage-bestsellers', '베스트셀러, 카테고리'), P('hanpage-recent-threads', '최근 쓰레드'), P('hanpage-books', '도서 탐색'), P('hanpage-books-filter', '카테고리 필터'), P('hanpage-books-search', '제목 검색'), P('hanpage-book-detail', '도서 상세'), P('hanpage-book-author', '저자 정보, 연관 쓰레드'), P('hanpage-thread-write', '쓰레드 작성'), P('hanpage-threads', '전체 쓰레드 목록'), P('hanpage-thread-detail', '쓰레드 상세'), P('hanpage-thread-comments', '댓글'), P('hanpage-mypage', '마이페이지, 내가 쓴 쓰레드'), P('hanpage-mypage-liked', '좋아요한 쓰레드'), P('hanpage-mypage-bookmarks', '도서 찜 폴더'), P('hanpage-guestbook', '방문록, 이모지 남기기'), P('hanpage-profile', '프로필 수정'), P('hanpage-login', '로그인'), P('hanpage-signup', '회원가입')],
+    shots: [P('hanpage-home.cf2241c8', '메인, 히어로'), P('hanpage-bestsellers.d34c0fc0', '베스트셀러, 카테고리'), P('hanpage-recent-threads.95b4924a', '최근 쓰레드'), P('hanpage-books-filter.4b19c120', '도서 탐색, 카테고리 필터'), P('hanpage-books-search.9f610c5d', '제목 검색'), P('hanpage-book-detail.692c0e9f', '도서 상세'), P('hanpage-book-author.b80928e2', '저자 정보, 연관 쓰레드'), P('hanpage-thread-write.be674238', '쓰레드 작성'), P('hanpage-threads.da6cd1a4', '전체 쓰레드 목록'), P('hanpage-thread-detail.726588ec', '쓰레드 상세, 댓글'), P('hanpage-mypage.1407eb5d', '마이페이지, 내가 쓴 쓰레드'), P('hanpage-mypage-bookmarks.f2a36e98', '도서 찜 폴더'), P('hanpage-guestbook.b7768184', '방문록, 이모지 남기기'), P('hanpage-profile.79adb20b', '프로필 수정'), P('hanpage-login.e435e498', '로그인'), P('hanpage-signup.59410ad8', '회원가입')],
     demo: 'hanpage', links: [],
   },
   {
