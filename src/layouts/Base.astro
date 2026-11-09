@@ -5,7 +5,7 @@ import Lantern from '../components/Lantern.astro';
 import FlowingSky from '../components/FlowingSky.astro';
 interface Props { title?: string; desc?: string; nav?: string }
 const { title = 'Introduce JJ', desc = '문제를 발견하면 끝까지 파고드는 개발자 권주회의 작업 기록', nav = '' } = Astro.props;
-const links = [['/#about', '프로필'], ['/#skills', '기술'], ['/#projects', '프로젝트'], ['/#history', '이력'], ['/#contact', '연락']];
+const links = [['/#about', 'Profile'], ['/#skills', 'Skills'], ['/#projects', 'Projects'], ['/#history', 'History'], ['/summary', 'Summary'], ['/#contact', 'Contact']];
 ---
 <!doctype html>
 <html lang="ko">
@@ -24,7 +24,7 @@ const links = [['/#about', '프로필'], ['/#skills', '기술'], ['/#projects', 
   <header class="top"><div class="wrap">
     <a class="brand" href="/" aria-label="홈"><span class="mark"><Lantern /></span><span class="t">Portfolio_For_JooHoe.K</span></a>
     <nav class="nav" aria-label="주 메뉴">{links.map(([h, t]) => <a href={h} aria-current={nav === h ? 'page' : undefined}>{t}</a>)}</nav>
-    <button class="mbtn" id="motion" type="button" aria-pressed="false">움직임 멈추기</button>
+    <button class="mbtn" id="motion" type="button" aria-pressed="false" aria-label="Pause or resume background motion"><svg class="mi" viewBox="0 0 12 12" aria-hidden="true"><g class="ip"><rect x="2.2" y="1.6" width="2.6" height="8.8" rx=".6"/><rect x="7.2" y="1.6" width="2.6" height="8.8" rx=".6"/></g><path class="iy" d="M3 1.8 10 6 3 10.2Z"/></svg><span class="ml">Motion</span></button>
   </div></header>
   <main id="main"><slot /></main>
   <footer class="foot"><div class="wrap">
@@ -34,7 +34,7 @@ const links = [['/#about', '프로필'], ['/#skills', '기술'], ['/#projects', 
   <CatChat />
   <script is:inline>
     (function(){var b=document.getElementById('motion'),r=document.documentElement;
-    function s(){var p=r.classList.contains('paused');b.setAttribute('aria-pressed',p);b.textContent=p?'움직임 다시 켜기':'움직임 멈추기'}
+    function s(){var p=r.classList.contains('paused');b.setAttribute('aria-pressed',p);b.setAttribute('title',p?'Resume background motion':'Pause background motion')}
     b.addEventListener('click',function(){r.classList.toggle('paused');try{localStorage.setItem('motion',r.classList.contains('paused')?'off':'on')}catch(e){}s()});s();})();
   </script>
 </body></html>

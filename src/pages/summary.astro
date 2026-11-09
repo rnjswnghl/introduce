@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import Lantern from '../components/Lantern.astro';
+import { projects } from '../data/projects';
+import { profile, timeline, skills } from '../data/profile';
+import '../styles/summary.css';
+const SITE = 'introjj.vercel.app';
+const edu = timeline.find(t => t.t.includes('부산외국어'))!;
+const training = timeline.filter(t => !t.t.includes('부산외국어'));
+const ssafy = projects.filter(p => p.group === 'ssafy'), aleph = projects.filter(p => p.group === 'aleph');
+---
+<Base title="Summary / Introduce JJ" desc="권주회 이력 요약, PDF로 내려받을 수 있습니다." nav="/summary">
+  <div class="sum">
+    <div class="sum-bar">
+      <p>A4 가로 2장 분량의 요약본입니다. PDF로 내려받거나 인쇄할 수 있습니다.</p>
+      <a class="btn" href="/Portfolio_For_JooHoe.K.pdf" download>Download PDF ↓</a>
+    </div>
+
+    <article class="sheet" aria-label="Profile">
+      <aside class="s-left">
+        <h2 class="s-title">PROFILE</h2>
+        <div class="s-mark"><Lantern /></div>
+        <h1 class="s-name">{profile.name}<small>{profile.en.toUpperCase()}</small></h1>
+        <p class="s-slogan">{profile.slogan}</p>
+        <p class="s-one">{profile.one}</p>
+        <ul class="s-links">
+          <li><b>Web</b>{SITE}</li>
+          <li><b>GitHub</b>github.com/rnjswnghl</li>
+          <li><b>LinkedIn</b>linkedin.com/in/joohoe-kwon</li>
+        </ul>
+      </aside>
+
+      <section class="s-mid">
+        <h3 class="s-h">EDUCATION</h3>
+        <div class="s-item"><span class="when">{edu.when.replace(' — ', ' ~ ')}</span><div><b>{edu.t.replace(' 졸업', '')}</b><em>{edu.org} 졸업</em></div></div>
+
+        <h3 class="s-h">TRAINING / EXPERIENCE</h3>
+        {training.map(t => <div class="s-item"><span class="when">{t.when.replace(' — ', ' ~ ')}</span><div><b>{t.t}</b><em>{[t.org, t.role].filter(Boolean).join(', ')}</em></div></div>)}
+
+        <h3 class="s-h">VALUES</h3>
+        <ol class="s-vals">{profile.values.map((v, i) => <li><i>{String(i + 1).padStart(2, '0')}</i><b>{v.t}</b><span>{v.d}</span></li>)}</ol>
+      </section>
+
+      <section class="s-right">
+        <h3 class="s-h">SKILLS</h3>
+        {skills.map(g => <div class="s-skill"><b>{g.cat}</b><p>{g.items.map(i => i.t).join(' / ')}</p></div>)}
+        <h3 class="s-h">WORK STYLE</h3>
+        <p class="s-way">{profile.way}</p>
+      </section>
+    </article>
+
+    <article class="sheet" aria-label="Projects">
+      <h2 class="s-title">PROJECTS</h2>
+      <div class="s-cols">
+        <section>
+          <h3 class="s-h">SSAFY, TEAM PROJECTS</h3>
+          {ssafy.map(p => <div class="s-proj"><div class="hd"><b>{p.name}</b><span>{p.period}</span></div><p>{p.kor}</p><em>{p.roleShort} / {p.kind === 'solo' ? '개인' : `${p.teamSize}인 팀`}</em></div>)}
+        </section>
+        <section>
+          <h3 class="s-h">K-NEW DEAL ALEPH, AI COLLABORATION</h3>
+          {aleph.map(p => <div class="s-proj"><div class="hd"><b>{p.name}</b><span>{p.period}</span></div><p>{p.kor}</p><em>{p.roleShort} / {p.kind === 'solo' ? '개인' : '팀'}</em></div>)}
+        </section>
+      </div>
+      <p class="s-foot">프로젝트별 역할, 설계, 문제 해결 기록과 실행 가능한 데모는 {SITE} 에서 확인할 수 있습니다.</p>
+    </article>
+  </div>
+</Base>

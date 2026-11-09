@@ -40,8 +40,11 @@ p { margin: 0 0 .9em; }
 .nav { margin-left: auto; display: flex; gap: 1.2rem; font-size: .92rem; }
 .nav a { text-decoration: none; padding: .3rem 0; border-bottom: 1px solid transparent; }
 .nav a:hover, .nav a[aria-current] { border-color: var(--seal); }
-.mbtn { font: inherit; font-size: .8rem; background: none; border: 1px solid var(--line); border-radius: 99px; padding: .25rem .8rem; color: var(--ink-2); cursor: pointer; }
-.mbtn:hover { border-color: var(--seal); color: var(--seal); }
+.mbtn { font: inherit; font-size: .8rem; letter-spacing: .02em; display: inline-flex; align-items: center; gap: .45rem; background: transparent; border: 1px solid rgba(139, 117, 84, .35); border-radius: 6px; padding: .3rem .7rem; color: var(--ink-2); cursor: pointer; transition: border-color .2s, color .2s, background .2s; }
+.mbtn:hover { border-color: var(--seal); color: var(--seal); background: rgba(142, 58, 42, .05); }
+.mbtn .mi { width: 11px; height: 11px; fill: currentColor; } .mbtn .iy { display: none; }
+.paused .mbtn .ip { display: none; } .paused .mbtn .iy { display: inline; }
+.paused .mbtn { color: var(--seal); border-color: var(--seal); }
 @media (max-width: 640px) { .nav { gap: .8rem; font-size: .85rem; } .brand span.t { display: none; } }
 
 /* ── 공통 요소 ── */
