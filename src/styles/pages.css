@@ -18,7 +18,7 @@
 .card .key { font-size: .85rem; color: var(--seal); font-weight: 600; margin: 0; }
 
 /* 소개 */
-.about > p, .about > ul, .about > dl, .about > div { max-width: 760px; }
+.about > p, .about > ul, .about > dl { max-width: 760px; } .about > .vals2 { max-width: none; }
 /* 기술 */
 .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
 .skill { padding: 1.1rem 1.2rem; } .skill h4 { font-size: 1.05rem; margin-bottom: .7rem; } .skill .tags { display: flex; flex-wrap: wrap; gap: .35rem; }
@@ -75,7 +75,7 @@ table.cmp { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top
 .now { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin: 1.6rem 0 1rem; max-width: none; }
 .now .panel { padding: 1rem 1.15rem; } .now h4 { font-size: 1rem; margin-bottom: .35rem; display: flex; gap: .5rem; align-items: baseline; flex-wrap: wrap; } .now p { margin: 0; font-size: .92rem; color: var(--ink-2); }
 
-.vals2 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; margin-top: 1rem; } .vals2 div { display: flex; flex-direction: column; gap: .35rem; padding-top: .9rem; border-top: 1px solid var(--seal); } .vals2 .no { font: 600 .8rem var(--serif); letter-spacing: .14em; color: var(--seal); font-style: normal; } .vals2 b { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); } .vals2 .vt { font: 600 .76rem var(--sans); font-style: normal; letter-spacing: .08em; color: var(--celadon); } .vals2 span { color: var(--ink-2); font-size: .93rem; line-height: 1.7; }
+.vals2 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.4rem; margin-top: 1.1rem; } .vals2 div { display: flex; flex-direction: column; gap: .35rem; padding-top: 1.1rem; border-top: 1px solid var(--seal); } .vals2 .no { font: 600 .8rem var(--serif); letter-spacing: .14em; color: var(--seal); font-style: normal; } .vals2 b { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); } .vals2 .vt { font: 600 .76rem var(--sans); font-style: normal; letter-spacing: .08em; color: var(--celadon); } .vals2 span { color: var(--ink-2); font-size: 1rem; line-height: 1.75; }
 .legend { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; font-size: .82rem; color: var(--ink-2); margin: 0 0 1.2rem; } .legend span { display: inline-flex; align-items: center; gap: .5rem; }
 .dots { display: inline-block; width: 40px; height: 6px; flex: none; background: linear-gradient(90deg, var(--seal) 0 11px, transparent 11px 14px, var(--seal) 14px 25px, transparent 25px 28px, var(--seal) 28px 40px); -webkit-mask: linear-gradient(90deg, #000 var(--on), rgba(0,0,0,.22) var(--on)); mask: linear-gradient(90deg, #000 var(--on), rgba(0,0,0,.22) var(--on)); }
 .dots.l1 { --on: 33.4%; } .dots.l2 { --on: 66.8%; } .dots.l3 { --on: 100%; }
