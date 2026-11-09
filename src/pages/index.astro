@@ -12,7 +12,7 @@ const link = (s: string) => `/projects/${s}`;
     <div class="grid">
       <div>
         <p class="eyebrow">Portfolio / {profile.en}</p>
-        <h1>작동하는 것에서 멈추지 않고<br /><em>더 나은 방법</em>을 찾습니다.</h1>
+        <h1>문제의 원인을 살피고,<br />맡은 일은 <em>끝까지 해내는</em> 사람.</h1>
         <p class="lead">{profile.one}</p>
         <p style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.6rem"><a class="btn" href="#projects">프로젝트 보기 →</a><a class="btn ghost" href="#skills">기술 보기</a></p>
       </div>
@@ -26,7 +26,7 @@ const link = (s: string) => `/projects/${s}`;
     <h2 class="h2">일을 대하는 세 가지 기준.</h2>
     <p>{profile.way}</p>
     <h3 class="subh">핵심 가치</h3>
-    <div class="vals2">{profile.values.map((v, i) => <div><i class="no">{String(i + 1).padStart(2, '0')}</i><b>{v.t}</b><span>{v.d}</span></div>)}</div>
+    <div class="vals2">{profile.values.map((v, i) => <div><i class="no">{String(i + 1).padStart(2, '0')}</i><b>{v.k}</b><em class="vt">{v.t}</em><span>{v.d}</span></div>)}</div>
   </div></section>
 
   <hr class="rule" />
