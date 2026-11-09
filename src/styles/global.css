@@ -30,7 +30,7 @@ p { margin: 0 0 .9em; }
 @media (max-width: 700px) { .sky .land { background-size: auto 100%; background-position: 30% bottom; } }
 
 /* ── 헤더 ── */
-.top { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(8px); background: rgba(244, 239, 229, .82); border-bottom: 1px solid var(--line); }
+.top { position: sticky; top: 0; z-index: 20; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); background: rgba(239, 233, 219, .6); border-bottom: 1px solid rgba(139, 117, 84, .22); } /* 배경 수묵화의 하늘색(#efe9db)에 맞춰 선 아래와 이어지게 한다 */
 .top .wrap { display: flex; align-items: center; gap: 1.2rem; min-height: 60px; }
 .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; font-family: var(--serif); font-weight: 700; }
 .brand .mark { width: 29px; height: 44px; display: block; transform-origin: 50% 4%; animation: sway 8s ease-in-out infinite alternate; }
