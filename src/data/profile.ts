@@ -2,7 +2,7 @@
 // draft: true = 본인 확인 필요
 export const profile = {
   name: '권주회', en: 'Kwon JooHoe',
-  slogan: '시작하면 쉽게 놓지 않는 개발자.',
+  slogan: '시작하면 쉽게 놓지 않는 사람.',
   one: '만든 기능이 실제 사용 흐름에서 끝까지 동작하는지 확인하고, 막히면 원인까지 파고들어 고칩니다.',
   sentence: '쉽게 시작하기보다, 시작하면 쉽게 놓지 않는 사람입니다.',
   values: [
