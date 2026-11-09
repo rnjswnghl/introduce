@@ -84,3 +84,8 @@ footer.foot { padding: 3rem 0 4rem; color: var(--ink-2); font-size: .88rem; }
 main > hr.rule { display: none; }
 /* 글자 뒤는 종이색 후광으로만 받친다(영역 상자, 블러 없음) */
 main > section:not(.hero) :is(.h2, .eyebrow, .lead, .legend, .pgroup h3, .tl .when, .tl .org, .tl p, .about > p) { text-shadow: 0 0 16px var(--paper), 0 0 10px var(--paper), 0 0 5px var(--paper), 0 0 3px var(--paper), 0 0 3px var(--paper); }
+
+/* 글자 드래그 선택, 이미지 끌기를 막는다(입력창은 예외). 화면 캡처는 막지 않는다. */
+body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+input, textarea, [contenteditable] { -webkit-user-select: text; user-select: text; }
+img, svg, canvas { -webkit-user-drag: none; user-drag: none; }
