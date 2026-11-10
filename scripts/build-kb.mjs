@@ -11,7 +11,7 @@ const { profile: P, peers, timeline, certs, skills, levelLabel } = await loadTs(
 
 const L = (a) => a.filter(Boolean).join(' ');
 const profile = [
-  { id: 'profile-intro', type: 'profile', title: '권주회는 누구인가요', text: `권주회(${P.en})는 IT 업계의 개발자로 일하기를 지망합니다. "${P.sentence}" 러시아학과 빅데이터학을 공부한 뒤 웹 개발 프로젝트를 수행했고, 화면부터 API, AI 서버까지 필요한 범위를 넓혀 왔습니다. ${P.one}`, url: '/#about' },
+  { id: 'profile-intro', type: 'profile', title: '권주회는 누구인가요', text: `권주회(${P.en})입니다. "${P.sentence}" ${P.way} 러시아학과 빅데이터학을 공부한 뒤 웹 개발 교육과정을 수료했고, 화면부터 API, AI 서버까지 필요한 범위를 넓혀 프로젝트를 만들어 왔습니다.`, url: '/#about' },
   { id: 'profile-strength', type: 'profile', title: '강점, 가치, 일하는 방식', text: `핵심 가치와 강점: ${P.values.map(v => `${v.t}, ${v.k}: ${v.d}`).join(', ')}. 일하는 방식: ${P.way}`, url: '/#about' },
   { id: 'profile-peers', type: 'profile', title: '동료들이 말해주는 권주회', text: '함께 교육을 받은 동료들이 반복해서 말해 준 모습입니다. ' + peers.map(x => `${x.t} — ${x.d}`).join(' '), url: '/#about' },
   { id: 'profile-goal', type: 'profile', title: '현재의 나와 목표', text: P.now.map(n => `${n.t}: ${n.d}`).join(' '), url: '/#about', unverified: P.now.some(n => n.draft) },
