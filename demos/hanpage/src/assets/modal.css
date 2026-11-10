@@ -1,0 +1,88 @@
+/* 모달 공통 스타일: 앱 전체 톤(어두운 패널, 이끼색 포인트)에 맞춤 */
+body .modal-overlay {
+  background: rgba(10, 12, 10, 0.72);
+  backdrop-filter: blur(3px);
+}
+body .modal-overlay .modal-content {
+  background: #1f1f1f;
+  color: #efe9db;
+  border: 1px solid rgba(239, 233, 219, 0.12);
+  border-radius: 14px;
+  padding: 1.8rem 1.8rem 1.5rem;
+  width: 520px;
+  max-width: 92%;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+body .modal-overlay .modal-header { margin-bottom: 1rem; }
+body .modal-overlay .modal-header h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #efe9db;
+}
+body .modal-overlay .btn-close {
+  width: 32px; height: 32px; padding: 0; opacity: 1;
+  background: none; border: 0; border-radius: 50%;
+  position: relative; cursor: pointer;
+  color: rgba(239, 233, 219, 0.6);
+}
+body .modal-overlay .btn-close::before,
+body .modal-overlay .btn-close::after {
+  content: ''; position: absolute; left: 8px; top: 15px;
+  width: 16px; height: 2px; background: currentColor; border-radius: 1px;
+}
+body .modal-overlay .btn-close::before { transform: rotate(45deg); }
+body .modal-overlay .btn-close::after { transform: rotate(-45deg); }
+body .modal-overlay .btn-close:hover { color: #efe9db; background: rgba(239, 233, 219, 0.08); }
+
+body .modal-overlay .folder-list { margin: 0.8rem 0; }
+body .modal-overlay .folder-item {
+  border-bottom: 1px solid rgba(239, 233, 219, 0.1);
+  padding: 0.7rem 0.4rem;
+}
+body .modal-overlay .folder-info label { color: #efe9db; cursor: pointer; }
+body .modal-overlay .folder-info input[type='radio'] { accent-color: #5f7a69; }
+body .modal-overlay .new-folder-section {
+  border-top: 1px solid rgba(239, 233, 219, 0.1);
+  margin: 1rem 0; padding-top: 1rem;
+}
+body .modal-overlay .new-folder-section h4 {
+  font-size: 0.95rem; color: rgba(239, 233, 219, 0.7); font-weight: 500;
+}
+
+body .modal-overlay .form-control {
+  background: #2a2a28; color: #efe9db;
+  border: 1px solid rgba(239, 233, 219, 0.18); border-radius: 8px;
+}
+body .modal-overlay .form-control::placeholder { color: rgba(239, 233, 219, 0.4); }
+body .modal-overlay .form-control:focus {
+  background: #2a2a28; color: #efe9db;
+  border-color: #5f7a69; box-shadow: 0 0 0 3px rgba(95, 122, 105, 0.3);
+}
+
+body .modal-overlay .btn { white-space: nowrap; border-radius: 8px; }
+body .modal-overlay .btn-primary,
+body .modal-overlay .btn-outline-primary {
+  --bs-btn-bg: #5f7a69; --bs-btn-border-color: #5f7a69; --bs-btn-color: #f6f1e1;
+  background: #5f7a69; border-color: #5f7a69; color: #f6f1e1;
+}
+body .modal-overlay .btn-primary:hover,
+body .modal-overlay .btn-outline-primary:hover:not(:disabled) {
+  background: #6f8c7a; border-color: #6f8c7a; color: #fff;
+}
+body .modal-overlay .btn-primary:disabled,
+body .modal-overlay .btn-outline-primary:disabled {
+  background: #3a463f; border-color: #3a463f; color: rgba(239, 233, 219, 0.45); opacity: 1;
+}
+body .modal-overlay .folder-actions .btn-outline-primary {
+  background: transparent; color: #9db8a8; border-color: rgba(157, 184, 168, 0.5);
+}
+body .modal-overlay .btn-outline-danger {
+  background: transparent; color: #d99a8f; border-color: rgba(217, 154, 143, 0.5);
+}
+body .modal-overlay .btn-outline-danger:hover { background: #8a4a40; border-color: #8a4a40; color: #fff; }
+body .modal-overlay .btn-secondary {
+  background: transparent; color: rgba(239, 233, 219, 0.75);
+  border-color: rgba(239, 233, 219, 0.25);
+}
+body .modal-overlay .btn-secondary:hover { background: rgba(239, 233, 219, 0.08); color: #efe9db; }

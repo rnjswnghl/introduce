@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <!-- 북마크 모달 -->
+    <!-- 찜 모달 -->
     <BookmarkModal
       :show="showBookmarkFormModal"
       :bookId="book.id"
@@ -117,7 +117,7 @@ const checkBookmarkStatus = async () => {
       isLoggedIn.value = false
       alert('로그인이 만료되었습니다. 다시 로그인해주세요.')
     } else {
-      console.error('북마크 상태 확인 실패:', error)
+      console.error('찜 상태 확인 실패:', error)
     }
     isBookmarked.value = false
   }
@@ -126,27 +126,27 @@ const checkBookmarkStatus = async () => {
 const handleBookmarkClick = async () => {
   checkLoginStatus()
   if (!isLoggedIn.value) {
-    alert('북마크 기능을 사용하려면 로그인이 필요합니다.')
+    alert('찜하기를 사용하려면 로그인이 필요합니다.')
     return
   }
   
   if (isBookmarked.value) {
     if (confirm('이미 찜한 도서입니다. 찜을 취소하시겠습니까?')) {
       try {
-        // 북마크 ID를 찾기 위한 API 호출
+        // 찜 ID를 찾기 위한 API 호출
         const { data: bookmarks } = await axios.get('/api/books/bookmarks/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
           }
         })
         
-        // 현재 도서의 북마크 찾기
+        // 현재 도서의 찜 찾기
         const bookmark = bookmarks.find(b => b.book.id === book.value.id)
         if (!bookmark) {
-          throw new Error('북마크를 찾을 수 없습니다.')
+          throw new Error('찜한 책을 찾을 수 없습니다.')
         }
 
-        // 북마크 삭제
+        // 찜 삭제
         await axios.delete(`/api/books/bookmarks/${bookmark.id}/`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -154,8 +154,8 @@ const handleBookmarkClick = async () => {
         })
         isBookmarked.value = false
       } catch (error) {
-        console.error('북마크 취소에 실패했습니다:', error)
-        alert('북마크 취소에 실패했습니다.')
+        console.error('찜 취소에 실패했습니다:', error)
+        alert('찜 취소에 실패했습니다.')
       }
     }
   } else {
@@ -281,10 +281,10 @@ const saveBookmark = async () => {
       }
     })
     showBookmarkFormModal.value = false
-    alert('북마크가 저장되었습니다.')
+    alert('찜 목록에 저장되었습니다.')
   } catch (error) {
-    console.error('북마크 저장에 실패했습니다:', error)
-    alert('북마크 저장에 실패했습니다.')
+    console.error('찜하기에 실패했습니다:', error)
+    alert('찜하기에 실패했습니다.')
   }
 }
 
