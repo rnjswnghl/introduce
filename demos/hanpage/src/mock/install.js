@@ -66,6 +66,7 @@ const posts = [
 
 const cc = p => ({ ...p, comment_count: p.comments.length })
 const uid = { reader: 1, bookworm: 2, pagefriend: 3 }
+const fail = (status, data) => ({ __fail: [status, data] })
 const ok = (config, d, status = 200) => ({ data: d, status, statusText: 'OK', headers: {}, config, request: {} })
 const ci = v => String(v || '').toLowerCase()
 function route(m, path, q, body) {
@@ -80,11 +81,39 @@ function route(m, path, q, body) {
   }
   if ((r = path.match(/^books\/book-list\/(\d+)\/$/))) return byId(r[1]) || books[0]
   if (path === 'books/author-info/') { const n = (q.name || '').trim(); return { author_info: authorInfo[n] || { description: '', image_url: '' } } }
-  if (path === 'books/folders/') { if (m === 'post') { const f = { id: ++seq, name: body?.name || '새 폴더', bookmarks: [] }; folders.push(f); return f } return folders }
-  if ((r = path.match(/^books\/folders\/(\d+)\/$/))) { const f = folders.find(x => x.id === +r[1]); if (m === 'put' && f) f.name = body.name; if (m === 'delete' && f) folders.splice(folders.indexOf(f), 1); return f || {} }
-  if (path === 'books/bookmarks/') { if (m === 'post') { const f = folders.find(x => x.id === +body.folder) || folders[0]; const bk = { id: ++seq, book: byId(body.book) || books[0], folder: f.id }; f.bookmarks.push(bk); return bk } return folders.flatMap(f => f.bookmarks) }
-  if ((r = path.match(/^books\/bookmarks\/check\/(\d+)\/$/))) { const bm = folders.flatMap(f => f.bookmarks).find(b => b.book.id === +r[1]); return { is_bookmarked: !!bm, bookmarked: !!bm, bookmark_id: bm?.id } }
-  if ((r = path.match(/^books\/bookmarks\/(\d+)\/$/))) { folders.forEach(f => (f.bookmarks = f.bookmarks.filter(b => b.id !== +r[1] && b.book.id !== +r[1]))); return null }
+  if (path === 'books/folders/') {
+    if (m === 'post') { const name = (body?.name || '').trim(); if (!name) return fail(400, { name: ['이 필드는 필수 항목입니다.'] }); if (folders.some(x => x.name === name)) return fail(400, { non_field_errors: ['같은 이름의 폴더가 이미 있습니다.'] }); const f = { id: ++seq, name, bookmarks: [] }; folders.push(f); return f }
+    return folders
+  }
+  if ((r = path.match(/^books\/folders\/(\d+)\/$/))) {
+    const f = folders.find(x => x.id === +r[1]); if (!f) return fail(404, { detail: '찾을 수 없습니다.' })
+    if (m === 'put' || m === 'patch') { const name = (body?.name || '').trim(); if (folders.some(x => x.id !== f.id && x.name === name)) return fail(400, { non_field_errors: ['같은 이름의 폴더가 이미 있습니다.'] }); if (name) f.name = name; return f }
+    if (m === 'delete') { folders.splice(folders.indexOf(f), 1); return null }
+    return f
+  }
+  if (path === 'books/bookmarks/') {
+    if (m === 'post') {
+      const f = folders.find(x => x.id === +body.folder_id), bk = byId(body.book_id)
+      if (!body.folder_id || !body.book_id) return fail(400, { error: 'folder_id and book_id are required' })
+      if (!f || !bk) return fail(404, { error: 'Invalid folder or book' })
+      if (f.bookmarks.some(x => x.book.id === bk.id)) return fail(400, { error: 'Already bookmarked in this folder' })
+      const item = { id: ++seq, book: bk, folder: f.id }; f.bookmarks.push(item); return item
+    }
+    return folders.flatMap(f => f.bookmarks)
+  }
+  if ((r = path.match(/^books\/bookmarks\/check\/(\d+)\/$/))) { const bm = folders.flatMap(f => f.bookmarks).find(b => b.book.id === +r[1]); return { is_bookmarked: !!bm } }
+  if ((r = path.match(/^books\/bookmarks\/(\d+)\/$/))) {
+    const id = +r[1], from = folders.find(f => f.bookmarks.some(b => b.id === id)); if (!from) return fail(404, { detail: '찾을 수 없습니다.' })
+    const item = from.bookmarks.find(b => b.id === id)
+    if (m === 'put' || m === 'patch') {
+      const to = folders.find(x => x.id === +body.folder_id); if (!to) return fail(404, { error: 'Invalid folder' })
+      if (to.id === from.id) return fail(400, { error: 'Already in this folder' })
+      if (to.bookmarks.some(x => x.book.id === item.book.id)) return fail(400, { error: 'Book already exists in target folder' })
+      from.bookmarks = from.bookmarks.filter(b => b.id !== id); item.folder = to.id; to.bookmarks.push(item); return item
+    }
+    if (m === 'delete') { from.bookmarks = from.bookmarks.filter(b => b.id !== id); return null }
+    return item
+  }
   if ((r = path.match(/^recommendations\/by-book\/(\d+)\/$/))) {
     const b = byId(r[1]) || books[0]
     const pool = books.filter(x => x.id !== b.id)
@@ -117,6 +146,7 @@ axios.defaults.adapter = config => {
   const q = { ...(config.params || {}) }; const ix = full.indexOf('?'); if (ix > 0) new URLSearchParams(full.slice(ix)).forEach((v, k) => (q[k] = v))
   let body = {}; try { body = typeof config.data === 'string' ? JSON.parse(config.data) : (config.data instanceof FormData ? Object.fromEntries(config.data) : config.data || {}) } catch (e) {}
   const raw = route((config.method || 'get').toLowerCase(), url, q, body)
+  if (raw && raw.__fail) { const [status, data] = raw.__fail; return Promise.reject(Object.assign(new Error('Request failed with status code ' + status), { config, response: { data, status, statusText: 'Error', headers: {}, config }, isAxiosError: true })) }
   // 실제 서버처럼 매번 새 응답 객체를 돌려준다(같은 배열을 돌려주면 Vue가 변경을 감지하지 못해 화면이 갱신되지 않는다)
   const d = raw && typeof raw === 'object' ? structuredClone(raw) : raw
   return Promise.resolve(ok(config, d, d === null ? 204 : (config.method || 'get') === 'post' ? 201 : 200))

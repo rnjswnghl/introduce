@@ -2,7 +2,7 @@
   <div v-if="show" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
-        <h3>북마크 저장</h3>
+        <h3>찜하기</h3>
         <button class="btn-close" @click="$emit('close')"></button>
       </div>
       
@@ -219,8 +219,8 @@ const saveBookmark = async () => {
     emit('saved')
     emit('close')
   } catch (error) {
-    console.error('북마크 저장에 실패했습니다:', error)
-    alert('북마크 저장에 실패했습니다.')
+    console.error('찜하기에 실패했습니다:', error)
+    alert('찜하기에 실패했습니다.')
   }
 }
 

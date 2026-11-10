@@ -88,7 +88,7 @@
           <LikedThreads />
         </div>
 
-        <!-- 북마크 탭 -->
+        <!-- 찜 탭 -->
         <div v-if="activeTab === 'bookmarks'" class="bookmarks-tab">
           <div class="folder-list">
             <div v-for="folder in folders" :key="folder.id" class="folder-item">
@@ -110,7 +110,7 @@
               
               <div v-if="expandedFolders[folder.id]" class="folder-content">
                 <div v-if="folder.bookmarks.length === 0" class="empty-message">
-                  이 폴더에 저장된 북마크가 없습니다.
+                  이 폴더에 찜한 책이 없습니다.
                 </div>
                 <div v-else class="bookmark-grid">
                   <div v-for="bookmark in folder.bookmarks" :key="bookmark.id" class="bookmark-item">
@@ -186,10 +186,10 @@
       </div>
     </div>
 
-    <!-- 북마크 이동 모달 -->
+    <!-- 찜 이동 모달 -->
     <div v-if="isMoveModalVisible" class="modal-overlay">
       <div class="modal-content">
-        <h3>북마크 이동</h3>
+        <h3>찜 이동</h3>
         <div class="folder-list">
           <div v-for="folder in folders" :key="folder.id" class="folder-item">
             <label class="folder-radio">
@@ -286,7 +286,7 @@ const fetchUserInfo = async () => {
       isFollowing.value = profileData.is_following
     }
 
-    // 자신의 프로필인 경우에만 북마크 폴더 가져오기
+    // 자신의 프로필인 경우에만 찜 폴더 가져오기
     if (!username.value || username.value === currentUserData.username) {
       await fetchFolders()
     }
@@ -413,13 +413,13 @@ const moveBookmark = async () => {
     await fetchFolders()
     isMoveModalVisible.value = false
   } catch (error) {
-    console.error('북마크 이동 실패', error)
-    alert('북마크 이동에 실패했습니다.')
+    console.error('찜 이동 실패', error)
+    alert('찜 이동에 실패했습니다.')
   }
 }
 
 const confirmDeleteBookmark = (bookmark) => {
-  if (confirm('정말로 이 북마크를 삭제하시겠습니까?')) {
+  if (confirm('정말로 이 찜을 삭제하시겠습니까?')) {
     deleteBookmark(bookmark)
   }
 }
@@ -430,8 +430,8 @@ const deleteBookmark = async (bookmark) => {
     // 폴더 목록 새로고침
     await fetchFolders()
   } catch (error) {
-    console.error('북마크 삭제 실패', error)
-    alert('북마크 삭제에 실패했습니다.')
+    console.error('찜 삭제 실패', error)
+    alert('찜 삭제에 실패했습니다.')
   }
 }
 

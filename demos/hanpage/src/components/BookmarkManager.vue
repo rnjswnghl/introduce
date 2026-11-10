@@ -88,11 +88,11 @@
       </div>
     </div>
 
-    <!-- 북마크 이동 모달 -->
+    <!-- 찜 이동 모달 -->
     <div v-if="showMoveModal" class="modal-overlay">
       <div class="modal-content">
         <div class="modal-header">
-          <h3>북마크 이동</h3>
+          <h3>찜 이동</h3>
           <button class="btn-close" @click="showMoveModal = false"></button>
         </div>
         <div class="folder-list">
@@ -239,8 +239,8 @@ const moveBookmarkToFolder = async () => {
     showMoveModal.value = false
     await fetchFolders()
   } catch (error) {
-    console.error('북마크 이동에 실패했습니다:', error)
-    let errorMessage = '북마크 이동에 실패했습니다.'
+    console.error('찜 이동에 실패했습니다:', error)
+    let errorMessage = '찜 이동에 실패했습니다.'
     
     if (error.response?.data?.error) {
       errorMessage = error.response.data.error
@@ -251,7 +251,7 @@ const moveBookmarkToFolder = async () => {
 }
 
 const confirmDeleteBookmark = (bookmark) => {
-  if (confirm('정말로 이 북마크를 삭제하시겠습니까?')) {
+  if (confirm('정말로 이 찜을 삭제하시겠습니까?')) {
     deleteBookmark(bookmark)
   }
 }
@@ -261,8 +261,8 @@ const deleteBookmark = async (bookmark) => {
     await api.delete(`books/bookmarks/${bookmark.id}/`)
     await fetchFolders()
   } catch (error) {
-    console.error('북마크 삭제에 실패했습니다:', error)
-    alert('북마크 삭제에 실패했습니다.')
+    console.error('찜 삭제에 실패했습니다:', error)
+    alert('찜 삭제에 실패했습니다.')
   }
 }
 
