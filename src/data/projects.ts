@@ -21,7 +21,7 @@ const P = (n: string, cap: string, mobile = false): Shot => ({ src: `/img/p/${n}
 export const projects: Project[] = [
   {
     slug: 'hanpage', no: '壹', name: '한페이지', kor: '도서 추천, 독서 기록 커뮤니티', group: 'ssafy', kind: 'team', teamSize: 2,
-    period: '2025.05.22 — 05.28', role: '팀장, 백엔드 초기 설계 + 도서 탐색/추천/마이페이지 구현', roleShort: 'Team Lead, Full-stack', tagline: '문장 속 당신을 만나는 곳', accent: '#55705f', cover: 'hanpage-cover.e4d4e956',
+    period: '2025.05.22 — 05.28', role: '팀장, 백엔드 초기 설계 + 도서 탐색/추천/마이페이지 구현', roleShort: 'Team Lead, Full-stack', tagline: '문장 속 당신을 만나는 곳', accent: '#55705f', cover: 'hanpage-cover.cf2241c8',
     summary: '도서를 검색하고 취향에 맞는 책을 추천받으며, 읽은 책에 대한 기록(쓰레드)을 나누는 도서 추천, 독서 기록 커뮤니티 웹 서비스입니다. Django REST 백엔드와 Vue 3 프론트로 구성했고, 2인 팀의 팀장으로 도서 데이터 구성과 백엔드 구조 설계, 도서 탐색, 상세, 추천, 마이페이지, 방문록, 지도 화면을 맡았습니다.',
     goal: { problem: '읽을 책을 고르는 일과 읽은 뒤의 감상을 나누는 일이 서로 다른 서비스에 흩어져 있어, 취향에 맞는 책을 찾고 같은 책을 읽은 사람과 이야기하는 흐름이 끊깁니다.', goal: '사용자 맞춤 도서 추천, 독서 기록 커뮤니티, 외부 API(음성, 저자 정보, AI 이미지)를 한 서비스에서 이어지는 경험으로 만드는 것.' },
     stack: [
