@@ -22,12 +22,12 @@ const chips = ['어떤 프로젝트를 했나요?', '권주회 님은 어떤 사
   .cat-btn:hover { transform: translateY(-3px); } .cat-btn img { width: 100%; height: auto; display: block; opacity: .9; }
   .cat-hint { position: absolute; right: 58%; bottom: 82%; white-space: nowrap; background: var(--card); border: 1px solid var(--line); border-radius: 10px 10px 2px 10px; padding: .3rem .7rem; font-size: .78rem; color: var(--ink-2); box-shadow: 0 6px 16px -10px rgba(40, 25, 10, .5); }
   .cat-hint[hidden] { display: none; }
-  .cat-panel { position: fixed; right: clamp(8px, 2vw, 28px); bottom: calc(clamp(78px, 7vw, 108px) * .85 + 16px); width: min(390px, calc(100vw - 16px)); height: min(560px, 72vh); display: flex; flex-direction: column; background: rgba(251, 248, 241, .97); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 24px 60px -24px rgba(40, 25, 10, .55); overflow: hidden; }
+  .cat-panel { position: fixed; right: clamp(8px, 2vw, 28px); bottom: calc(clamp(78px, 7vw, 108px) * .85 + 16px); width: min(390px, calc(100vw - 16px)); height: min(580px, 84vh); padding: 0; display: flex; flex-direction: column; background: rgba(251, 248, 241, .97); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 24px 60px -24px rgba(40, 25, 10, .55); overflow: hidden; }
   .cat-panel[hidden] { display: none; }
   .cat-panel header { display: flex; gap: .7rem; align-items: center; padding: .7rem .9rem; border-bottom: 1px solid var(--line); background: rgba(236, 227, 210, .6); }
   .cat-panel header img { width: 40px; height: auto; } .cat-panel header div { flex: 1; line-height: 1.3; } .cat-panel header b { font-family: var(--serif); display: block; } .cat-panel header small { color: var(--ink-2); font-size: .74rem; }
   .cat-x { border: 0; background: none; font-size: 1rem; cursor: pointer; color: var(--ink-2); padding: .4rem; }
-  .cat-log { list-style: none; margin: 0; padding: .9rem; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: .6rem; }
+  .cat-log { min-height: 150px; list-style: none; margin: 0; padding: .9rem; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: .6rem; }
   .cat-log li { max-width: 88%; padding: .55rem .8rem; border-radius: 10px; font-size: .9rem; line-height: 1.65; white-space: pre-wrap; word-break: keep-all; }
   .cat-log .bot { align-self: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 10px 10px 10px 2px; }
   .cat-log .me { align-self: flex-end; background: var(--ink); color: #f6efe2; border-radius: 10px 10px 2px 10px; }
