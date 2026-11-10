@@ -6,7 +6,7 @@ export type ArchNode = { t: string; r: string };
 export type Project = {
   slug: string; no: string; name: string; kor: string; group: 'ssafy' | 'aleph'; kind: 'team' | 'solo'; teamSize?: number;
   period: string; role: string; roleShort: string; tagline: string; accent: string; cover: string;
-  summaryNote?: string;                  // 개요 아래 작은 부기
+  demoNote?: string;                     // 데모 아래 작은 부기
   summary: string;                       // ① 한 문단 개요
   goal: { problem: string; goal: string };   // ② 왜 필요한가 / 무엇을 목표로 했나
   stack: { t: string; why: string }[];       // 기술 + 왜/어떻게 썼나 (나열 금지)
@@ -24,17 +24,16 @@ export const projects: Project[] = [
     slug: 'hanpage', no: '壹', name: '한페이지', kor: '도서 추천, 독서 기록 커뮤니티', group: 'ssafy', kind: 'team', teamSize: 2,
     period: '2025.05.22 — 05.28', role: '풀스택', roleShort: 'Full-stack', tagline: '문장 속 당신을 만나는 곳', accent: '#55705f', cover: 'hanpage-cover.cf2241c8',
     summary: '책을 좋아하는 사람들이 자유롭게 소통하는 도서 커뮤니티 웹 서비스입니다. Vue와 Django REST Framework로 만든 2인 팀 프로젝트에서 도서 데이터 수집과 백엔드 초기 구조, 도서 탐색과 추천, 근처 도서관 지도, 마이페이지(찜, 이모지 방문록)를 구현했습니다.',
-    summaryNote: '데모에는 외부 지도 연동을 제외했습니다.',
+    demoNote: '데모에는 외부 지도 연동을 제외했습니다.',
     goal: { problem: '책을 좋아하는 사람들이 책을 찾고, 읽은 감상을 남기고, 서로 소통하는 공간이 필요했습니다.', goal: '감성적이고 따뜻한 분위기의 도서 커뮤니티를 만들고, 추천과 위치 기반 기능으로 사용 경험을 높이는 것.' },
     stack: [
       { t: 'Django REST Framework', why: '계정, 도서, 쓰레드, 방명록, 추천을 5개 앱으로 나누고 모델과 API를 설계' },
       { t: 'Vue 3, Pinia, Vue Router', why: '화면을 SPA로 구성하고, 로그인 상태는 스토어로 공유하며, 로그인이 필요한 페이지는 라우터 가드로 접근을 제한' },
-      { t: '알라딘 Open API', why: '주제별 도서 검색 결과를 9개 대분류로 정리해 실제 도서 398권을 DB 시드 데이터로 구성' },
+      { t: '알라딘 Open API', why: '실제 도서 데이터로 서비스를 채우기 위해 사용, 검색 결과를 정리해 DB 시드로 구성' },
       { t: '카카오맵 API', why: '현재 위치 주변의 도서관을 지도에 표시' },
-      { t: 'SQLite, ERD', why: '사용자, 도서, 쓰레드, 댓글, 찜, 방명록, 좋아요, 팔로우의 관계를 ERD로 먼저 설계' },
+      { t: 'SQLite', why: '사용자, 도서, 쓰레드, 댓글, 찜, 방명록, 좋아요, 팔로우의 관계를 ERD로 먼저 설계한 뒤 모델로 구현' },
     ],
-    arch: [{ t: '알라딘 API', r: '주제별 도서 검색' }, { t: '카테고리 정리 → JSON(fixtures)', r: '9개 대분류, 도서 398권' }, { t: 'Django REST (5개 앱)', r: 'accounts, books, threads, guestbook, recommendations' }, { t: 'Vue 3 SPA (Pinia, Router)', r: '탐색, 상세, 쓰레드, 마이페이지(찜, 방문록)' }],
-    archNote: '외부 연동: 알라딘(도서 데이터), 카카오맵(근처 도서관)',
+    arch: [{ t: '알라딘 API', r: '주제별 도서 검색' }, { t: '카테고리 정리 → JSON(fixtures)', r: '9개 대분류, 도서 398권' }, { t: 'Django REST, SQLite', r: '5개 앱: accounts, books, threads, guestbook, recommendations' }, { t: 'Vue 3 SPA (Pinia, Router)', r: '탐색, 상세, 쓰레드, 마이페이지(찜, 방문록), 카카오맵' }],
     team: [],
     mine: [
       '알라딘 API로 도서를 수집해 카테고리를 정리하고 DB에 저장, Django 백엔드 초기 구조(앱 분리, 모델) 설계',

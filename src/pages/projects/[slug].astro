@@ -23,7 +23,7 @@ const mineDraft = p.group === 'aleph';
   </div>
 
   <div class="wrap">
-    <section class="sec"><h2><span class="n">01</span>프로젝트 개요</h2><p style="max-width:70ch">{p.summary}</p>{p.summaryNote && <p class="snote">※ {p.summaryNote}</p>}</section>
+    <section class="sec"><h2><span class="n">01</span>프로젝트 개요</h2><p style="max-width:70ch">{p.summary}</p></section>
 
     <section class="sec"><h2><span class="n">02</span>문제 정의 및 목표</h2>
       <div class="pq"><div class="panel"><h4>왜 필요한가</h4><p>{p.goal.problem}</p></div><div class="panel"><h4>무엇을 목표로 했나</h4><p>{p.goal.goal}</p></div></div></section>
@@ -32,7 +32,7 @@ const mineDraft = p.group === 'aleph';
       <div class="archwrap">
         <div><div class="arch">{p.arch.map((a, i) => <><div class="node"><b>{a.t}</b><span>{a.r}</span></div>{i < p.arch.length - 1 && <div class="arr" aria-hidden="true">↓</div>}</>)}</div>
           {p.archNote && <p class="note">{p.archNote}</p>}</div>
-        <div><p class="eyebrow" style="margin-bottom:.4rem">어떻게, 왜 썼나</p>
+        <div><p class="eyebrow" style="margin-bottom:.4rem">무엇을, 어떻게 썼나</p>
           <table class="why"><tbody>{p.stack.map(s => <tr><td>{s.t}</td><td>{s.why}</td></tr>)}</tbody></table></div>
       </div></section>
 
@@ -49,6 +49,7 @@ const mineDraft = p.group === 'aleph';
     <h2 class="h2" style="font-size:1.45rem"><span class="n" style="font:700 .95rem var(--serif);color:var(--seal);border:1px solid var(--seal);border-radius:3px;padding:.05rem .5rem;margin-right:.6rem">구현 결과</span>직접 눌러보기</h2>
     <p class="lead" style="margin-bottom:1.2rem">구현한 화면을 직접 눌러보세요.</p>
     <DemoFrame kind={p.demo} name={p.name} poster={`/img/p/${p.cover}.webp`} />
+    {p.demoNote && <p class="snote">※ {p.demoNote}</p>}
   </div></section>}
 
   {p.shots.length > 0 && <section style="padding:2.2rem 0 0"><div class="wrap">
