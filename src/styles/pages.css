@@ -100,3 +100,4 @@ table.cmp { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top
 .sheet .wrap { width: 100%; }
 .sheet .phead { padding-top: clamp(1rem, 3vw, 2rem); }
 .sheet :is(.h2, .eyebrow, .lead, .crumb, .phead h1) { text-shadow: none; }
+.sec .snote{font-size:.82rem;opacity:.7;margin:.5rem 0 0;max-width:70ch}

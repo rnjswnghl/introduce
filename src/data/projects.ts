@@ -6,6 +6,7 @@ export type ArchNode = { t: string; r: string };
 export type Project = {
   slug: string; no: string; name: string; kor: string; group: 'ssafy' | 'aleph'; kind: 'team' | 'solo'; teamSize?: number;
   period: string; role: string; roleShort: string; tagline: string; accent: string; cover: string;
+  summaryNote?: string;                  // 개요 아래 작은 부기
   summary: string;                       // ① 한 문단 개요
   goal: { problem: string; goal: string };   // ② 왜 필요한가 / 무엇을 목표로 했나
   stack: { t: string; why: string }[];       // 기술 + 왜/어떻게 썼나 (나열 금지)
@@ -22,7 +23,8 @@ export const projects: Project[] = [
   {
     slug: 'hanpage', no: '壹', name: '한페이지', kor: '도서 추천, 독서 기록 커뮤니티', group: 'ssafy', kind: 'team', teamSize: 2,
     period: '2025.05.22 — 05.28', role: '풀스택', roleShort: 'Full-stack', tagline: '문장 속 당신을 만나는 곳', accent: '#55705f', cover: 'hanpage-cover.cf2241c8',
-    summary: '책을 좋아하는 사람들이 자유롭게 소통하는 도서 커뮤니티 웹 서비스입니다. Vue와 Django REST Framework로 만든 2인 팀 프로젝트에서 도서 데이터 수집과 백엔드 초기 구조, 도서 탐색과 추천, 근처 도서관 지도, 마이페이지(찜, 이모지 방문록)를 구현했습니다. 이 화면의 데모에는 외부 지도 연동을 제외했습니다.',
+    summary: '책을 좋아하는 사람들이 자유롭게 소통하는 도서 커뮤니티 웹 서비스입니다. Vue와 Django REST Framework로 만든 2인 팀 프로젝트에서 도서 데이터 수집과 백엔드 초기 구조, 도서 탐색과 추천, 근처 도서관 지도, 마이페이지(찜, 이모지 방문록)를 구현했습니다.',
+    summaryNote: '데모에는 외부 지도 연동을 제외했습니다.',
     goal: { problem: '책을 좋아하는 사람들이 책을 찾고, 읽은 감상을 남기고, 서로 소통하는 공간이 필요했습니다.', goal: '감성적이고 따뜻한 분위기의 도서 커뮤니티를 만들고, 추천과 위치 기반 기능으로 사용 경험을 높이는 것.' },
     stack: [
       { t: 'Django REST Framework', why: '계정, 도서, 쓰레드, 방명록, 추천을 5개 앱으로 나누고 모델과 API를 설계' },
