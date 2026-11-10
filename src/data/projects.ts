@@ -6,7 +6,7 @@ export type ArchNode = { t: string; r: string };
 export type Project = {
   slug: string; no: string; name: string; kor: string; group: 'ssafy' | 'aleph'; kind: 'team' | 'solo'; teamSize?: number;
   period: string; role: string; roleShort: string; tagline: string; accent: string; cover: string;
-  summaryNote?: string;                  // 개요 아래 작은 부기
+  demoNote?: string;                     // 데모 아래 작은 부기
   summary: string;                       // ① 한 문단 개요
   goal: { problem: string; goal: string };   // ② 왜 필요한가 / 무엇을 목표로 했나
   stack: { t: string; why: string }[];       // 기술 + 왜/어떻게 썼나 (나열 금지)
@@ -24,17 +24,16 @@ export const projects: Project[] = [
     slug: 'hanpage', no: '壹', name: '한페이지', kor: '도서 추천, 독서 기록 커뮤니티', group: 'ssafy', kind: 'team', teamSize: 2,
     period: '2025.05.22 — 05.28', role: '풀스택', roleShort: 'Full-stack', tagline: '문장 속 당신을 만나는 곳', accent: '#55705f', cover: 'hanpage-cover.cf2241c8',
     summary: '책을 좋아하는 사람들이 자유롭게 소통하는 도서 커뮤니티 웹 서비스입니다. Vue와 Django REST Framework로 만든 2인 팀 프로젝트에서 도서 데이터 수집과 백엔드 초기 구조, 도서 탐색과 추천, 근처 도서관 지도, 마이페이지(찜, 이모지 방문록)를 구현했습니다.',
-    summaryNote: '데모에는 외부 지도 연동을 제외했습니다.',
+    demoNote: '데모에는 외부 지도 연동을 제외했습니다.',
     goal: { problem: '책을 좋아하는 사람들이 책을 찾고, 읽은 감상을 남기고, 서로 소통하는 공간이 필요했습니다.', goal: '감성적이고 따뜻한 분위기의 도서 커뮤니티를 만들고, 추천과 위치 기반 기능으로 사용 경험을 높이는 것.' },
     stack: [
-      { t: 'Django REST Framework', why: '계정, 도서, 쓰레드, 방명록, 추천을 5개 앱으로 나누고 모델과 API를 설계' },
-      { t: 'Vue 3, Pinia, Vue Router', why: '화면을 SPA로 구성하고, 로그인 상태는 스토어로 공유하며, 로그인이 필요한 페이지는 라우터 가드로 접근을 제한' },
-      { t: '알라딘 Open API', why: '주제별 도서 검색 결과를 9개 대분류로 정리해 실제 도서 398권을 DB 시드 데이터로 구성' },
-      { t: '카카오맵 API', why: '현재 위치 주변의 도서관을 지도에 표시' },
-      { t: 'SQLite, ERD', why: '사용자, 도서, 쓰레드, 댓글, 찜, 방명록, 좋아요, 팔로우의 관계를 ERD로 먼저 설계' },
+      { t: 'Django REST Framework', why: 'Django와 함께 쓰는 REST API 표준 도구로, 시리얼라이저와 뷰셋, 권한 클래스로 API를 빠르게 구성할 수 있음. 계정, 도서, 쓰레드, 방명록, 추천을 5개 앱으로 나누고 모델과 API를 설계' },
+      { t: 'Vue 3, Pinia, Vue Router', why: '배우기 쉽고 가벼운 프런트엔드 프레임워크로, 상태 관리(Pinia)와 라우팅(Router)이 공식 도구로 함께 제공됨. 화면을 SPA로 구성하고, 로그인 상태는 스토어로 공유하며, 로그인이 필요한 페이지는 라우터 가드로 접근을 제한' },
+      { t: '알라딘 Open API', why: '제목, 저자, 표지, 카테고리 같은 국내 도서 정보를 제공해 실제 도서 데이터로 서비스를 채울 수 있음. 주제별 검색 결과를 9개 대분류로 정리해 도서 398권을 DB 시드 데이터로 구성' },
+      { t: '카카오맵 API', why: '국내 장소 검색과 지도 표시를 쉽게 붙일 수 있음. 현재 위치 주변의 도서관을 지도에 표시' },
+      { t: 'SQLite', why: 'Django 기본 DB라 별도 설치나 설정 없이 바로 쓸 수 있어 개발 단계에 적합. 사용자, 도서, 쓰레드, 댓글, 찜, 방명록, 좋아요, 팔로우의 관계를 ERD로 먼저 설계한 뒤 모델로 구현' },
     ],
-    arch: [{ t: '알라딘 API', r: '주제별 도서 검색' }, { t: '카테고리 정리 → JSON(fixtures)', r: '9개 대분류, 도서 398권' }, { t: 'Django REST (5개 앱)', r: 'accounts, books, threads, guestbook, recommendations' }, { t: 'Vue 3 SPA (Pinia, Router)', r: '탐색, 상세, 쓰레드, 마이페이지(찜, 방문록)' }],
-    archNote: '외부 연동: 알라딘(도서 데이터), 카카오맵(근처 도서관)',
+    arch: [{ t: '알라딘 API', r: '주제별 도서 검색' }, { t: '카테고리 정리 → JSON(fixtures)', r: '9개 대분류, 도서 398권' }, { t: 'Django REST, SQLite', r: '5개 앱: accounts, books, threads, guestbook, recommendations' }, { t: 'Vue 3 SPA (Pinia, Router)', r: '탐색, 상세, 쓰레드, 마이페이지(찜, 방문록), 카카오맵' }],
     team: [],
     mine: [
       '알라딘 API로 도서를 수집해 카테고리를 정리하고 DB에 저장, Django 백엔드 초기 구조(앱 분리, 모델) 설계',
@@ -47,7 +46,7 @@ export const projects: Project[] = [
       '이모지 방문록: 마이페이지에 이모지를 남기고, 작성자와 주인이 삭제',
       '백엔드 틀이 잡힌 뒤에는 프론트 화면을 다듬고 꾸미는 일을 맡음(메인, 쓰레드 목록, 마이페이지 레이아웃)',
     ],
-    mineNote: '추천은 선호 카테고리를 활용한 개인화를 목표로 시작했지만, 개발 기간과 처음 해 보는 범위를 고려해 저자, 카테고리, 랜덤 3가지 기준으로 정리했습니다. 지도도 대출 가능 여부를 보여주는 API를 신청했지만 응답을 받지 못했고, 기간 안에 끝내기 어려워 근처 도서관 표시로 방향을 바꿨습니다.',
+    mineNote: '추천은 선호 카테고리를 활용한 개인화를 목표로 시작했지만, 개발 기간과 처음 해 보는 범위를 고려해 저자, 카테고리, 랜덤 3가지 기준으로 정리했습니다.',
     troubles: [
       { title: '찜한 책이 마이페이지에서 보이지 않음', problem: '책을 찜하는 것은 됐지만, 마이페이지에서 폴더별로 찜한 책을 불러오는 부분이 제대로 동작하지 않았습니다.', cause: '폴더 API가 폴더 id와 이름만 내려주고, 찜 응답에는 어느 폴더에 속하는지가 없어서 폴더별로 책을 묶어 보여줄 수 없는 구조였습니다. 폴더와 찜을 따로 두는 구조 자체도 복잡했습니다.', fix: '폴더 응답 안에 찜한 책 목록(bookmarks)을 함께 담고, 찜 응답에 폴더 정보를 넣었습니다. 폴더 사이 이동, 책 기준 찜 여부 확인과 취소 API를 추가해 상세 화면과 마이페이지가 같은 데이터를 쓰게 했습니다.' },
       { title: '로그인 토큰 오류', problem: '로그인 후에도 인증이 필요한 요청에서 토큰 오류가 발생했습니다.', cause: '로그인 상태를 담는 스토어가 같은 이름(user)으로 두 파일(user.js, userStore.js)에 있었고, 화면마다 서로 다른 쪽을 불러오고 있었습니다.', fix: '스토어를 하나로 합치고, 토큰을 요청 헤더에 붙이는 일은 axios 요청 인터셉터에서 일괄 처리하도록 정리했습니다. 병합 과정에서 중복 파일이 한 번 되살아나 다음 날 다시 정리했습니다.', draft: true },
