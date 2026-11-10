@@ -23,7 +23,7 @@ const mineDraft = p.group === 'aleph';
   </div>
 
   <div class="wrap">
-    <section class="sec"><h2><span class="n">01</span>프로젝트 개요</h2><p style="max-width:70ch">{p.summary}</p></section>
+    <section class="sec"><h2><span class="n">01</span>프로젝트 개요</h2><p style="max-width:70ch">{p.summary}</p>{p.summaryNote && <p class="snote">※ {p.summaryNote}</p>}</section>
 
     <section class="sec"><h2><span class="n">02</span>문제 정의 및 목표</h2>
       <div class="pq"><div class="panel"><h4>왜 필요한가</h4><p>{p.goal.problem}</p></div><div class="panel"><h4>무엇을 목표로 했나</h4><p>{p.goal.goal}</p></div></div></section>
